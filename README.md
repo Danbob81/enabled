@@ -117,7 +117,7 @@ The deployed website was also tested using Chrome, Edge and Firefox as well as o
 -  
  
 ### Media:
-- 
+- [woman on sofa](https://www.pexels.com/photo/woman-sitting-on-the-couch-near-green-plants-4057867/)
 - 
 - 
 - 

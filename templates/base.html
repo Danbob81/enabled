@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Lobster&family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -16,10 +17,10 @@
         <div class="nav-bar fixed">
             <nav>
                 <div class="nav-wrapper green lighten-1">
-                <a href="#" class="brand-logo">Enabled</a>
+                <a href="{{ url_for('get_home') }}" class="brand-logo">Enabled</a>
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url_for('get_home') }}">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Register</a></li>
@@ -32,7 +33,7 @@
         <!-- Sidenav -->
         <ul id="slide-out" class="sidenav">
             <li><h4 class="center-align">Enabled</h4></li>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ url_for('get_home') }}">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Register</a></li>
@@ -44,10 +45,12 @@
 
     {% endblock %}
 
+</body>
+
     <footer class="page-footer green darken-1">
         <div class="footer-copyright">
             <div class="container center-align">
-            © danbob81 <span id="copyright"></span><br>
+            ©<span id="copyright"></span> danbob81 <br>
             <a class="grey-text text-lighten-4 center-align" href="https://github.com/Danbob81"><i class="fab fa-github"></i></a>
             </div>
           </div>
@@ -57,7 +60,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-</body>
 
     
 </html>
