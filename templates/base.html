@@ -21,9 +21,8 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_home') }}">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="{{ url_for('get_register') }}">Register</a></li>
                     <li><a href="#">Login</a></li>
                 </ul>
                 </div>
@@ -31,12 +30,11 @@
         </div>
 
         <!-- Sidenav -->
-        <ul id="slide-out" class="sidenav">
-            <li><h4 class="center-align">Enabled</h4></li>
+        <ul id="slide-out" class="sidenav light-green lighten-4">
+            <!-- <li><h4 class="center-align">Enabled</h4></li> -->
             <li><a href="{{ url_for('get_home') }}">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="{{ url_for('get_register') }}">Register</a></li>
             <li><a href="#">Login</a></li>
         </ul>
         
@@ -51,7 +49,7 @@
         <div class="footer-copyright">
             <div class="container center-align">
             ©<span id="copyright"></span> danbob81 <br>
-            <a class="grey-text text-lighten-4 center-align" href="https://github.com/Danbob81"><i class="fab fa-github"></i></a>
+            <a class="grey-text text-lighten-4 center-align" href="https://github.com/Danbob81" target="_blank"><i class="fab fa-github"></i></a>
             </div>
           </div>
     </footer>

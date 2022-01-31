@@ -25,6 +25,11 @@ def get_home():
     return render_template("home.html")
 
 
+@app.route("/get_register")
+def get_register():    
+    return render_template("register.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

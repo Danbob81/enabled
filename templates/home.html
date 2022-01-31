@@ -2,33 +2,86 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 l6 center-align">
-            <img src="static/images/girl_on_sofa2.jpg" class="responsive-image" alt="Woman sitting on a sofa near green plants">
-            <br><small>photo by Cliff Booth from Pexels</small>
+    <div class="row light-green lighten-4">
+        <div class="col s12 l6">
+          <div class="card">
+            <div class="card-image">
+              <img src="static/images/sofa_girl.jpg" class="responsive-image" alt="Woman sitting on a sofa near green plants">
+              <!-- <br><small>photo by Cliff Booth from Pexels</small> -->
+            </div>
+          </div>
         </div>
-        <div class="col s12 l6 center-align">
-            <!-- <h2 class="logo">Enabled</h2> -->
+        <div class="col s12 l6">
+          <!-- <div class="card"> -->
             <h2 class="">Home Adaptations </h2>
-            <h3>Even a minor adaptation can make a major difference to someone's home life.</h3>
+            <h3 class="">Even a minor adaptation can make a major difference to someone's home life.</h3>
+          <!-- </div> -->
         </div>        
     </div>
-    
-<div class="col s12 m7">
-    <!-- <h2 class="header">Horizontal Card</h2> -->
-    <div class="card horizontal">
-      <div class="card-image">
-        <!-- <img src="static/images/girl_on_sofa2.jpg" class="responsive-image" alt="Woman sitting on a sofa near green plants"> -->
+
+<div class="row">
+  <div class="col s12 l6">
+      <div class="card sticky-action">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="static/images/man_in_chair.jpg">
+        </div>
+        <div class="card-content light-green lighten-4">
+          <span class="card-title activator grey-text text-darken-4">Equipment and Adaptation Service<i class="material-icons right">more...</i></span>
+        </div>
+        <div class="card-reveal light-green lighten-4">
+          <span class="card-title grey-text text-darken-4">Equipment and Adaptation Service<i class="material-icons right">close</i></span>
+          <p>We believe that adapting or improving a home makes a major difference to someone’s home life. 
+            We see the comfort and suitability of your home as an essential and not a luxury. Our vision is
+            to help people to live independently in safe and accessible homes, so they can continue to live 
+            with dignity in their own homes for as long as they wish.</p>
+            <p>To access our Equipment and Adaptation Service, a member of our occupational therapy team will arrange 
+              to visit you and look around your home to see what might help. We may ask to speak with your carers and 
+              any professionals involved with you, so that we can get a better picture of what you need.</p>
+            <p><a href="{{ url_for('get_register') }}">Request an Assessment</a></p>
+        </div>
       </div>
-      <div class="card-stacked">
-        <div class="card-content center-align">
-            <p>Some text</p>
-        </div>
-        <div class="card-action">
-          <!-- <a href="#">This is a link</a> -->
-        </div>
+  </div>
+  <div class="col s12 l6">
+    <div class="card sticky-action">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="static/images/washing_up3.jpg">
+      </div>
+      <div class="card-content light-green lighten-4">
+        <span class="card-title activator grey-text text-darken-4">What We Can Offer<i class="material-icons right">more...</i></span>
+      </div>
+      <div class="card-reveal light-green lighten-4">
+        <span class="card-title grey-text text-darken-4">Equipment<i class="material-icons right">close</i></span>
+        <p>We can lend you equipment, free of charge, for as long as you need it.  The types of equipment we can offer will help you with:
+          <ul>
+            <li>- bathing</li>
+            <li>- daily living</li>
+            <li>- lifting</li>
+            <li>- manual handling</li>
+            <li>- showering</li>
+            <li>- sleeping</li>
+            <li>- toileting</li>
+            <li>- walking</li>
+          </ul>
+          We can also lend you chairs, and equipment to help children</p>
+        <span class="card-title grey-text text-darken-4">Adaptations</span>
+          <p>
+            Adaptations are changes to your home, such as:
+            <ul>
+              <li>- replacing a bath with a walk in shower or fitting an over-bath shower</li>
+              <li>- widening doors or installing a ramp so that you can use a wheelchair</li>
+              <li>- grab rails by your front door or in the bathroom.</li>
+            </ul>
+            We can arrange for minor adaptations - items costing under £1000 - to be supplied and installed free of charge.
+            You may be able to get a disabled facilities grant to pay for building work costing over £1000. You may be 
+            expected to pay towards the cost of the work, depending on your income and savings.
+            We will work with housing staff and other organisations to help you get the adaptations you need.
+            If we can't help you, we will write to you to explain the reasons for our decision.
+          </p>
+        <p><a href="{{ url_for('get_register') }}">Request an Assessment</a></p>
       </div>
     </div>
 </div>
+</div>
+
 
 {% endblock %}
