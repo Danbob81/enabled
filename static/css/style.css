@@ -24,6 +24,22 @@ nav ul a {
     font-family: 'Caveat', sans-serif;
 }
 
-/* .hero-img {
-    height: 500px;
-} */
+.banner {
+    padding: 0px;
+}
+
+.modal {
+    width: 60%;
+}
+
+.datepicker-modal {
+    max-width: 325px;
+    min-width: 70%;
+    max-height: none;
+}
+
+@media screen and (max-width: 992px) {
+    .modal {
+        width: 95%;
+        height: 95%;
+}
