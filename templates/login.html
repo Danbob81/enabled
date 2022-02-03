@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="center-align">Login</h3>
+
+<div class="row">
+    <form class="col s12" method="POST" action="">
+        <!-- <div class="card-panel"> -->
+            <!-- username -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="username" name="username" type="text" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+            </div>
+            <!-- password -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="password" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <!-- login -->
+            <div class="row">
+                <button type="submit" class="col s12 btn-large green lighten-1 text-shadow">
+                    Log In <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </div>
+        <!-- </div> -->
+    </form>
+</div>
+
+{% endblock %}

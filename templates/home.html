@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    <!-- Banner -->
     <div class="row light-green lighten-4 ">
         <div class="col s12 l6 banner" >
           <div class="card">
@@ -19,70 +19,71 @@
         </div>        
     </div>
 
-<div class="row">
-  <div class="col s12 l6">
+    <!-- Card 1 -->
+  <div class="row">
+    <div class="col s12 l6">
+        <div class="card sticky-action">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="static/images/man_in_chair.jpg">
+          </div>
+          <div class="card-content light-green lighten-4">
+            <span class="card-title activator grey-text text-darken-4">Equipment and Adaptation Service<i class="material-icons right">more...</i></span>
+          </div>
+          <div class="card-reveal light-green lighten-4">
+            <span class="card-title grey-text text-darken-4">Equipment and Adaptation Service<i class="material-icons right">close</i></span>
+            <p>We believe that adapting or improving a home makes a major difference to someone’s home life. 
+              We see the comfort and suitability of your home as an essential and not a luxury. Our vision is
+              to help people to live independently in safe and accessible homes, so they can continue to live 
+              with dignity in their own homes for as long as they wish.</p>
+              <p>To access our Equipment and Adaptation Service, a member of our occupational therapy team will arrange 
+                to visit you and look around your home to see what might help. We may ask to speak with your carers and 
+                any professionals involved with you, so that we can get a better picture of what you need.</p>
+              <p class="center-align"><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Request an Assessment</a></p>
+          </div>
+        </div>
+    </div>
+    <div class="col s12 l6">
       <div class="card sticky-action">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="static/images/man_in_chair.jpg">
+          <img class="activator" src="static/images/washing_up3.jpg">
         </div>
         <div class="card-content light-green lighten-4">
-          <span class="card-title activator grey-text text-darken-4">Equipment and Adaptation Service<i class="material-icons right">more...</i></span>
+          <span class="card-title activator grey-text text-darken-4">What We Can Offer<br><i class="material-icons right">more...</i></span>
         </div>
         <div class="card-reveal light-green lighten-4">
-          <span class="card-title grey-text text-darken-4">Equipment and Adaptation Service<i class="material-icons right">close</i></span>
-          <p>We believe that adapting or improving a home makes a major difference to someone’s home life. 
-            We see the comfort and suitability of your home as an essential and not a luxury. Our vision is
-            to help people to live independently in safe and accessible homes, so they can continue to live 
-            with dignity in their own homes for as long as they wish.</p>
-            <p>To access our Equipment and Adaptation Service, a member of our occupational therapy team will arrange 
-              to visit you and look around your home to see what might help. We may ask to speak with your carers and 
-              any professionals involved with you, so that we can get a better picture of what you need.</p>
-            <p><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Request an Assessment</a></p>
+          <span class="card-title grey-text text-darken-4">Equipment<i class="material-icons right">close</i></span>
+          <p>We can lend you equipment, free of charge, for as long as you need it.  The types of equipment we can offer will help you with:
+            <ul>
+              <li>- bathing</li>
+              <li>- daily living</li>
+              <li>- lifting</li>
+              <li>- manual handling</li>
+              <li>- showering</li>
+              <li>- sleeping</li>
+              <li>- toileting</li>
+              <li>- walking</li>
+            </ul>
+            We can also lend you chairs, and equipment to help children</p>
+            <span class="card-title grey-text text-darken-4">Adaptations</span>
+            <p>
+              Adaptations are changes to your home, such as:
+              <ul>
+                <li>- replacing a bath with a walk in shower or fitting an over-bath shower</li>
+                <li>- widening doors or installing a ramp so that you can use a wheelchair</li>
+                <li>- grab rails by your front door or in the bathroom.</li>
+              </ul>
+              We can arrange for minor adaptations - items costing under £1000 - to be supplied and installed free of charge.
+              You may be able to get a disabled facilities grant to pay for building work costing over £1000. You may be 
+              expected to pay towards the cost of the work, depending on your income and savings.
+              We will work with housing staff and other organisations to help you get the adaptations you need.
+              If we can't help you, we will write to you to explain the reasons for our decision.
+            </p>
+              <p class="center-align"><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Request an Assessment</a></p>
+              <!-- <p><a href="{{ url_for('get_register') }}">Request an Assessment</a></p> -->
         </div>
       </div>
-  </div>
-  <div class="col s12 l6">
-    <div class="card sticky-action">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="static/images/washing_up3.jpg">
-      </div>
-      <div class="card-content light-green lighten-4">
-        <span class="card-title activator grey-text text-darken-4">What We Can Offer<i class="material-icons right">more...</i></span>
-      </div>
-      <div class="card-reveal light-green lighten-4">
-        <span class="card-title grey-text text-darken-4">Equipment<i class="material-icons right">close</i></span>
-        <p>We can lend you equipment, free of charge, for as long as you need it.  The types of equipment we can offer will help you with:
-          <ul>
-            <li>- bathing</li>
-            <li>- daily living</li>
-            <li>- lifting</li>
-            <li>- manual handling</li>
-            <li>- showering</li>
-            <li>- sleeping</li>
-            <li>- toileting</li>
-            <li>- walking</li>
-          </ul>
-          We can also lend you chairs, and equipment to help children</p>
-        <span class="card-title grey-text text-darken-4">Adaptations</span>
-          <p>
-            Adaptations are changes to your home, such as:
-            <ul>
-              <li>- replacing a bath with a walk in shower or fitting an over-bath shower</li>
-              <li>- widening doors or installing a ramp so that you can use a wheelchair</li>
-              <li>- grab rails by your front door or in the bathroom.</li>
-            </ul>
-            We can arrange for minor adaptations - items costing under £1000 - to be supplied and installed free of charge.
-            You may be able to get a disabled facilities grant to pay for building work costing over £1000. You may be 
-            expected to pay towards the cost of the work, depending on your income and savings.
-            We will work with housing staff and other organisations to help you get the adaptations you need.
-            If we can't help you, we will write to you to explain the reasons for our decision.
-          </p>
-            <p><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Request an Assessment</a></p>
-            <!-- <p><a href="{{ url_for('get_register') }}">Request an Assessment</a></p> -->
-      </div>
     </div>
-</div>
-</div>
+  </div>
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal s12">
@@ -135,17 +136,9 @@
             <option value="council">Council</option>
           </select>
           <label for="tenure">Tenure</label>
-          <p>If private, has permission been given for any alterations which may be required?</p>
-          <p>
-            <label for="yes">
-              <input class="with-gap" id="yes" name="group1" type="radio" />
-              <span>Yes</span>
-            </label>
-            <label for="no">
-              <input class="with-gap" id="no" name="group1" type="radio"  />
-              <span>No</span>
-            </label>
-          </p>
+          <p><strong>Please be aware that if the property is private, permission will 
+            need to be given by the owner/landlord before any alterations can be made.</strong>
+          </p>          
         </div>
       </div>
       <div class="row">
@@ -156,6 +149,56 @@
         <div class="input-field col s6">
           <input id="email" name="email" type="text" class="validate center-align" required>
             <label for="email">Email</label>
+        </div>
+      </div>
+      <p class="center-align"><strong>A member of the team will contact you to arrange a face-to-face assessment in your home. <br>
+        Please provide information below regarding your current situation, telling us in which areas you feel you require assistance.</strong>
+      </p>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" name="textarea1" class="materialize-textarea validate" data-length="120"></textarea>
+          <label for="textarea1">Briefly tell us why you need assistance...</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12" >
+          <p><Strong>Create account?</Strong></p>
+          <p><strong>By creating an online account with us, you will be able to view and update your details as well as track
+            the progress of any assessments or jobs that have been created for you.</strong>
+          </p>
+          <p>
+            <label for="yes">
+              <input type="radio" class="with-gap" name="group1" id="yes" value="yes">
+              <span>Yes</span>
+            </label>
+            <label for="no">
+              <input type="radio" class="with-gap" name="group1" id="no" value="no">
+              <span>No</span>
+            </label>
+          </p>
+        </div>
+      </div>
+    </form>
+
+    <!-- Create account -->
+    <form method="POST" action="">
+      <div class="row">
+          <!-- username -->
+        <div class="input-field col s6">
+            <input id="username" name="username" type="text" minlength="5"
+                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+            <label for="username">Create Username</label>
+        </div>
+        <!-- password -->
+        <div class="input-field col s6">
+            <input id="password" name="password" type="password" minlength="5"
+                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+            <label for="password">Create Password</label>
+        </div>
+        <div class="input-field col s6 right">
+          <input id="confirmPassword" name="confirmPassword" type="password" minlength="5"
+              maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+          <label for="confirmPassword">Confirm Password</label>
         </div>
       </div>
     </form>
