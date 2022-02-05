@@ -2,35 +2,83 @@
 
 {% block content %}
 
-<h3 class="center-align">Login</h3>
+<h3 class="center-align">Log In</h3>
 
-<div class="row">
-    <form class="col s12" method="POST" action="">
-        <!-- <div class="card-panel"> -->
-            <!-- username -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="username" name="username" type="text" minlength="5"
-                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="username">Username</label>
+    <!-- flash message -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row flashes">
+                <p class="red-text center-align">{{ message }}</p>
                 </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="">
+        <div class="row">
+            <!-- username -->
+        <div class="input-field col s12 l6 offset-l3">
+            <input id="username" name="username" type="text" minlength="5"
+                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+            <label for="username">Username</label>
+        </div>
+        <!-- password -->
+        <div class="input-field col s12 l6 offset-l3">
+            <input id="password" name="password" type="password" minlength="5"
+                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+            <label for="password">Password</label>
+        </div>
+        <p class="col s12 l6 offset-l3"><small>Don't have an account? <a href="">Sign Up</a></small></p>
+        <button type="submit" class="waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Login</button>
+        </div>
+    </form>
+
+    <!-- Modal - create account -->
+    <div id="signUp" class="modal s12">
+        <div class="row">
+        <div class="col s12" >
+            <h4 class="center-align">Create account</h4>
+            <p class="center-align"><strong>Please first create your online account. <br>
+            By creating an online account with us, you will be able to view and update your details as well as track
+            the progress of any assessments or jobs that have been created for you.</strong>
+            </p>
+        </div>
+        </div>
+        <!-- Form -->
+        <form method="POST" action="{{ url_for('register') }}">
+        <div class="row">
+            <!-- username -->
+            <div class="input-field col s12 l6 offset-l3">
+                <input id="username" name="username" type="text" minlength="5"
+                    maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                <label for="username">Username</label>
+                <!-- flash message -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="row flashes">
+                        <p class="red-text center-align">{{ message }}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
             </div>
             <!-- password -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" name="password" type="password" minlength="5"
-                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Password</label>
-                </div>
+            <div class="input-field col s12 l6 offset-l3">
+                <input id="password" name="password" type="password" minlength="5"
+                    maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                <label for="password">Password</label>
             </div>
-            <!-- login -->
-            <div class="row">
-                <button type="submit" class="col s12 btn-large green lighten-1 text-shadow">
-                    Log In <i class="fas fa-sign-in-alt"></i>
-                </button>
+            <div class="input-field col s12 l6 offset-l3">
+            <input id="confirmPassword" name="confirmPassword" type="password" minlength="5"
+                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+            <label for="confirmPassword">Confirm Password</label>
             </div>
-        <!-- </div> -->
-    </form>
-</div>
+            <p class="col s12 l6 offset-l3"><small>Already have an account? <a href="{{ url_for('login') }}">Login</a></small></p>
+            <button type="submit" class="modal-trigger waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Create</button>
+        </div>
+        </form>
+    </div>
 
 {% endblock %}

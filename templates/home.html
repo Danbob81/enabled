@@ -129,15 +129,32 @@
                 maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
             <label for="confirmPassword">Confirm Password</label>
           </div>
-          <p class="col s12 l6 offset-l3"><small>Already have an account? <a href="">Login</a></small></p>
+          <p class="col s12 l6 offset-l3"><small>Already have an account? <a href="{{ url_for('login') }}">Login</a></small></p>
           <button type="submit" class="modal-trigger waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Create</button>
-          <!-- <a href="#modal2" class="modal-trigger waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Create</a> -->
         </div>
       </form>
     </div>
 
-    <!-- Modal 2 - request form -->
+    <!-- Modal 2 - confirmation -->
     <div id="modal2" class="modal s12">
+      <div class="modal-content">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="row flashes">
+                <p class="red-text center-align">{{ message }}</p>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      </div>
+    </div>
+
+    <!-- Modal 3 - request form -->
+    <div id="" class="modal s12">
       <div class="modal-content center-align">
         <h4>Request Assessment</h4>
       </div>
