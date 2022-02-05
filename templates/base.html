@@ -21,7 +21,7 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('login') }}">My Account</a></li>
+                    <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
                     <!-- <li><a href="">Register</a></li> -->
                     <!-- <li><a href="#">Login</a></li> -->
                 </ul>
@@ -33,7 +33,7 @@
         <ul id="slide-out" class="sidenav light-green lighten-4">
             <!-- <li><h4 class="center-align">Enabled</h4></li> -->
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('login') }}">My Account</a></li>
+            <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li>
             <!-- <li><a href="">Register</a></li> -->
             <!-- <li><a href="#">Login</a></li> -->
         </ul>
