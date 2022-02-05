@@ -6,7 +6,7 @@ body {
     font-family: 'Montserrat', sans-serif;
   }
 
-  main {
+main {
     flex: 1 0 auto;
   }
 
@@ -26,6 +26,10 @@ nav ul a {
 
 .banner {
     padding: 0px;
+}
+
+.page-footer {
+    margin-top: auto;
 }
 
 .modal {
