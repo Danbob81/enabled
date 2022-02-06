@@ -24,6 +24,7 @@
                     <!-- <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li> -->
                     <!-- <li><a href="#">Log Out</a></li> -->
                     <!-- <li><a href="{{ url_for('staff') }}">Staff</a></li> -->
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
                     <li><a href="#">Login</a></li>
                 </ul>
                 </div>
@@ -37,14 +38,29 @@
             <!-- <li><a href="{{ url_for('account', username=session['user']) }}">My Account</a></li> -->
             <!-- <li><a href="#">Log Out</a></li> -->
             <!-- <li><a href="{{ url_for('staff') }}">Staff</a></li> -->
+            <li><a href="{{ url_for('register') }}">Register</a></li>
             <li><a href="#">Login</a></li>
         </ul>
         
     </header>
 
-    {% block content %}
+    <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row flashes">
+                        <h4 class="teal lighten-3 center-align">{{ message }}</h4>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
 
-    {% endblock %}
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <footer class="page-footer green darken-1">
         <div class="footer-copyright">

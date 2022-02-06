@@ -35,6 +35,29 @@ def staff():
     return render_template("staff.html")
 
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        # check if username already exists
+        existing_user = mongo.db.users_staff.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already exists!")
+            return redirect(url_for('register'))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users_staff.insert_one(register)
+
+        # put new user into session cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration successful!")
+    return render_template("register.html")
+
+
 @app.route("/login_staff", methods=["GET", "POST"])
 def login_staff():
     if request.method == "POST":
@@ -46,11 +69,8 @@ def login_staff():
             # check if passwords match
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(
-                    url_for('account', username=session["user"]))
-
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
             else:
                 # no password match
                 flash("Incorrect username and/or password!")
@@ -61,33 +81,7 @@ def login_staff():
             flash("Incorrect username and/or password!")
             return redirect(url_for("staff"))
 
-    return render_template("staff_account.html")
-
-
-
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    if request.method == "POST":
-        # check if user is already in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            flash("Username already exists!")
-            return redirect(url_for('home'))
-
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.insert_one(register)
-
-        # put new user into session cookie
-        session["user"] = request.form.get("username").lower()
-        flash("Account successfully created!")
-        return redirect(url_for('account', username=session["user"]))
-
-    return render_template("account.html")
+    return render_template("staff.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -122,8 +116,8 @@ def login():
 @app.route("/account/<username>", methods=["GET", "POST"])
 def account(username):
     # get username from db
-    username = mongo.db.staff_users.find_one(
-        {"username": session["staff_user"]})["username"]
+    username = mongo.db.users_staff.find_one(
+        {"username": session["user"]})["username"]
     return render_template("account.html", username=username)
 
 
