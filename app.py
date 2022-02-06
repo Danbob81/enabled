@@ -81,7 +81,7 @@ def login_staff():
             flash("Incorrect username and/or password!")
             return redirect(url_for("staff"))
 
-    return render_template("staff.html")
+    return render_template("staff_account.html")
 
 
 @app.route("/login", methods=["GET", "POST"])

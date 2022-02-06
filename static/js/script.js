@@ -12,5 +12,7 @@ $(document).ready(function(){
       }
     });
     $('select').formSelect();
+    $('.collapsible').collapsible();
+    $('.tabs').tabs();
     $("#copyright").text(new Date().getFullYear());
   });
