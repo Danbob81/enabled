@@ -26,6 +26,11 @@ nav ul a {
 
 .banner {
     padding: 0px;
+    text-align: center;
+}
+
+.card-panel {
+    height: 90px;
 }
 
 .page-footer {
@@ -34,6 +39,7 @@ nav ul a {
 
 .modal {
     width: 60%;
+    height: auto;
 }
 
 .datepicker-modal {
@@ -45,5 +51,6 @@ nav ul a {
 @media screen and (max-width: 992px) {
     .modal {
         width: 95%;
-        height: 95%;
+        height: auto;
+    }
 }
