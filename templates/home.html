@@ -2,61 +2,26 @@
 
 {% block content %}
 
-  <h2 class="col s12 center-align">Welcome to Enabled</h2>
-
-  <!-- Banner -->
-  <div class="row light-green lighten-4 ">
-    <div class="col s12 l6 banner" >
+  <div class="row">
+    <div class="col s12 l8 offset-l2">
       <div class="card">
         <div class="card-image">
-          <img src="static/images/sofa_girl.jpg" class="responsive-image" alt="Woman sitting on a sofa near green plants">
-          <!-- <br><small>photo by Cliff Booth from Pexels</small> -->
+          <img src="static/images/sofa-chats.jpg" alt="Couple, a man and a woman, sitting on a sofa chatting, with mugs in their hands.">
+          <span class="card-title">Home Adaptations</span>
         </div>
-      </div>
-    </div>
-    <div class="col s12 l6 banner">
-        <h2>Home Adaptations </h2>
-        <h3>Even a minor adaptation can make a major difference to someone's home life.</h3>
-        <br>
-      <div class="col s12 l6">
-        <a href="{{ url_for('customer') }}">
-          <div class="card-panel teal">
-            <span class="white-text center-align">I am a customer.</span>
-          </div>
-        </a>
-      </div>
-      <div class="col s12 l6">
-        <a href="{{ url_for('staff') }}">
-          <div class="card-panel teal">
-            <span class="white-text center-align">I am staff.</span>
-          </div>
-        </a>
+        <div class="card-content center-align">
+          <p>Even a minor adaptation can make a major difference to someone's home life.</p>
+        </div>
+        <div class="">
+          <a href="">
+            <div class="card-panel teal center-align">
+              <h4 class="white-text">Log In</h4>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
-
-
-  <!-- Modal Structure -->
-  <!-- <div id="welcomeModal" class="modal">
-    <div class="modal-content">
-      <div class="row">
-        <div class="col s12 l6">
-          <a href="{{ url_for('staff') }}">
-            <div class="card-panel teal">
-              <span class="white-text center-align">I am staff.</span>
-            </div>
-          </a>
-        </div>
-        <div class="col s12 l6">
-          <a href="{{ url_for('customer') }}">
-            <div class="card-panel teal">
-              <span class="white-text center-align">I am a customer.</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
 {% endblock %}
