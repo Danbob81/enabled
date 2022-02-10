@@ -21,7 +21,11 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Options</a></li>
+                    {% if session.user %}
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Options</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('home') }}">Log In</a></li>
+                    {% endif %}
                 </ul>
                 </div>
             </nav>

@@ -26,10 +26,40 @@ def home():
     return render_template("home.html")
 
 
-@app.route("/account", methods=["POST", "GET"])
-def account():
-    """render account page"""
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """log in to user account"""
+    if request.method == "POST":
+        # check username is in db
+        existing_user = mongo.db.users_staff.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # check hashed password matches user input
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    # flash("Welcome, {}".format(
+                    #     request.form.get("username")))
+                    return redirect(url_for(
+                        "login", username=session["user"]))
+            else:
+                # password doesn't match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for('home'))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for('home'))
+
     return render_template("account.html")
+
+
+# @app.route("/account", methods=["POST", "GET"])
+# def account():
+#     """render account page"""
+#     return render_template("account.html")
 
 
 if __name__ == "__main__":

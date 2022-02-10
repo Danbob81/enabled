@@ -14,7 +14,7 @@
           <p>Even a minor adaptation can make a major difference to someone's home life.</p>
         </div>
         <div class="">
-          <a href="#modal1" class="modal-trigger">
+          <a href="#modal_login" class="modal-trigger">
             <div class="card-panel teal center-align">
               <h4 class="white-text">Log In</h4>
             </div>
@@ -25,9 +25,9 @@
   </div>
 
   <!-- Login Modal -->
-  <div id="modal1" class="modal">
+  <div id="modal_login" class="modal">
     <div class="modal-content">
-      <form method="POST" action="{{ url_for('account') }}">
+      <form method="POST" action="{{ url_for('login') }}">
         <div class="row">
             <!-- username -->
             <div class="input-field col s12 l6 offset-l3">
