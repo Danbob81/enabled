@@ -22,7 +22,14 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home")
 def home():
+    """render home page"""
     return render_template("home.html")
+
+
+@app.route("/account", methods=["POST", "GET"])
+def account():
+    """render account page"""
+    return render_template("account.html")
 
 
 if __name__ == "__main__":

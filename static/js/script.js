@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $(".sidenav").sidenav({edge: "left"});
+    $(".dropdown-trigger").dropdown();
     $('.modal').modal();
     $('#welcomeModal').modal();
     $('#welcomeModal').modal('open');

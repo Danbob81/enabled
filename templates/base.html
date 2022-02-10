@@ -21,11 +21,7 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <!-- <li><a href="">My Account</a></li> -->
-                    <!-- <li><a href="#">Log Out</a></li> -->
-                    <!-- <li><a href="">Staff</a></li> -->
-                    <li><a href="">Register</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Options</a></li>
                 </ul>
                 </div>
             </nav>
@@ -35,11 +31,21 @@
         <ul id="slide-out" class="sidenav light-green lighten-4">
             <!-- <li><h4 class="center-align">Enabled</h4></li> -->
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <!-- <li><a href="">My Account</a></li> -->
-            <!-- <li><a href="#">Log Out</a></li> -->
-            <!-- <li><a href="">Staff</a></li> -->
-            <li><a href="">Register</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Options</a></li>
+        </ul>
+
+        <!-- Options Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">Change Password</a></li>
+            <!-- <li><a href="#!">two</a></li> -->
+            <li class="divider"></li>
+            <li><a href="#!">Log Out</a></li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content">
+            <li><a href="#!">Change Password</a></li>
+            <!-- <li><a href="#!">two</a></li> -->
+            <li class="divider"></li>
+            <li><a href="#!">Log Out</a></li>
         </ul>
         
     </header>
