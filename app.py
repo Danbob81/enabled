@@ -56,6 +56,32 @@ def login():
     return render_template("account.html")
 
 
+@app.route("/users", methods=["GET", "POST"])
+def users():
+    """manage user logins"""
+    if request.method == "POST":
+        # check is username already in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already exists.")
+            return redirect(url_for("users"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "employee_name": request.form.get("employee_name"),
+            "employee_email": request.form.get("employee_email")
+        }
+        mongo.db.users.insert_one(register)
+
+        flash("User successfully created!")
+        return redirect(url_for("users"))
+
+    return render_template("create_user.html")
+
+
 @app.route("/logout")
 def logout():
     """log user out of account"""
