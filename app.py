@@ -31,7 +31,7 @@ def login():
     """log in to user account"""
     if request.method == "POST":
         # check username is in db
-        existing_user = mongo.db.users_staff.find_one(
+        existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
         if existing_user:

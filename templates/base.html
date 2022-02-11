@@ -40,12 +40,13 @@
 
         <!-- Options Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="{{ url_for('users') }}">Manage Users</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">Change Password</a></li>
-            <!-- <li><a href="#!">two</a></li> -->
-            <li class="divider"></li>
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            {% if session.user|lower == 'admin'|lower %}
+                <li><a href="{{ url_for('users') }}">Manage Users</a></li>
+                <li class="divider"></li>
+            {% endif %}
+                <li><a href="#!">Change Password</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
         <ul id="dropdown2" class="dropdown-content">
             <li><a href="{{ url_for('users') }}">Manage Users</a></li>
