@@ -17,14 +17,18 @@
         <div class="nav-bar fixed">
             <nav>
                 <div class="nav-wrapper green lighten-1">
-                <a href="{{ url_for('home') }}" class="brand-logo">Enabled</a>
+                {% if session.user %}
+                    <a href="{{ url_for('home') }}" class="brand-logo">Enabled</a>
+                {% else %}
+                    <a href="{{ url_for('home') }}" class="brand-logo center">Enabled</a>
+                {% endif %}
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if session.user %}
                         <li><a href="{{ url_for('account') }}">Account</a></li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Options</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('home') }}">Log In</a></li>
+                        <!-- <li><a href="{{ url_for('home') }}">Log In</a></li> -->
                     {% endif %}
                 </ul>
                 </div>
@@ -38,7 +42,7 @@
                 <li><a href="{{ url_for('account') }}">Account</a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Options</a></li>
             {% else %}
-                <li><a href="{{ url_for('home') }}">Log In</a></li>
+                <!-- <li><a href="{{ url_for('home') }}">Log In</a></li> -->
             {% endif %}
         </ul>
 
@@ -75,11 +79,17 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+
     </section>
 
     <main class="container">
+
+        {% if session.user %}
+            <p class="right-align">You are logged in as: {{session['user']}}</p>
+        {% endif %}
         {% block content %}
         {% endblock %}
+
     </main>
 
     <footer class="page-footer green darken-1">
