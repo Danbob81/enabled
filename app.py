@@ -22,8 +22,14 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home")
 def home():
-    """render home page"""
-    return render_template("home.html")
+    """render login page"""
+    return render_template("login.html")
+
+
+@app.route("/account")
+def account():
+    """render users account page"""
+    return render_template("account.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -46,12 +52,12 @@ def login():
             else:
                 # password doesn't match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for('home'))
+                return redirect(url_for('login'))
 
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
-            return redirect(url_for('home'))
+            return redirect(url_for('login'))
 
     return render_template("account.html")
 
