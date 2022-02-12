@@ -27,8 +27,6 @@
                     {% if session.user %}
                         <li><a href="{{ url_for('account') }}">Account</a></li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Options</a></li>
-                    {% else %}
-                        <!-- <li><a href="{{ url_for('home') }}">Log In</a></li> -->
                     {% endif %}
                 </ul>
                 </div>
@@ -41,8 +39,6 @@
             {% if session.user %}
                 <li><a href="{{ url_for('account') }}">Account</a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Options</a></li>
-            {% else %}
-                <!-- <li><a href="{{ url_for('home') }}">Log In</a></li> -->
             {% endif %}
         </ul>
 
@@ -52,7 +48,7 @@
                 <li><a href="{{ url_for('users') }}">Manage Users</a></li>
                 <li class="divider"></li>
             {% endif %}
-                <li><a href="#!">Change Password</a></li>
+                <li><a href="{{ url_for('change_password') }}">Change Password</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
@@ -61,7 +57,7 @@
                 <li><a href="{{ url_for('users') }}">Manage Users</a></li>
                 <li class="divider"></li>
             {% endif %}
-                <li><a href="#!">Change Password</a></li>
+                <li><a href="{{ url_for('change_password') }}">Change Password</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>

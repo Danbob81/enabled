@@ -2,12 +2,17 @@
 
 {% block content %}
 
-<!-- <p class="right-align">You are logged in as: {{ username }}</p> -->
 <h3 class="center-align">Manage Users</h3>
+
+{% for user in users %}
+  {{ user.username }}<br>
+  {{ user.employee_name }}
+{% endfor %}
+
 
 <ul class="collapsible popout">
     <li>
-      <div class="collapsible-header">Create User</div>
+      <div class="collapsible-header">Create New User</div>
       <div class="collapsible-body">
         <form method="POST" action="{{ url_for('users') }}">
             <div class="row">
@@ -40,12 +45,15 @@
     </li>
     <li>
       <div class="collapsible-header">Search Users</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div class="collapsible-body">
+          <ul class="collection">
+              <li class="collection-item"><div>Name<a href="" class="secondary-content">Edit User</a></div></li>
+              <li class="collection-item"><div>Name<a href="" class="secondary-content">Edit User</a></div></li>
+          </ul>
+      </div>
     </li>
-    <!-- <li>
-      <div class="collapsible-header">Create</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li> -->
   </ul>
+
+
 
 {% endblock %}

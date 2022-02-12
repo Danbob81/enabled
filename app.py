@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from flask_change_password import ChangePassword, ChangePasswordForm, SetPasswordForm
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -64,7 +65,7 @@ def login():
 
 @app.route("/users", methods=["GET", "POST"])
 def users():
-    """manage user logins"""
+    """create user logins"""
     if request.method == "POST":
         # check is username already in db
         existing_user = mongo.db.users.find_one(
@@ -86,6 +87,19 @@ def users():
         return redirect(url_for("users"))
 
     return render_template("create_user.html")
+
+
+@app.route("/change_password", methods=["GET", "POST"])
+def change_password():
+    """change users password"""
+    return render_template("change_password.html")
+
+
+@app.route("/get_users")
+def get_users():
+    """retrieve user information"""
+    users = list(mongo.db.users.find())
+    return render_template("create_user.html", users=users)
 
 
 @app.route("/logout")
