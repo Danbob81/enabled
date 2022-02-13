@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
 <h3 class="center-align">Manage Users</h3>
@@ -42,9 +41,9 @@
       <div class="collapsible-header">Search Users</div>
       <div class="collapsible-body">
           <ul class="collection">
-            {% for user in users %}
-              <li class="collection-item"><div>Name: {{ user.employee_name }} <br> Email: {{ user.employee_email }} 
-                <br> Username: {{ user.username }}  <a href="" class="secondary-content">Edit User</a></div></li>
+            {% for employee in employees %}
+              <li class="collection-item"><div>Name: {{ employee.employee_name }} <br> Email: {{ employee.employee_email }} 
+                <br> Username: {{ employee.username }}  <a href="" class="secondary-content">Edit User</a></div></li>
             {% endfor %}
           </ul>
       </div>

@@ -45,7 +45,7 @@
         <!-- Options Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
             {% if session.user|lower == 'admin'|lower %}
-                <li><a href="{{ url_for('users') }}">Manage Users</a></li>
+                <li><a href="{{ url_for('get_users') }}">Manage Users</a></li>
                 <li class="divider"></li>
             {% endif %}
                 <li><a href="">Change Password</a></li>
@@ -54,7 +54,7 @@
         </ul>
         <ul id="dropdown2" class="dropdown-content">
             {% if session.user|lower == 'admin'|lower %}
-                <li><a href="{{ url_for('users') }}">Manage Users</a></li>
+                <li><a href="{{ url_for('get_users') }}">Manage Users</a></li>
                 <li class="divider"></li>
             {% endif %}
                 <li><a href="">Change Password</a></li>

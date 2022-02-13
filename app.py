@@ -25,9 +25,8 @@ mongo = PyMongo(app)
 @app.route("/get_users")
 def get_users():
     """retrieve user information from db"""
-    users = list(mongo.db.users.find())
-    print(users)
-    return render_template("create_user.html", users=users)
+    employees = list(mongo.db.users.find())
+    return render_template("create_user.html", employees=employees)
 
 
 @app.route("/home")
