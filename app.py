@@ -3,7 +3,8 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from flask_change_password import ChangePassword, ChangePasswordForm, SetPasswordForm
+from flask_change_password import (ChangePassword,
+ ChangePasswordForm, SetPasswordForm)
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -21,6 +22,14 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/get_users")
+def get_users():
+    """retrieve user information from db"""
+    users = list(mongo.db.users.find())
+    print(users)
+    return render_template("create_user.html", users=users)
+
+
 @app.route("/home")
 def home():
     """render login page"""
@@ -46,8 +55,6 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
-                # flash("Welcome, {}".format(
-                #     request.form.get("username")))
                 return redirect(url_for(
                         "login", username=session["user"]))
             else:
@@ -89,25 +96,44 @@ def users():
     return render_template("create_user.html")
 
 
-@app.route("/change_password", methods=["GET", "POST"])
-def change_password():
-    """change users password"""
-    return render_template("change_password.html")
-
-
-@app.route("/get_users")
-def get_users():
-    """retrieve user information"""
-    users = list(mongo.db.users.find())
-    return render_template("create_user.html", users=users)
-
-
 @app.route("/logout")
 def logout():
     """log user out of account"""
     flash("You have logged out!")
     session.pop("user")
     return redirect(url_for('home'))
+
+
+@app.route("/add_customer", methods=["GET", "POST"])
+def add_customer():
+    """create customer record in db"""
+    if request.method == "POST":
+        customer = {
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "dob": request.form.get("dob"),
+            "gender": request.form.get("gender"),
+            "address_street": request.form.get("address_street"),
+            "address_city": request.form.get("address_city"), 
+            "address_county": request.form.get("address_county"),
+            "postcode": request.form.get("postcode"),
+            "tenure": request.form.get("tenure"),
+            "phone": request.form.get("phone"),
+            "email": request.form.get("email"),
+            "created_by": session["user"]
+        }
+        mongo.db.customers.insert_one(customer)
+        flash("Customer Record Successfully Created")
+        return redirect(url_for("account"))
+
+    return render_template("account.html")
+
+
+@app.route("/get_customers")
+def get_customers():
+    """retrieve customer record from db"""
+    customers = list(mongo.db.customers.find())
+    return render_template("account.html", customers=customers)
 
 
 if __name__ == "__main__":

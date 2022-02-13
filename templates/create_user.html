@@ -4,12 +4,6 @@
 
 <h3 class="center-align">Manage Users</h3>
 
-{% for user in users %}
-  {{ user.username }}<br>
-  {{ user.employee_name }}
-{% endfor %}
-
-
 <ul class="collapsible popout">
     <li>
       <div class="collapsible-header">Create New User</div>
@@ -44,13 +38,17 @@
       </div>
     </li>
     <li>
+
       <div class="collapsible-header">Search Users</div>
       <div class="collapsible-body">
           <ul class="collection">
-              <li class="collection-item"><div>Name<a href="" class="secondary-content">Edit User</a></div></li>
-              <li class="collection-item"><div>Name<a href="" class="secondary-content">Edit User</a></div></li>
+            {% for user in users %}
+              <li class="collection-item"><div>Name: {{ user.employee_name }} <br> Email: {{ user.employee_email }} 
+                <br> Username: {{ user.username }}  <a href="" class="secondary-content">Edit User</a></div></li>
+            {% endfor %}
           </ul>
       </div>
+
     </li>
   </ul>
 
