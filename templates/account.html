@@ -2,6 +2,10 @@
 
 {% block content %}
 
+{% for customer in customers %}
+  {{ customer.first_name }}
+{% endfor %}
+
 <h3 class="center-align">Home Adaptations</h3>
 
 <ul class="collapsible popout">
@@ -15,8 +19,88 @@
   </li>
   <li>
     <div class="collapsible-header">Create</div>
-    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    <div class="collapsible-body">
+      <div class="collection">
+        <a href="#customer" class="collection-item modal-trigger">Customer</a>
+        <a href="#!" class="collection-item">Job</a>
+      </div>
+    </div>
   </li>
 </ul>
+
+<!-- Customer modal -->
+<div id="customer" class="modal">
+  <div class="modal-content">
+    <h4 class="center-align">Create New Customer</h4>
+  </div>
+  <form method="POST" action="{{ url_for('add_customer') }}">
+    <div class="row">
+      <!-- Name -->
+      <div class="input-field col s12 l6">
+          <input id="first_name" name="first_name" type="text" class="validate center-align" required>
+          <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s12 l6">
+        <input id="last_name" name="last_name" type="text" class="validate center-align" required>
+        <label for="last_name">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <!-- DOB -->
+      <div class="input-field col s12 l6">
+          <input id="dob" name="dob" type="text" class="datepicker validate center-align" required>
+          <label for="dob">Date of Birth</label>
+      </div>
+      <!-- Gender -->
+      <div class="input-field col s12 l6">
+        <select id="gender" name="gender" class="validate" required>
+          <option value="" disabled selected>Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+          <option value="not_say">Prefer not to say</option>
+        </select>
+        <label for="gender">Gender</label>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Address -->
+      <div class="input-field col s12 l6">
+          <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" class="validate center-align" required>
+          <label for="address_street">Address</label>
+          <input placeholder="Town/City" id="address_city" name="address_city" type="text" class="validate center-align" required>
+          <label for="address_city"></label>
+          <input placeholder="County" id="address_county" name="address_county" type="text" class="validate center-align" required>
+          <label for="address_county"></label>
+          <input placeholder="Postcode" id="postcode" name="postcode" type="text" class="validate center-align" required>
+        <label for="postcode"></label>
+      </div>
+      <div class="input-field col s12 l6">
+        <select id="tenure" name="tenure" class="validate" required>
+          <option value="" disabled selected>Select</option>
+          <option value="owner">Owner Occupied</option>
+          <option value="private">Private Rent/Housing Association</option>
+          <option value="council">Council</option>
+        </select>
+        <label for="tenure">Property Tenure</label>
+      </div>
+      <!-- Phone -->
+      <div class="input-field col s12 l6">
+        <input id="phone" name="phone" type="text" class="validate center-align" required>
+          <label for="phone">Phone</label>
+      </div>
+      <!-- Email -->
+      <div class="input-field col s12 l6">
+        <input id="email" name="email" type="text" class="validate center-align" required>
+          <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+
+    </div>
+    <!-- Submit -->
+    <button type="submit" class="waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Create</button>
+  </form>
+</div>
 
 {% endblock %}
