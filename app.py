@@ -3,8 +3,6 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from flask_change_password import (ChangePassword,
- ChangePasswordForm, SetPasswordForm)
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -73,7 +71,7 @@ def login():
 def users():
     """create user logins"""
     if request.method == "POST":
-        # check is username already in db
+        # check if username already in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -90,9 +88,28 @@ def users():
         mongo.db.users.insert_one(register)
 
         flash("User successfully created!")
-        return redirect(url_for("users"))
+        return redirect(url_for("get_users"))
 
     return render_template("create_user.html")
+
+
+@app.route("/edit_user/<employee_id>", methods=["GET", "POST"])
+def edit_user(employee_id):
+    """edit user details"""
+    if request.method == "POST":
+        submit = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "employee_name": request.form.get("employee_name"),
+            "employee_email": request.form.get("employee_email")
+        }
+        mongo.db.users.update_one(
+            {"_id": ObjectId(employee_id)}, {"$set": submit})
+
+        flash("User successfully updated!")
+
+    employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
+    return render_template("edit_user.html", employee=employee)
 
 
 @app.route("/logout")
@@ -113,7 +130,7 @@ def add_customer():
             "dob": request.form.get("dob"),
             "gender": request.form.get("gender"),
             "address_street": request.form.get("address_street"),
-            "address_city": request.form.get("address_city"), 
+            "address_city": request.form.get("address_city"),
             "address_county": request.form.get("address_county"),
             "postcode": request.form.get("postcode"),
             "tenure": request.form.get("tenure"),
