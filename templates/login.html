@@ -14,7 +14,11 @@
           <p>Even a minor adaptation can make a major difference to someone's home life.</p>
         </div>
         {% if session.user %}
-
+          <div class="">
+              <div class="card-panel teal center-align">
+                <h4 class="white-text">Welcome, {{session['user']}}</h4>
+              </div>
+          </div>
         {% else %}
           <div class="">
             <a href="#modal_login" class="modal-trigger">
