@@ -151,13 +151,41 @@ def add_customer():
             "tenure": request.form.get("tenure"),
             "phone": request.form.get("phone"),
             "email": request.form.get("email"),
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "amended_by": session["user"]
         }
         mongo.db.customers.insert_one(customer)
         flash("Customer Record Successfully Created")
         return redirect(url_for("get_customers"))
 
     return render_template("account.html")
+
+
+@app.route("/edit_customer/<customer_id>", methods=["GET", "POST"])
+def edit_customer(customer_id):
+    """edit customer details"""
+    if request.method == "POST":
+        submit = {
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "dob": request.form.get("dob"),
+            "gender": request.form.get("gender"),
+            "address_street": request.form.get("address_street"),
+            "address_city": request.form.get("address_city"),
+            "address_county": request.form.get("address_county"),
+            "postcode": request.form.get("postcode"),
+            "tenure": request.form.get("tenure"),
+            "phone": request.form.get("phone"),
+            "email": request.form.get("email"),
+            "amended_by": session["user"]
+        }
+        mongo.db.customers.update_one(
+            {"_id": ObjectId(customer_id)}, {"$set": submit})
+
+        flash("Customer Details Successfully Updated!")
+
+    customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+    return render_template("edit_customer.html", customer=customer)
 
 
 if __name__ == "__main__":
