@@ -26,6 +26,13 @@ def home():
     return render_template("login.html")
 
 
+@app.route("/get_customers")
+def get_customers():
+    """retrieve customer record from db"""
+    customers = list(mongo.db.customers.find())
+    return render_template("account.html", customers=customers)
+
+
 @app.route("/get_users")
 def get_users():
     """retrieve user information from db"""
@@ -148,16 +155,9 @@ def add_customer():
         }
         mongo.db.customers.insert_one(customer)
         flash("Customer Record Successfully Created")
-        return redirect(url_for("account"))
+        return redirect(url_for("get_customers"))
 
     return render_template("account.html")
-
-
-@app.route("/get_customers")
-def get_customers():
-    """retrieve customer record from db"""
-    customers = list(mongo.db.customers.find())
-    return render_template("account.html", customers=customers)
 
 
 if __name__ == "__main__":

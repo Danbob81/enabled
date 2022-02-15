@@ -2,16 +2,26 @@
 
 {% block content %}
 
-{% for customer in customers %}
-  {{ customer.first_name }}
-{% endfor %}
-
 <h3 class="center-align">Home Adaptations</h3>
 
 <ul class="collapsible popout">
   <li>
     <div class="collapsible-header">Search Customer</div>
-    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    <div class="collapsible-body">
+      <ul class="collection">
+        {% for customer in customers %}
+          <li class="collection-item">
+            <div>Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
+                 DOB: {{ customer.dob }} <br> Gender: {{ customer.gender }}<br>
+                 Address: {{ customer.address_street }}, {{ customer.address_city }}, {{ customer.address_county }}, 
+                          {{ customer.postcode }} <br> Property Tenure: {{ customer.tenure }} <br>
+                 Phone: {{ customer.phone }} <br> Email: {{ customer.email }} <br> <br>
+                 Record created by user: {{ customer.created_by }}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
   </li>
   <li>
     <div class="collapsible-header">Search Jobs</div>
@@ -55,10 +65,10 @@
       <div class="input-field col s12 l6">
         <select id="gender" name="gender" class="validate" required>
           <option value="" disabled selected>Select</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-          <option value="not_say">Prefer not to say</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+          <option value="Prefer not to say">Prefer not to say</option>
         </select>
         <label for="gender">Gender</label>
       </div>
@@ -78,9 +88,9 @@
       <div class="input-field col s12 l6">
         <select id="tenure" name="tenure" class="validate" required>
           <option value="" disabled selected>Select</option>
-          <option value="owner">Owner Occupied</option>
-          <option value="private">Private Rent/Housing Association</option>
-          <option value="council">Council</option>
+          <option value="Owner Occupied">Owner Occupied</option>
+          <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+          <option value="Council">Council</option>
         </select>
         <label for="tenure">Property Tenure</label>
       </div>
@@ -99,6 +109,7 @@
     <!-- Submit -->
     <div class="row">
       <div class="col s12 center-align">
+        <a href="#!" class="modal-close waves-effect waves-green btn red accent-4">Cancel</a>
         <button type="submit" class="waves-effect waves-green btn green accent-4">Submit</button>
       </div>
     </div>
