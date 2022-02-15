@@ -20,17 +20,17 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/home")
+def home():
+    """render login page"""
+    return render_template("login.html")
+
+
 @app.route("/get_users")
 def get_users():
     """retrieve user information from db"""
     employees = list(mongo.db.users.find())
     return render_template("create_user.html", employees=employees)
-
-
-@app.route("/home")
-def home():
-    """render login page"""
-    return render_template("login.html")
 
 
 @app.route("/account")
@@ -110,6 +110,14 @@ def edit_user(employee_id):
 
     employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
     return render_template("edit_user.html", employee=employee)
+
+
+@app.route("/delete_user/<employee_id>")
+def delete_user(employee_id):
+    """remove user from db"""
+    mongo.db.users.delete_one({"_id": ObjectId(employee_id)})
+    flash("User deleted!")
+    return redirect("create_user.html")
 
 
 @app.route("/logout")

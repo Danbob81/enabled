@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 class="center-align">Delete User</h3>
+
+<div class="center-align">
+    <h4 class="center-align">Confirm Deletion</h4>
+    <p class="center-align">Warning: Deletion of users can not be reversed. <br>Do you wish to continue?</p>
+    <a href="#!" class="modal-close waves-effect waves-green btn  red accent-4">No, Cancel Deletion</a>
+      <a href="{{ url_for('delete_user', employee_id=employee._id) }}" class="waves-effect waves-green btn green accent-4">Yes, Delete User</a>
+</div>
+
+
+{% endblock %}
