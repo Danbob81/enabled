@@ -166,6 +166,14 @@ def add_customer():
     return render_template("account.html")
 
 
+@app.route("/customer_record")
+def customer_record():
+    """render customer record page"""
+    query = request.form.get("query")
+    customers = list(mongo.db.customers.find({"$text": {"$search": query}}))
+    return render_template("customer.html", customers=customers)
+
+
 @app.route("/edit_customer/<customer_id>", methods=["GET", "POST"])
 def edit_customer(customer_id):
     """edit customer details"""
