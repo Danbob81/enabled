@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if session.user %}
+  <p class="right-align">You are logged in as: {{session['user']}}</p>
+{% endif %}
+
 <h3 class="center-align">Edit Customer</h3>
 
 <div class="center-align"></div>
@@ -25,7 +29,8 @@
         <!-- Gender -->
         <div class="input-field col s12 l6">
             <select id="gender" name="gender" class="validate" required>
-            <option value="" disabled selected>Select</option>
+            <!-- <option  value="" selected></option> -->
+            <option  value="" disabled selected>Select</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
             <option value="Other">Other</option>
@@ -48,6 +53,7 @@
         </div>
         <div class="input-field col s12 l6">
             <select id="tenure" name="tenure" class="validate" required>
+            <!-- <option  value="" selected></option> -->
             <option value="" disabled selected>Select</option>
             <option value="Owner Occupied">Owner Occupied</option>
             <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>

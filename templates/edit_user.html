@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if session.user %}
+  <p class="right-align">You are logged in as: {{session['user']}}</p>
+{% endif %}
+
 <h3 class="center-align">Edit Users</h3>
 
 <div class="center-align"></div>
@@ -13,11 +17,11 @@
               <label for="username">Username</label>
           </div>
           <!-- password -->
-          <div class="input-field col s12 l6 offset-l3">
+          <!-- <div class="input-field col s12 l6 offset-l3">
               <input id="password" name="password" type="password" minlength="5"
                   maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" value="" class="">
               <label for="password">Password</label>
-          </div>
+          </div> -->
           <!-- name -->
           <div class="input-field col s12 l6 offset-l3">
               <input id="employee_name" name="employee_name" type="text" value="{{ employee.employee_name }}" class="validate">

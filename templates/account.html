@@ -2,6 +2,10 @@
 
 {% block content %}
 
+{% if session.user %}
+  <p class="right-align">You are logged in as: {{session['user']}}</p>
+{% endif %}
+
 <h3 class="center-align">Home Adaptations</h3>
 
 <ul class="collapsible popout">

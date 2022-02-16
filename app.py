@@ -26,26 +26,6 @@ def home():
     return render_template("login.html")
 
 
-@app.route("/get_customers")
-def get_customers():
-    """retrieve customer record from db"""
-    customers = list(mongo.db.customers.find())
-    return render_template("account.html", customers=customers)
-
-
-@app.route("/get_users")
-def get_users():
-    """retrieve user information from db"""
-    employees = list(mongo.db.users.find())
-    return render_template("create_user.html", employees=employees)
-
-
-@app.route("/account")
-def account():
-    """render users account page"""
-    return render_template("account.html")
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """log in to user account"""
@@ -72,6 +52,13 @@ def login():
             return redirect(url_for('login'))
 
     return render_template("login.html")
+
+
+@app.route("/get_users")
+def get_users():
+    """retrieve user information from db"""
+    employees = list(mongo.db.users.find())
+    return render_template("create_user.html", employees=employees)
 
 
 @app.route("/users", methods=["GET", "POST"])
@@ -106,7 +93,7 @@ def edit_user(employee_id):
     if request.method == "POST":
         submit = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password")),
+            "password": request.form.get("password"),
             "employee_name": request.form.get("employee_name"),
             "employee_email": request.form.get("employee_email")
         }
@@ -124,7 +111,8 @@ def delete_user(employee_id):
     """remove user from db"""
     mongo.db.users.delete_one({"_id": ObjectId(employee_id)})
     flash("User deleted!")
-    return redirect("create_user.html")
+    employees = list(mongo.db.users.find())
+    return render_template("create_user.html", employees=employees)
 
 
 @app.route("/logout")
@@ -132,7 +120,14 @@ def logout():
     """log user out of account"""
     flash("You have logged out!")
     session.pop("user")
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
+
+
+@app.route("/get_customers")
+def get_customers():
+    """retrieve customer record from db"""
+    customers = list(mongo.db.customers.find())
+    return render_template("account.html", customers=customers)
 
 
 @app.route("/add_customer", methods=["GET", "POST"])
@@ -183,6 +178,8 @@ def edit_customer(customer_id):
             {"_id": ObjectId(customer_id)}, {"$set": submit})
 
         flash("Customer Details Successfully Updated!")
+        customers = list(mongo.db.customers.find())
+        return render_template("account.html", customers=customers)
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("edit_customer.html", customer=customer)

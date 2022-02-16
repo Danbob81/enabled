@@ -18,9 +18,9 @@
             <nav>
                 <div class="nav-wrapper green lighten-1">
                 {% if session.user %}
-                    <a href="{{ url_for('home') }}" class="brand-logo">Enabled</a>
+                    <a href="{{ url_for('login') }}" class="brand-logo">Enabled</a>
                 {% else %}
-                    <a href="{{ url_for('home') }}" class="brand-logo center">Enabled</a>
+                    <a href="{{ url_for('login') }}" class="brand-logo center">Enabled</a>
                 {% endif %}
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -80,9 +80,6 @@
 
     <main class="container">
 
-        {% if session.user %}
-            <p class="right-align">You are logged in as: {{session['user']}}</p>
-        {% endif %}
         {% block content %}
         {% endblock %}
 
