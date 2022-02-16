@@ -101,6 +101,8 @@ def edit_user(employee_id):
             {"_id": ObjectId(employee_id)}, {"$set": submit})
 
         flash("User successfully updated!")
+        employees = list(mongo.db.users.find())
+        return render_template("create_user.html", employees=employees)
 
     employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
     return render_template("edit_user.html", employee=employee)
@@ -127,6 +129,14 @@ def logout():
 def get_customers():
     """retrieve customer record from db"""
     customers = list(mongo.db.customers.find())
+    return render_template("account.html", customers=customers)
+
+
+@app.route("/search_customer", methods=["GET", "POST"])
+def search_customer():
+    """query db for customer details"""
+    query = request.form.get("query")
+    customers = list(mongo.db.customers.find({"$text": {"$search": query}}))
     return render_template("account.html", customers=customers)
 
 
