@@ -5,7 +5,7 @@
   <p class="right-align">You are logged in as: {{session['user']}}</p>
 {% endif %}
 
-<h3 class="center-align">Edit Users</h3>
+<h3 class="center-align">Edit User</h3>
 
 <div class="center-align"></div>
   <form method="POST" action="{{ url_for('edit_user', employee_id=employee._id) }}">

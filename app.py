@@ -202,11 +202,17 @@ def edit_customer(customer_id):
             {"_id": ObjectId(customer_id)}, {"$set": submit})
 
         flash("Customer Details Successfully Updated!")
-        customers = list(mongo.db.customers.find())
-        return render_template("account.html", customers=customers)
+        customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+        return render_template("account.html", customer=customer)
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("edit_customer.html", customer=customer)
+
+
+@app.route("/add_job", methods=["GET", "POST"])
+def add_job():
+    """create job order record"""
+    return render_template("create_job.html")
 
 
 if __name__ == "__main__":

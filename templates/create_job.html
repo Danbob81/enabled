@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if session.user %}
+  <p class="right-align">You are logged in as: {{session['user']}}</p>
+{% endif %}
+
+<h3 class="center-align">Create Minor Words Order</h3>
+
+
+
+
+{% endblock %}
