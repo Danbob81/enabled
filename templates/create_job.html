@@ -5,9 +5,268 @@
   <p class="right-align">You are logged in as: {{session['user']}}</p>
 {% endif %}
 
-<h3 class="center-align">Create Minor Words Order</h3>
+<h3 class="center-align">Create Minor Works Order</h3>
 
-
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <form method="POST" action="{{ url_for('add_job', customer_id=customer._id) }}">
+                    <ul class="collection with-header">
+                        <li class="collection-header"><h5>Customer Details</h5></li>
+                        <li class="collection-item">
+                            <div class="col s12 left-align">Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
+                                Address: {{ customer.address_street }}, {{ customer.address_city }}, {{ customer.address_county }}, 
+                                        {{ customer.postcode }} <br> Property Tenure: {{ customer.tenure }} <br>
+                                Phone: {{ customer.phone }} <br> Email: {{ customer.email }} <br> 
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="collection with-header">
+                        <li class="collection-header"><h5>Type of Adaptation</h5></li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Key safe</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Location:</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Internal Grab Rail</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Size (12", 18", 24") | Quantity | Precise Location (inc. measurements) | Direction (vertical, horizontal, diagonal):</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>External Grab Rail</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Size (12", 18", 24") | Quantity | Precise Location (inc. measurements) | Direction (vertical, horizontal, diagonal):</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Drop Arm Rail</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Style (with/without supporting leg) | Quantity | Precise Location (inc. measurements) | Wall or floor mounted:</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Newel Rail</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Location (bottom/middle/top of stairs) | Direction (left side ascending/right side ascending):</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Second Stair Rail</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Location (left side ascending/right side ascending) | Description (straight, left/right turn, no. of sections):</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>External Handrail</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Quantity | Precise Location (inc. measurements, length of handrail etc.):</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Half Step</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Location (front/side/rear) | No. of platforms | Height of step (3", 4", 5", 6") | Tread length (12", 18", 24") | Step width:</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Access Ramp</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Location (front/side/rear) | Description of current access:</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Over Bath Shower</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Details of any specific requirements (e.g. tiling):</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Other Adapatation (not listed above)</h6>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Select</span>
+                                    </label>
+                                </div>
+                                <br>
+                                <p class="">Provide information of any other adaptations, not listed above, here:</p>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                                    <label for="icon_prefix2">Enter information here</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="collection with-header">
+                        <li class="collection-header"><h5>Referrer Details</h5></li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="name" name="name" type="text" class="validate" required>
+                                    <label for="name">Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="team" name="team" type="text" class="validate" required>
+                                    <label for="team">Team/Job Title</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" name="email" type="email" class="validate" required>
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="phone" name="phone" type="tel" class="validate" required>
+                                    <label for="phone">Phone number</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <a href="{{ url_for('account', customer=customers) }}" class="waves-effect waves-green btn red accent-4">Cancel</a>
+                                    <button type="submit" class="waves-effect waves-green btn green accent-4">Submit</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

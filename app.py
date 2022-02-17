@@ -209,10 +209,11 @@ def edit_customer(customer_id):
     return render_template("edit_customer.html", customer=customer)
 
 
-@app.route("/add_job", methods=["GET", "POST"])
-def add_job():
+@app.route("/add_job/<customer_id>", methods=["GET", "POST"])
+def add_job(customer_id):
     """create job order record"""
-    return render_template("create_job.html")
+    customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+    return render_template("create_job.html", customer=customer)
 
 
 if __name__ == "__main__":
