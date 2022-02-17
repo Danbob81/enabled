@@ -125,11 +125,17 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/get_customers")
-def get_customers():
-    """retrieve customer record from db"""
-    customers = list(mongo.db.customers.find())
-    return render_template("account.html", customers=customers)
+@app.route("/account")
+def account():
+    """return account page"""
+    return render_template("account.html")
+
+
+# @app.route("/get_customers")
+# def get_customers():
+#     """retrieve customer record from db"""
+#     customers = list(mongo.db.customers.find())
+#     return render_template("account.html", customers=customers)
 
 
 @app.route("/search_customer", methods=["GET", "POST"])
@@ -161,7 +167,7 @@ def add_customer():
         }
         mongo.db.customers.insert_one(customer)
         flash("Customer Record Successfully Created")
-        return redirect(url_for("get_customers"))
+        return redirect(url_for("account"))
 
     return render_template("account.html")
 

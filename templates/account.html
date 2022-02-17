@@ -21,7 +21,7 @@
                   <label for="query"></label>
               </div>
               <div class="col s12 m4">
-                  <a href="{{ url_for('get_customers') }}" class="btn text-shadow">Reset</a>
+                  <a href="{{ url_for('account') }}" class="btn text-shadow">Reset</a>
                   <button type="submit" class="btn text-shadow">
                       <i class="fas fa-search left"></i> Search
                   </button>
@@ -44,7 +44,7 @@
                   <label for="query"></label>
               </div>
               <div class="col s12 m4">
-                  <a href="{{ url_for('get_customers') }}" class="btn text-shadow">Reset</a>
+                  <a href="{{ url_for('account') }}" class="btn text-shadow">Reset</a>
                   <button type="submit" class="btn text-shadow">
                       <i class="fas fa-search left"></i> Search
                   </button>
@@ -70,7 +70,7 @@
   <li class="active">
     <div class="collapsible-header">Results</div>
       <div class="collapsible-header right-align">
-        <a href="{{ url_for('get_customers') }}" class="text-shadow right-align">Reset</a>
+        <a href="{{ url_for('account') }}" class="text-shadow right-align">Reset</a>
       </div>
       <div class="collapsible-body">
         {% for customer in customers %}
@@ -94,7 +94,7 @@
         {% endfor %}
       </div>
 {% else %}
-    <h5 class="red-text center-align">No Results Found!</h5>
+    <!-- <h5 class="red-text center-align">No Results Found!</h5> -->
   </li>
 </ul>
 {% endif %}

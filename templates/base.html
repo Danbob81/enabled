@@ -24,7 +24,7 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if session.user %}
-                        <li><a href="{{ url_for('get_customers') }}">Account</a></li>
+                        <li><a href="{{ url_for('account') }}">Account</a></li>
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Options</a></li>
                     {% endif %}
                 </ul>
@@ -36,7 +36,7 @@
         <ul id="slide-out" class="sidenav light-green lighten-4">
             <!-- <li><h4 class="center-align">Enabled</h4></li> -->
             {% if session.user %}
-                <li><a href="{{ url_for('get_customers') }}">Account</a></li>
+                <li><a href="{{ url_for('account') }}">Account</a></li>
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Options</a></li>
             {% endif %}
         </ul>
