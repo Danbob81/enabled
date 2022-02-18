@@ -98,12 +98,11 @@
         {% for job in jobs %}
           <ul class="collection">
             <li class="collection-item">
-              <div class="col s12 left-align">Customer Details:<br>
+              <div class="col s12 left-align">
                   Name:   {{ job.first_name }} {{ job.last_name }} <br>
                   Address: {{ job.address_street }}, {{ job.address_city }}, {{ job.address_county }}, 
                           {{ job.postcode }} <br> Property Tenure: {{ job.tenure }} <br>
                   Phone: {{ job.phone }} <br> Email: {{ job.email }} <br>
-                  Minor Works Order: <br>
 
                   <br>
                   Record created by user: {{ job.created_by }} <br>
