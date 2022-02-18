@@ -12,24 +12,61 @@
         <div class="card">
             <div class="card-content">
                 <form method="POST" action="{{ url_for('add_job', customer_id=customer._id) }}">
+                    <!-- Customer -->
                     <ul class="collection with-header">
                         <li class="collection-header"><h5>Customer Details</h5></li>
                         <li class="collection-item">
-                            <div class="col s12 left-align">Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
-                                Address: {{ customer.address_street }}, {{ customer.address_city }}, {{ customer.address_county }}, 
-                                        {{ customer.postcode }} <br> Property Tenure: {{ customer.tenure }} <br>
-                                Phone: {{ customer.phone }} <br> Email: {{ customer.email }} <br> 
+                            <!-- Name -->
+                            <div class="input-field col s12 l6">
+                                <input id="first_name" name="first_name" type="text" value="{{ customer.first_name }}" class="validate center-align" required>
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <input id="last_name" name="last_name" type="text" value="{{ customer.last_name }}" class="validate center-align" required>
+                                <label for="last_name">Last Name</label>
+                            </div>
+                            <!-- Address -->
+                            <div class="input-field col s12 l6">
+                                <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" value="{{ customer.address_street }}" class="validate center-align" required>
+                                <label for="address_street">Address</label>
+                                <input placeholder="Town/City" id="address_city" name="address_city" type="text" value="{{ customer.address_city }}" class="validate center-align" required>
+                                <label for="address_city"></label>
+                                <input placeholder="County" id="address_county" name="address_county" type="text" value="{{ customer.address_county }}" class="validate center-align" required>
+                                <label for="address_county"></label>
+                                <input placeholder="Postcode" id="postcode" name="postcode" type="text" value="{{ customer.postcode }}" class="validate center-align" required>
+                                <label for="postcode"></label>
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <select id="tenure" name="tenure" class="validate" required>
+                                <!-- <option  value="" selected></option> -->
+                                <option value="" disabled selected>Select</option>
+                                <option value="Owner Occupied">Owner Occupied</option>
+                                <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+                                <option value="Council">Council</option>
+                                </select>
+                                <label for="tenure">Property Tenure</label>
+                            </div>
+                            <!-- Phone -->
+                            <div class="input-field col s12 l6">
+                                <input id="phone" name="phone" type="text" value="{{ customer.phone }}" class="validate center-align" required>
+                                <label for="phone">Phone</label>
+                            </div>
+                            <!-- Email -->
+                            <div class="input-field col s12 l6">
+                                <input id="email" name="email" type="text" value="{{ customer.email }}" class="validate center-align" required>
+                                <label for="email">Email</label>
                             </div>
                         </li>
                     </ul>
+                    <!-- Adaptation -->
                     <ul class="collection with-header">
                         <li class="collection-header"><h5>Type of Adaptation</h5></li>
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Key safe</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="keysafe">
+                                        <input type="checkbox" id="keysafe" name="keysafe" />
                                         <span>Select</span>
                                     </label>
                                 </div>
@@ -37,8 +74,8 @@
                                 <p class="">Location:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="keysafe_text" name="keysafe_text" class="materialize-textarea"></textarea>
+                                    <label for="keysafe_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -46,17 +83,18 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Internal Grab Rail</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="int_grab">
+                                        <input type="checkbox" id="int_grab" name="int_grab" />
                                         <span>Select</span>
                                     </label>
                                 </div>
                                 <br>
-                                <p class="">Size (12", 18", 24") | Quantity | Precise Location (inc. measurements) | Direction (vertical, horizontal, diagonal):</p>
+                                <p class="">Size (12", 18", 24") | Quantity | Precise Location (inc. measurements) | 
+                                            Direction (vertical, horizontal, diagonal):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="int_grab_text" name="int_grab_text" class="materialize-textarea"></textarea>
+                                    <label for="int_grab_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -64,17 +102,18 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>External Grab Rail</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="ext_grab">
+                                        <input type="checkbox" id="ext_grab" name="ext_grab" />
                                         <span>Select</span>
                                     </label>
                                 </div>
                                 <br>
-                                <p class="">Size (12", 18", 24") | Quantity | Precise Location (inc. measurements) | Direction (vertical, horizontal, diagonal):</p>
+                                <p class="">Size (12", 18", 24") | Quantity | Precise Location (inc. measurements) |
+                                             Direction (vertical, horizontal, diagonal):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="ext_grab_text" name="ext_grab_text" class="materialize-textarea"></textarea>
+                                    <label for="ext_grab_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -82,17 +121,18 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Drop Arm Rail</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="drop_rail">
+                                        <input type="checkbox" id="drop_rail" name="drop_rail" />
                                         <span>Select</span>
                                     </label>
                                 </div>
                                 <br>
-                                <p class="">Style (with/without supporting leg) | Quantity | Precise Location (inc. measurements) | Wall or floor mounted:</p>
+                                <p class="">Style (with/without supporting leg) | Quantity | 
+                                            Precise Location (inc. measurements) | Wall or floor mounted:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="drop_rail_text" name="drop_rail_text" class="materialize-textarea"></textarea>
+                                    <label for="drop_rail_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -100,17 +140,18 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Newel Rail</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="newel">
+                                        <input type="checkbox" id="newel" name="newel" />
                                         <span>Select</span>
                                     </label>
                                 </div>
                                 <br>
-                                <p class="">Location (bottom/middle/top of stairs) | Direction (left side ascending/right side ascending):</p>
+                                <p class="">Location (bottom/middle/top of stairs) | 
+                                            Direction (left side ascending/right side ascending):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="newel_text" name="newel_text" class="materialize-textarea"></textarea>
+                                    <label for="newel_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -118,17 +159,18 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Second Stair Rail</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="stair_rail">
+                                        <input type="checkbox" id="stair_rail" name="stair_rail" />
                                         <span>Select</span>
                                     </label>
                                 </div>
                                 <br>
-                                <p class="">Location (left side ascending/right side ascending) | Description (straight, left/right turn, no. of sections):</p>
+                                <p class="">Location (left side ascending/right side ascending) | 
+                                            Description (straight, left/right turn, no. of sections):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="stair_rail_text" name="stair_rail_text" class="materialize-textarea"></textarea>
+                                    <label for="stair_rail_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -136,8 +178,8 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>External Handrail</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="handrail">
+                                        <input type="checkbox" id="handrail" name="handrail" />
                                         <span>Select</span>
                                     </label>
                                 </div>
@@ -145,8 +187,8 @@
                                 <p class="">Quantity | Precise Location (inc. measurements, length of handrail etc.):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="handrail_text" name="handrail_text" class="materialize-textarea"></textarea>
+                                    <label for="handrail_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -154,17 +196,18 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Half Step</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="step">
+                                        <input type="checkbox" id="step" name="step" />
                                         <span>Select</span>
                                     </label>
                                 </div>
                                 <br>
-                                <p class="">Location (front/side/rear) | No. of platforms | Height of step (3", 4", 5", 6") | Tread length (12", 18", 24") | Step width:</p>
+                                <p class="">Location (front/side/rear) | No. of platforms | 
+                                            Height of step (3", 4", 5", 6") | Tread length (12", 18", 24") | Step width:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="step_text" name="step_text" class="materialize-textarea"></textarea>
+                                    <label for="step_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -172,8 +215,8 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Access Ramp</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="ramp">
+                                        <input type="checkbox" id="ramp" name="ramp" />
                                         <span>Select</span>
                                     </label>
                                 </div>
@@ -181,8 +224,8 @@
                                 <p class="">Location (front/side/rear) | Description of current access:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="ramp_text" name="ramp_text" class="materialize-textarea"></textarea>
+                                    <label for="ramp_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -190,8 +233,8 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Over Bath Shower</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="shower">
+                                        <input type="checkbox" id="shower" name="shower" />
                                         <span>Select</span>
                                     </label>
                                 </div>
@@ -199,8 +242,8 @@
                                 <p class="">Details of any specific requirements (e.g. tiling):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="shower_text" name="shower_text" class="materialize-textarea"></textarea>
+                                    <label for="shower_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
@@ -208,8 +251,8 @@
                             <div class="row">
                                 <div class="col s12">
                                     <h6>Other Adapatation (not listed above)</h6>
-                                    <label>
-                                        <input type="checkbox" />
+                                    <label for="other">
+                                        <input type="checkbox" id="other" name="other" />
                                         <span>Select</span>
                                     </label>
                                 </div>
@@ -217,19 +260,20 @@
                                 <p class="">Provide information of any other adaptations, not listed above, here:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Enter information here</label>
+                                    <textarea id="other_text" name="other_text" class="materialize-textarea"></textarea>
+                                    <label for="other_text">Enter information here</label>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <!-- Referrer -->
                     <ul class="collection with-header">
                         <li class="collection-header"><h5>Referrer Details</h5></li>
                         <li class="collection-item">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="name" name="name" type="text" class="validate" required>
-                                    <label for="name">Name</label>
+                                    <input id="ref_name" name="ref_name" type="text" class="validate" required>
+                                    <label for="ref_name">Name</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -240,18 +284,19 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="email" name="email" type="email" class="validate" required>
-                                    <label for="email">Email</label>
+                                    <input id="ref_email" name="ref_email" type="email" class="validate" required>
+                                    <label for="ref_email">Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="phone" name="phone" type="tel" class="validate" required>
-                                    <label for="phone">Phone number</label>
+                                    <input id="ref_phone" name="ref_phone" type="tel" class="validate" required>
+                                    <label for="ref_phone">Phone number</label>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <!-- Submit -->
                     <ul class="collection">
                         <li class="collection-item">
                             <div class="row">
