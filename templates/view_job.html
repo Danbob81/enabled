@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if session.user %}
+  <p class="right-align">You are logged in as: {{session['user']}}</p>
+{% endif %}
+
+<h3 class="center-align">Minor Works Order</h3>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <ul class="collection with-header">
+                    <li class="collection-header"><h5>Customer Details</h5></li>
+                    <li class="collection-item">
+                        <div class="col s6 left-align">
+                            Name:   {{ job.first_name }} {{ job.last_name }} <br>
+                            Address: {{ job.address_street }}, {{ job.address_city }}, {{ job.address_county }}, 
+                                    {{ job.postcode }} <br> Property Tenure: {{ job.tenure }} <br>
+                            Phone: {{ job.phone }} <br> Email: {{ job.email }} <br>
+                        </div>
+                        <div class="col s6 right-align">
+                            Record created by user: {{ job.created_by }} <br>
+                            Record last amended by user: {{ job.amended_by }}
+                        </div>
+                    </li>
+                </ul>
+                <ul class="collection with-header">
+                    <li class="collection-header"><h5>Type of Adaptation</h5></li>
+                    <li class="collection-item">
+                        <div class="col s6 left-align">
+                            
+                        </div>
+                        <div class="col s6 right-align">
+                            
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
