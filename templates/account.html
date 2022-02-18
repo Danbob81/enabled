@@ -36,12 +36,12 @@
     <div class="collapsible-header">Search Jobs</div>
       <div class="collapsible-body">
         <div class="col s12">
-          <form action="" method="POST" class="col s12">
+          <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
             <div class="row valign-wrapper center-align">
               <div class="input-field col s12 m8">
                   <i class="fas fa-search prefix black-text"></i>
                   <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                  <label for="query"></label>
+                  <label for="query">Enter: Name, Address (first line) or Postcode</label>
               </div>
               <div class="col s12 m4">
                   <a href="{{ url_for('account') }}" class="btn text-shadow">Reset</a>
@@ -87,6 +87,32 @@
                 <!-- <a href="{{ url_for('customer_record') }}" class="waves-effect waves-green btn green accent-4">View Record</a> -->
                 <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" class="waves-effect waves-green btn green accent-4">Edit Customer</a>
                 <a href="{{ url_for('add_job', customer_id=customer._id) }}" class="waves-effect waves-green btn green accent-4">Minor Works Request</a>
+              </div>
+            </li>
+          </ul>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if jobs|length >0 %}
+      <div class="collapsible-body">
+        {% for job in jobs %}
+          <ul class="collection">
+            <li class="collection-item">
+              <div class="col s12 left-align">Customer Details:<br>
+                  Name:   {{ job.first_name }} {{ job.last_name }} <br>
+                  Address: {{ job.address_street }}, {{ job.address_city }}, {{ job.address_county }}, 
+                          {{ job.postcode }} <br> Property Tenure: {{ job.tenure }} <br>
+                  Phone: {{ job.phone }} <br> Email: {{ job.email }} <br>
+                  Minor Works Order: <br>
+
+                  <br>
+                  Record created by user: {{ job.created_by }} <br>
+                  Record last amended by user: {{ job.amended_by }}
+              </div>
+              <div class="col s12 left-align">
+                <!-- <a href="{{ url_for('customer_record') }}" class="waves-effect waves-green btn green accent-4">View Record</a> -->
+                <a href="{{ url_for('view_jobs', job_id=job._id) }}" class="waves-effect waves-green btn green accent-4">View Order</a>
+                <!-- <a href="" class="waves-effect waves-green btn green accent-4">Minor Works Request</a> -->
               </div>
             </li>
           </ul>

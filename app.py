@@ -209,9 +209,69 @@ def edit_customer(customer_id):
     return render_template("edit_customer.html", customer=customer)
 
 
+@app.route("/search_jobs", methods=["GET", "POST"])
+def search_jobs():
+    """query db for job details"""
+    query = request.form.get("query")
+    jobs = list(mongo.db.jobs.find({"$text": {"$search": query}}))
+    return render_template("account.html", jobs=jobs)
+
+
+@app.route("/view_jobs/<job_id>")
+def view_jobs(job_id):
+    """retrieve job information from db"""
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+    return render_template("view_job.html", job=job)
+
+
 @app.route("/add_job/<customer_id>", methods=["GET", "POST"])
 def add_job(customer_id):
     """create job order record"""
+    if request.method == "POST":
+        job = {
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "address_street": request.form.get("address_street"),
+            "address_city": request.form.get("address_city"),
+            "address_county": request.form.get("address_county"),
+            "postcode": request.form.get("postcode"),
+            "tenure": request.form.get("tenure"),
+            "phone": request.form.get("phone"),
+            "email": request.form.get("email"),
+            "keysafe": request.form.get("keysafe"),
+            "keysafe_text": request.form.get("keysafe_text"),
+            "int_grab": request.form.get("int_grab"),
+            "int_grab_text": request.form.get("int_grab_text"),
+            "ext_grab": request.form.get("ext_grab"),
+            "ext_grab_text": request.form.get("ext_grab_text"),
+            "drop_rail": request.form.get("drop_rail"),
+            "drop_rail_text": request.form.get("drop_rail_text"),
+            "newel": request.form.get("newel"),
+            "newel_text": request.form.get("newel_text"),
+            "stair_rail": request.form.get("stair_rail"),
+            "stair_rail_text": request.form.get("stair_rail_text"),
+            "handrail": request.form.get("handrail"),
+            "handrail_text": request.form.get("handrail_text"),
+            "step": request.form.get("step"),
+            "step_text": request.form.get("step_text"),
+            "ramp": request.form.get("ramp"),
+            "ramp_text": request.form.get("ramp_text"),
+            "shower": request.form.get("shower"),
+            "shower_text": request.form.get("shower_text"),
+            "other": request.form.get("other"),
+            "other_text": request.form.get("other_text"),
+            "ref_name": request.form.get("ref_name"),
+            "team": request.form.get("team"),
+            "ref_email": request.form.get("ref_email"),
+            "ref_phone": request.form.get("ref_phone"),
+            "created_by": session["user"],
+            "amended_by": session["user"]
+        }
+        mongo.db.jobs.insert_one(job)
+        flash("Minor Works Order Created")
+        customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+        return render_template("account.html", customer=customer)
+
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("create_job.html", customer=customer)
 
