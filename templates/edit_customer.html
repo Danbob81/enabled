@@ -5,82 +5,98 @@
   <p class="right-align">You are logged in as: {{session['user']}}</p>
 {% endif %}
 
-<h3 class="center-align">Edit Customer</h3>
+<!-- <h3 class="center-align">Edit Customer</h3> -->
 
-<div class="center-align"></div>
-    <form method="POST" action="{{ url_for('edit_customer', customer_id=customer._id) }}">
-        <div class="row">
-        <!-- Name -->
-        <div class="input-field col s12 l6">
-            <input id="first_name" name="first_name" type="text" value="{{ customer.first_name }}" class="validate center-align" required>
-            <label for="first_name">First Name</label>
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <form method="POST" action="{{ url_for('edit_customer', customer_id=customer._id) }}">
+                    <ul class="collection with-header">
+                        <li class="collection-header center-align"><h5>Edit Customer</h5></li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <!-- Name -->
+                                <div class="input-field col s12 l6">
+                                    <input id="first_name" name="first_name" type="text" value="{{ customer.first_name }}" class="validate center-align" required>
+                                    <label for="first_name">First Name</label>
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input id="last_name" name="last_name" type="text" value="{{ customer.last_name }}" class="validate center-align" required>
+                                    <label for="last_name">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- DOB -->
+                                <div class="input-field col s12 l6">
+                                    <input id="dob" name="dob" type="text" value="{{ customer.dob }}" class="datepicker validate center-align" required>
+                                    <label for="dob">Date of Birth</label>
+                                </div>
+                                <!-- Gender -->
+                                <div class="input-field col s12 l6">
+                                    <select id="gender" name="gender" class="validate" required>
+                                    <!-- <option  value="" selected></option> -->
+                                    <option  value="" disabled selected>Select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                    <option value="Prefer not to say">Prefer not to say</option>
+                                    </select>
+                                    <label for="gender">Gender</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Address -->
+                                <div class="input-field col s12 l6">
+                                    <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" value="{{ customer.address_street }}" class="validate center-align" required>
+                                    <label for="address_street">Address</label>
+                                    <input placeholder="Town/City" id="address_city" name="address_city" type="text" value="{{ customer.address_city }}" class="validate center-align" required>
+                                    <label for="address_city"></label>
+                                    <input placeholder="County" id="address_county" name="address_county" type="text" value="{{ customer.address_county }}" class="validate center-align" required>
+                                    <label for="address_county"></label>
+                                    <input placeholder="Postcode" id="postcode" name="postcode" type="text" value="{{ customer.postcode }}" class="validate center-align" required>
+                                    <label for="postcode"></label>
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <select id="tenure" name="tenure" class="validate" required>
+                                    <!-- <option  value="" selected></option> -->
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Owner Occupied">Owner Occupied</option>
+                                    <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+                                    <option value="Council">Council</option>
+                                    </select>
+                                    <label for="tenure">Property Tenure</label>
+                                </div>
+                                <!-- Phone -->
+                                <div class="input-field col s12 l6">
+                                    <input id="phone" name="phone" type="text" value="{{ customer.phone }}" class="validate center-align" required>
+                                    <label for="phone">Phone</label>
+                                </div>
+                                <!-- Email -->
+                                <div class="input-field col s12 l6">
+                                    <input id="email" name="email" type="text" value="{{ customer.email }}" class="validate center-align" required>
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                        </li>
+                        </ul>
+            
+                    <!-- Submit -->
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <a href="{{ url_for('account', customer=customers) }}" class="waves-effect waves-green btn red accent-4">Cancel</a>
+                                    <button type="submit" class="waves-effect waves-green btn green accent-4">Submit</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </div>
         </div>
-        <div class="input-field col s12 l6">
-            <input id="last_name" name="last_name" type="text" value="{{ customer.last_name }}" class="validate center-align" required>
-            <label for="last_name">Last Name</label>
-        </div>
-        </div>
-        <div class="row">
-        <!-- DOB -->
-        <div class="input-field col s12 l6">
-            <input id="dob" name="dob" type="text" value="{{ customer.dob }}" class="datepicker validate center-align" required>
-            <label for="dob">Date of Birth</label>
-        </div>
-        <!-- Gender -->
-        <div class="input-field col s12 l6">
-            <select id="gender" name="gender" class="validate" required>
-            <!-- <option  value="" selected></option> -->
-            <option  value="" disabled selected>Select</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-            <option value="Prefer not to say">Prefer not to say</option>
-            </select>
-            <label for="gender">Gender</label>
-        </div>
-        </div>
-        <div class="row">
-        <!-- Address -->
-        <div class="input-field col s12 l6">
-            <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" value="{{ customer.address_street }}" class="validate center-align" required>
-            <label for="address_street">Address</label>
-            <input placeholder="Town/City" id="address_city" name="address_city" type="text" value="{{ customer.address_city }}" class="validate center-align" required>
-            <label for="address_city"></label>
-            <input placeholder="County" id="address_county" name="address_county" type="text" value="{{ customer.address_county }}" class="validate center-align" required>
-            <label for="address_county"></label>
-            <input placeholder="Postcode" id="postcode" name="postcode" type="text" value="{{ customer.postcode }}" class="validate center-align" required>
-            <label for="postcode"></label>
-        </div>
-        <div class="input-field col s12 l6">
-            <select id="tenure" name="tenure" class="validate" required>
-            <!-- <option  value="" selected></option> -->
-            <option value="" disabled selected>Select</option>
-            <option value="Owner Occupied">Owner Occupied</option>
-            <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
-            <option value="Council">Council</option>
-            </select>
-            <label for="tenure">Property Tenure</label>
-        </div>
-        <!-- Phone -->
-        <div class="input-field col s12 l6">
-            <input id="phone" name="phone" type="text" value="{{ customer.phone }}" class="validate center-align" required>
-            <label for="phone">Phone</label>
-        </div>
-        <!-- Email -->
-        <div class="input-field col s12 l6">
-            <input id="email" name="email" type="text" value="{{ customer.email }}" class="validate center-align" required>
-            <label for="email">Email</label>
-        </div>
-        </div>
-
-        <!-- Submit -->
-        <div class="row">
-        <div class="col s12 center-align">
-            <a href="{{ url_for('account', customer=customers) }}" class="waves-effect waves-green btn red accent-4">Cancel</a>
-            <button type="submit" class="waves-effect waves-green btn green accent-4">Submit</button>
-        </div>
-        </div>
-    </form>
+    </div>
 </div>
+
 
 {% endblock %}
