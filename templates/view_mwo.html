@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- {% if session.user %}
+  <p class="right-align">You are logged in as: {{session['user']}}</p>
+{% endif %} -->
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="center-align">Home Adaptations</h3>
+        {% if session.user %}
+          <p class="right-align">You are logged in as: {{session['user']}}</p>
+        {% endif %}
+    </div>
+</div>
+
+<ul class="collapsible">
+    <li class="active">
+        <div class="collapsible-header"><h5>Orders</h5></div>
+        <div class="collapsible-body">
+            <ul class="collection">
+                <!-- <li class="collection-header"></li> -->
+                
+                <li class="collection-item">
+                    {% if jobs|length >0 %}
+                        <div class="collapsible-body">
+                            {% for job in jobs %}
+                            <ul class="collection">
+                                <li class="collection-item">
+                                <div class="col s12 left-align">
+                                    Name:   {{ job.first_name }} {{ job.last_name }} <br>
+                                    Address: {{ job.address_street }}, {{ job.address_city }}, {{ job.address_county }}, 
+                                            {{ job.postcode }} <br> Property Tenure: {{ job.tenure }} <br>
+                                    Phone: {{ job.phone }} <br> Email: {{ job.email }} <br>
+
+                                    <br>
+                                    Record created by user: {{ job.created_by }} <br>
+                                    Record last amended by user: {{ job.amended_by }}
+                                </div>
+                                <div class="col s12 left-align">
+                                    <a href="{{ url_for('view_jobs', job_id=job._id) }}" class="waves-effect waves-green btn green accent-4">View Order</a>
+                                </div>
+                                </li>
+                            </ul>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>
+
+        <ul class="collection">
+            <li class="collection-item center-align">
+                <button onclick="history.back()" class="waves-effect waves-green btn red accent-4">Back</button>
+                <!-- <a href="" class="waves-effect waves-green btn green accent-4">
+                    Minor Works Request</a> -->
+            </li>
+        </ul>
+
+
+
+{% endblock %}

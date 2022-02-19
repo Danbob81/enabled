@@ -180,6 +180,13 @@ def customer_record():
     return render_template("customer.html", customers=customers)
 
 
+@app.route("/view_customer/<customer_id>")
+def view_customer(customer_id):
+    """retrieve customer information from db"""
+    customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+    return render_template("view_customer.html", customer=customer)
+
+
 @app.route("/edit_customer/<customer_id>", methods=["GET", "POST"])
 def edit_customer(customer_id):
     """edit customer details"""
@@ -203,7 +210,7 @@ def edit_customer(customer_id):
 
         flash("Customer Details Successfully Updated!")
         customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
-        return render_template("account.html", customer=customer)
+        return render_template("view_customer.html", customer=customer)
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("edit_customer.html", customer=customer)
@@ -274,6 +281,59 @@ def add_job(customer_id):
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("create_job.html", customer=customer)
+
+
+@app.route("/edit_job/<job_id>", methods=["GET", "POST"])
+def edit_job(job_id):
+    """edit customer details"""
+    if request.method == "POST":
+        submit = {
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "address_street": request.form.get("address_street"),
+            "address_city": request.form.get("address_city"),
+            "address_county": request.form.get("address_county"),
+            "postcode": request.form.get("postcode"),
+            "tenure": request.form.get("tenure"),
+            "phone": request.form.get("phone"),
+            "email": request.form.get("email"),
+            "keysafe": request.form.get("keysafe"),
+            "keysafe_text": request.form.get("keysafe_text"),
+            "int_grab": request.form.get("int_grab"),
+            "int_grab_text": request.form.get("int_grab_text"),
+            "ext_grab": request.form.get("ext_grab"),
+            "ext_grab_text": request.form.get("ext_grab_text"),
+            "drop_rail": request.form.get("drop_rail"),
+            "drop_rail_text": request.form.get("drop_rail_text"),
+            "newel": request.form.get("newel"),
+            "newel_text": request.form.get("newel_text"),
+            "stair_rail": request.form.get("stair_rail"),
+            "stair_rail_text": request.form.get("stair_rail_text"),
+            "handrail": request.form.get("handrail"),
+            "handrail_text": request.form.get("handrail_text"),
+            "step": request.form.get("step"),
+            "step_text": request.form.get("step_text"),
+            "ramp": request.form.get("ramp"),
+            "ramp_text": request.form.get("ramp_text"),
+            "shower": request.form.get("shower"),
+            "shower_text": request.form.get("shower_text"),
+            "other": request.form.get("other"),
+            "other_text": request.form.get("other_text"),
+            "ref_name": request.form.get("ref_name"),
+            "team": request.form.get("team"),
+            "ref_email": request.form.get("ref_email"),
+            "ref_phone": request.form.get("ref_phone"),
+            "amended_by": session["user"]
+        }
+        mongo.db.jobs.update_one(
+            {"_id": ObjectId(job_id)}, {"$set": submit})
+
+        flash("Minor Works Order Successfully Updated!")
+        job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+        return render_template("account.html", job=job)
+
+    job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
+    return render_template("edit_job.html", job=job)
 
 
 if __name__ == "__main__":

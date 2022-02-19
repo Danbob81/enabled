@@ -5,6 +5,12 @@
   <p class="right-align">You are logged in as: {{session['user']}}</p>
 {% endif %}
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="center-align">Home Adaptations</h3>
+    </div>
+ </div>
+
 <!-- <h3 class="center-align">Edit Customer</h3> -->
 
 <div class="row">
@@ -13,7 +19,7 @@
             <div class="card-content">
                 <form method="POST" action="{{ url_for('edit_customer', customer_id=customer._id) }}">
                     <ul class="collection with-header">
-                        <li class="collection-header center-align"><h5>Edit Customer</h5></li>
+                        <li class="collection-header center-align"><h4>Edit Customer</h4></li>
                         <li class="collection-item">
                             <div class="row">
                                 <!-- Name -->
@@ -86,7 +92,7 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s12 center-align">
-                                    <a href="{{ url_for('account', customer=customers) }}" class="waves-effect waves-green btn red accent-4">Cancel</a>
+                                    <button onclick="history.back()" class="waves-effect waves-green btn red accent-4">Cancel</button>
                                     <button type="submit" class="waves-effect waves-green btn green accent-4">Submit</button>
                                 </div>
                             </div>

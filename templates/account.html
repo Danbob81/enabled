@@ -6,9 +6,13 @@
   <p class="right-align">You are logged in as: {{session['user']}}</p>
 {% endif %}
 
-<h3 class="center-align">Home Adaptations</h3>
+<div class="card">
+  <div class="card-content">
+    <h3 class="center-align">Home Adaptations</h3>
+  </div>
+</div>
 
-<ul class="collapsible popout">
+<ul class="collapsible ">
   <li>
     <div class="collapsible-header">Search Customer</div>
       <div class="collapsible-body">
@@ -32,11 +36,11 @@
       </div>
     </div>
   </li>
-  <li>
+  <!-- <li>
     <div class="collapsible-header">Search Jobs</div>
       <div class="collapsible-body">
         <div class="col s12">
-          <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
+          <form action="{{ url_for('search_jobs', customer_id=customer_id) }}" method="POST" class="col s12">
             <div class="row valign-wrapper center-align">
               <div class="input-field col s12 m8">
                   <i class="fas fa-search prefix black-text"></i>
@@ -53,7 +57,7 @@
           </form>
         </div>
       </div>
-  </li>
+  </li> -->
   <li>
     <div class="collapsible-header">Create</div>
     <div class="collapsible-body">
@@ -65,33 +69,44 @@
   </li>
 </ul>
 
-<ul class="collapsible popout">
+<ul class="collapsible ">
   <li class="active">
     <div class="collapsible-header">Results</div>
+    <!-- Customer results -->
     {% if customers|length >0 %}
       <div class="collapsible-body">
         {% for customer in customers %}
           <ul class="collection">
             <li class="collection-item">
-              <div class="col s12 left-align">Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
-                  DOB: {{ customer.dob }} <br>
-                  Gender: {{ customer.gender }}<br>
+              <div class="col s12 l6 left-align">
+                  Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
+                  <!-- DOB: {{ customer.dob }} <br> -->
+                  <!-- Gender: {{ customer.gender }}<br> -->
                   Address: {{ customer.address_street }}, {{ customer.address_city }}, {{ customer.address_county }}, 
-                          {{ customer.postcode }} <br> Property Tenure: {{ customer.tenure }} <br>
-                  Phone: {{ customer.phone }} <br> Email: {{ customer.email }} <br> 
+                          {{ customer.postcode }} <br> 
+                          <!-- Property Tenure: {{ customer.tenure }} <br> -->
+                  <!-- Phone: {{ customer.phone }} <br> Email: {{ customer.email }} <br>  -->
                   <br>
-                  Record created by user: {{ customer.created_by }} <br>
-                  Record last amended by user: {{ customer.amended_by }}
+                  <!-- Record created by user: {{ customer.created_by }} <br> -->
+                  <!-- Record last amended by user: {{ customer.amended_by }} -->
               </div>
-              <div class="col s12 left-align">
-                <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" class="waves-effect waves-green btn green accent-4">Edit Customer</a>
-                <a href="{{ url_for('add_job', customer_id=customer._id) }}" class="waves-effect waves-green btn green accent-4">Minor Works Request</a>
+              <div class="col s12 l6 left-align">
+                <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
+
+                    <!-- <a href="{{ url_for('account') }}" class="btn text-shadow">Reset</a> -->
+                  <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="waves-effect waves-green btn green accent-4">View Customer Details</a>
+                  <a href="{{ url_for('add_job', customer_id=customer._id) }}" class="waves-effect waves-green btn green accent-4">Create Minor Works Order</a>
+                  <button type="submit" class="waves-effect waves-green btn green accent-4">View Minor Works Orders</button>
+                    <input type="text" name="query" id="query" value="{$and: [{{ customer.first_name }} {{ customer.last_name }} {{ customer.address_street }} {{ customer.postcode }}]}" class="validate" hidden required>
+                    <label for="query"></label>
+                </form>
               </div>
             </li>
           </ul>
         {% endfor %}
       </div>
     {% endif %}
+    <!-- Jobs results -->
     {% if jobs|length >0 %}
       <div class="collapsible-body">
         {% for job in jobs %}
@@ -108,6 +123,7 @@
                   Record last amended by user: {{ job.amended_by }}
               </div>
               <div class="col s12 left-align">
+                <button onclick="history.back()" class="waves-effect waves-green btn red accent-4">Back</button>
                 <a href="{{ url_for('view_jobs', job_id=job._id) }}" class="waves-effect waves-green btn green accent-4">View Order</a>
               </div>
             </li>
