@@ -19,7 +19,9 @@
       </div>
       <div class="card-action">
         <a onclick="history.back()" class="modal-close waves-effect waves-green black-text">No, Cancel Deletion</a>
-        <a href="{{ url_for('delete_job', job_id=job._id) }}" class="waves-effect waves-green black-text">Yes, Delete Order</a>
+        <a href="{{ url_for('delete_job', job_id=job._id) }}" class="waves-effect waves-green btn red">Delete Order</a>
+
+        <!-- <a href="" class="waves-effect waves-green black-text">Yes, Delete Order</a> -->
       </div>
     </div>
   </div>

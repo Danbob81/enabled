@@ -119,7 +119,9 @@
                     <li class="collection-item center-align">
                         <button onclick="history.back()" class="waves-effect waves-green btn">Back</button>
                         <a href="{{ url_for('edit_job', job_id=job._id) }}" class="waves-effect waves-green btn">Edit Order</a>
-                        <a href="{{ url_for('delete_job_confirmation') }}" class="waves-effect waves-green btn red">Delete Order</a>
+                        <a href="{{ url_for('delete_job', job_id=job._id) }}" 
+                                onclick="return confirm('Warning: Deletion of orders can not be reversed. Are you sure you wish to continue?')"
+                                class="waves-effect waves-green btn red">Delete Order</a>
                     </li>
                 </ul>
             </div>

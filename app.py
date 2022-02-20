@@ -113,8 +113,7 @@ def delete_user(employee_id):
     """remove user from db"""
     mongo.db.users.delete_one({"_id": ObjectId(employee_id)})
     flash("User deleted!")
-    employees = list(mongo.db.users.find())
-    return render_template("create_user.html", employees=employees)
+    return redirect(url_for("get_users"))
 
 
 @app.route("/logout")
@@ -129,6 +128,13 @@ def logout():
 def account():
     """return account page"""
     return render_template("account.html")
+
+
+# @app.route("/get_customers")
+# def get_customers():
+#     """retrieve customer record from db"""
+#     customers = list(mongo.db.customers.find())
+#     return render_template("account.html", customers=customers)
 
 
 @app.route("/search_customer", methods=["GET", "POST"])
@@ -332,19 +338,19 @@ def edit_job(job_id):
     return render_template("edit_job.html", job=job)
 
 
-@app.route("/delete_job_confirmation")
-def delete_job_confirmation():
-    """direct user to confirmation"""
-    return render_template("delete_job.html")
+@app.route("/delete_job_confirm/<job_id>")
+def delete_job_confirm(job_id):
+    """confirm deletion"""
+    job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
+    return render_template("delete_job.html", job=job)
 
 
 @app.route("/delete_job/<job_id>")
 def delete_job(job_id):
-    """remove minor works order from db"""
+    """remove job from db"""
     mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
     flash("Minor Works Order Deleted!")
-    job = list(mongo.db.jobs.find())
-    return render_template("account.html", job=job)
+    return redirect(url_for("account"))
 
 
 if __name__ == "__main__":
