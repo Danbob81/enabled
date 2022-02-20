@@ -131,13 +131,6 @@ def account():
     return render_template("account.html")
 
 
-# @app.route("/get_customers")
-# def get_customers():
-#     """retrieve customer record from db"""
-#     customers = list(mongo.db.customers.find())
-#     return render_template("account.html", customers=customers)
-
-
 @app.route("/search_customer", methods=["GET", "POST"])
 def search_customer():
     """query db for customer details"""
@@ -235,6 +228,7 @@ def view_jobs(job_id):
 def add_job(customer_id):
     """create job order record"""
     if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
         job = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
@@ -271,6 +265,8 @@ def add_job(customer_id):
             "team": request.form.get("team"),
             "ref_email": request.form.get("ref_email"),
             "ref_phone": request.form.get("ref_phone"),
+            "is_urgent": is_urgent,
+            "due_date": request.form.get("due_date"),
             "created_by": session["user"],
             "amended_by": session["user"]
         }
@@ -285,7 +281,7 @@ def add_job(customer_id):
 
 @app.route("/edit_job/<job_id>", methods=["GET", "POST"])
 def edit_job(job_id):
-    """edit customer details"""
+    """edit order details"""
     if request.method == "POST":
         submit = {
             "first_name": request.form.get("first_name"),
@@ -334,6 +330,21 @@ def edit_job(job_id):
 
     job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
     return render_template("edit_job.html", job=job)
+
+
+@app.route("/delete_job_confirmation")
+def delete_job_confirmation():
+    """direct user to confirmation"""
+    return render_template("delete_job.html")
+
+
+@app.route("/delete_job/<job_id>")
+def delete_job(job_id):
+    """remove minor works order from db"""
+    mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
+    flash("Minor Works Order Deleted!")
+    job = list(mongo.db.jobs.find())
+    return render_template("account.html", job=job)
 
 
 if __name__ == "__main__":
