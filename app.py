@@ -87,6 +87,14 @@ def users():
     return render_template("create_user.html")
 
 
+@app.route("/search_user", methods=["GET", "POST"])
+def search_user():
+    """query db for customer details"""
+    query = request.form.get("query")
+    employees = list(mongo.db.users.find({"$text": {"$search": query}}))
+    return render_template("create_user.html", employees=employees)
+
+
 @app.route("/edit_user/<employee_id>", methods=["GET", "POST"])
 def edit_user(employee_id):
     """edit user details"""
@@ -338,11 +346,11 @@ def edit_job(job_id):
     return render_template("edit_job.html", job=job)
 
 
-@app.route("/delete_job_confirm/<job_id>")
-def delete_job_confirm(job_id):
-    """confirm deletion"""
-    job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
-    return render_template("delete_job.html", job=job)
+# @app.route("/delete_job_confirm/<job_id>")
+# def delete_job_confirm(job_id):
+#     """confirm deletion"""
+#     job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
+#     return render_template("delete_job.html", job=job)
 
 
 @app.route("/delete_job/<job_id>")

@@ -1,17 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if session.user %}
-  <p class="right-align">You are logged in as: {{session['user']}}</p>
-{% endif %}
-
 <div class="card">
     <div class="card-content">
         <h3 class="center-align">Home Adaptations</h3>
+        {% if session.user %}
+          <p class="right-align">You are logged in as: {{session['user']}}</p>
+        {% endif %}
     </div>
- </div>
-
-<!-- <h3 class="center-align">Edit Customer</h3> -->
+</div>
 
 <div class="row">
     <div class="col s12">
@@ -85,8 +82,7 @@
                                 </div>
                             </div>
                         </li>
-                        </ul>
-            
+                    </ul>
                     <!-- Submit -->
                     <ul class="collection">
                         <li class="collection-item">

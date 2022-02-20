@@ -2,13 +2,12 @@
 
 {% block content %}
 
-{% if session.user %}
-  <p class="right-align">You are logged in as: {{session['user']}}</p>
-{% endif %}
-
 <div class="card">
     <div class="card-content">
         <h3 class="center-align">Minor Works Order</h3>
+        {% if session.user %}
+          <p class="right-align">You are logged in as: {{session['user']}}</p>
+        {% endif %}
     </div>
 </div>
 

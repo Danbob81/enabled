@@ -1,58 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if session.user %}
-  <p class="right-align">You are logged in as: {{session['user']}}</p>
-{% endif %}
+<div class="card">
+  <div class="card-content">
+      <h3 class="center-align">Manage Users</h3>
+      {% if session.user %}
+        <p class="right-align">You are logged in as: {{session['user']}}</p>
+      {% endif %}
+  </div>
+</div>
 
-<h3 class="center-align">Manage Users</h3>
-
-<ul class="collapsible popout">
-    <li>
-      <div class="collapsible-header">Create New User</div>
-      <div class="collapsible-body">
-        <form method="POST" action="{{ url_for('users') }}">
-            <div class="row">
-                <!-- username -->
-                <div class="input-field col s12 l6 offset-l3">
-                    <input id="username" name="username" type="text" minlength="5"
-                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="username">Username</label>
-                </div>
-                <!-- password -->
-                <div class="input-field col s12 l6 offset-l3">
-                    <input id="password" name="password" type="password" minlength="5"
-                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                    <label for="password">Password</label>
-                </div>
-                <!-- name -->
-                <div class="input-field col s12 l6 offset-l3">
-                    <input id="employee_name" name="employee_name" type="text" class="validate" required>
-                    <label for="employee_name">Employee Name</label>
-                </div>
-                <!-- email -->
-                <div class="input-field col s12 l6 offset-l3">
-                    <input id="employee_email" name="employee_email" type="email" class="validate" required>
-                    <label for="employee_email">Employee Email</label>
-                </div>
-                <button type="submit" class="waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Create User</button>
-            </div>
-          </form>
-      </div>
-    </li>
-    <li>
-
-      <div class="collapsible-header">Search Users</div>
+<ul class="collapsible">
+  <li class="active">
+    <div class="collapsible-header">Search Users</div>
+    <div class="collapsible-body">
       <div class="col s12">
-        <form action="" method="POST" class="col s12">
+        <form action="{{ url_for('search_user') }}" method="POST" class="col s12">
           <div class="row valign-wrapper center-align">
             <div class="input-field col s12 m8">
                 <i class="fas fa-search prefix black-text"></i>
                 <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                <label for="query"></label>
+                <label for="query">Enter: Employee name</label>
             </div>
             <div class="col s12 m4">
-                <a href="" class="btn text-shadow">Reset</a>
+                <a href="{{ url_for('get_users') }}" class="btn text-shadow">Reset</a>
                 <button type="submit" class="btn text-shadow">
                     <i class="fas fa-search left"></i> Search
                 </button>
@@ -60,71 +31,63 @@
           </div>
         </form>
       </div>
-      <div class="collapsible-body">
+    </div>
+  </li>
+  <li>
+    <div class="collapsible-header">Create New User</div>
+    <div class="collapsible-body">
+      <form method="POST" action="{{ url_for('users') }}">
+          <div class="row">
+              <!-- username -->
+              <div class="input-field col s12 l6 offset-l3">
+                  <input id="username" name="username" type="text" minlength="5"
+                      maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                  <label for="username">Username</label>
+              </div>
+              <!-- password -->
+              <div class="input-field col s12 l6 offset-l3">
+                  <input id="password" name="password" type="password" minlength="5"
+                      maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                  <label for="password">Password</label>
+              </div>
+              <!-- name -->
+              <div class="input-field col s12 l6 offset-l3">
+                  <input id="employee_name" name="employee_name" type="text" class="validate" required>
+                  <label for="employee_name">Employee Name</label>
+              </div>
+              <!-- email -->
+              <div class="input-field col s12 l6 offset-l3">
+                  <input id="employee_email" name="employee_email" type="email" class="validate" required>
+                  <label for="employee_email">Employee Email</label>
+              </div>
+              <button type="submit" class="waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Create User</button>
+          </div>
+        </form>
+    </div>
+  </li>
+</ul>
+<ul class="collapsible">
+    <li class="active">
+        <div class="collapsible-header">Results</div>
+        <div class="collapsible-body">
           <ul class="collection">
             {% for employee in employees %}
               <li class="collection-item">
-                <div>Name: {{ employee.employee_name }} <a href="{{ url_for('edit_user', employee_id=employee._id) }}" 
-                                                          class="secondary-content waves-effect waves-green btn green accent-4">Edit User</a>
+                <div>Name: {{ employee.employee_name }} 
                   <br> Email: {{ employee.employee_email }}
-                  {% if employee.employee_name|lower == 'admin'|lower %}
-                    <br> Username: {{ employee.username }}
-                  {% else %}
-                    <br> Username: {{ employee.username }} <a href="{{ url_for('delete_user', employee_id=employee._id) }}" 
-                                                              class="secondary-content modal-trigger waves-effect waves-green btn red accent-4">Delete User</a>
-                  {% endif %}
+                  <br> Username: {{ employee.username }} 
                   <br> Password: (hidden)
+                </div>
+                <div class="col s12 l6 left-align">
+                  <a href="{{ url_for('edit_user', employee_id=employee._id) }}" 
+                            class="waves-effect waves-green">Edit User</a>
                 </div>
               </li>
             {% endfor %}
           </ul>
-      </div>
-
+        </div>
     </li>
-  </ul>
+</ul>
 
-<!-- Delete user modal -->
-<div id="deleteUser" class="modal">
-  <div class="modal-content center-align">
-    <h4 class="center-align">Confirm Deletion</h4>
-    <p class="center-align">Warning: Deletion of users can not be reversed. <br>Do you wish to continue?</p>
-    <a href="#!" class="modal-close waves-effect waves-green btn  red accent-4">No, Cancel Deletion</a>
-      <a href="" class="waves-effect waves-green btn green accent-4">Yes, Delete User</a>
-  </div>
-</div>
-
-<!-- Edit user modal -->
-<!-- <div id="editUser" class="modal">
-  <div class="modal-content">
-    <h4 class="center-align">Edit User</h4>
-    <form method="POST" action="">
-      <div class="row"> -->
-          <!-- username -->
-          <!-- <div class="input-field col s12 l6 offset-l3">
-              <input id="username" name="username" type="text" minlength="5"
-                  maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-              <label for="username">Edit Name</label>
-          </div> -->
-          <!-- password -->
-          <!-- <div class="input-field col s12 l6 offset-l3">
-              <input id="password" name="password" type="password" minlength="5"
-                  maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-              <label for="password">Edit Password</label>
-          </div> -->
-          <!-- name -->
-          <!-- <div class="input-field col s12 l6 offset-l3">
-              <input id="employee_name" name="employee_name" type="text" class="validate" required>
-              <label for="employee_name">Edit Employee Name</label>
-          </div> -->
-          <!-- email -->
-          <!-- <div class="input-field col s12 l6 offset-l3">
-              <input id="employee_email" name="employee_email" type="email" class="validate" required>
-              <label for="employee_email">Edit Employee Email</label>
-          </div>
-          <div><button type="submit" class="waves-effect waves-green btn-flat col s12 l6 offset-l3">Save Changes</button></div>
-      </div>
-    </form>
-  </div> -->
-<!-- </div> -->
 
 {% endblock %}
