@@ -1,45 +1,70 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if session.user %}
-  <p class="right-align">You are logged in as: {{session['user']}}</p>
-{% endif %}
+<div class="card">
+    <div class="card-content">
+        <h3 class="center-align">Manage Users</h3>
+        {% if session.user %}
+            <p class="right-align">You are logged in as: {{session['user']}}</p>
+        {% endif %}
+    </div>
+</div>
 
-<h3 class="center-align">Edit User</h3>
-
-<div class="center-align"></div>
-  <form method="POST" action="{{ url_for('edit_user', employee_id=employee._id) }}">
-      <div class="row">
-          <!-- username -->
-          <div class="input-field col s12 l6 offset-l3">
-              <input id="username" name="username" type="text" minlength="5"
-                  maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" value="{{ employee.username }}" class="validate">
-              <label for="username">Username</label>
-          </div>
-          <!-- password -->
-          <!-- <div class="input-field col s12 l6 offset-l3">
-              <input id="password" name="password" type="password" minlength="5"
-                  maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" value="" class="">
-              <label for="password">Password</label>
-          </div> -->
-          <!-- name -->
-          <div class="input-field col s12 l6 offset-l3">
-              <input id="employee_name" name="employee_name" type="text" value="{{ employee.employee_name }}" class="validate">
-              <label for="employee_name">Employee Name</label>
-          </div>
-          <!-- email -->
-          <div class="input-field col s12 l6 offset-l3">
-              <input id="employee_email" name="employee_email" type="email" value="{{ employee.employee_email }}" class="validate">
-              <label for="employee_email">Employee Email</label>
-          </div>
-          <div class="row">
-            <div class="col s12 center-align">
-                <a href="{{ url_for('get_users') }}" class="waves-effect waves-green btn red accent-4">Cancel Changes</a>
-                <button type="submit" class="waves-effect waves-green btn green accent-4">Confirm Edit</button>
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <form method="POST" action="{{ url_for('edit_user', employee_id=employee._id) }}">
+                    <ul class="collection with-header">
+                        <li class="collection-header center-align"><h4>Edit User</h4></li>
+                        <li class="collection-item">
+                            <div class="row">
+                                <!-- username -->
+                                <div class="input-field col s12 l6 offset-l3">
+                                    <input id="username" name="username" type="text" minlength="5"
+                                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" value="{{ employee.username }}" class="validate">
+                                    <label for="username">Username</label>
+                                </div>
+                                <!-- password -->
+                                <!-- <div class="input-field col s12 l6 offset-l3">
+                                    <input id="password" name="password" type="password" minlength="5"
+                                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" value="" class="">
+                                    <label for="password">Password</label>
+                                </div> -->
+                                <!-- name -->
+                                <div class="input-field col s12 l6 offset-l3">
+                                    <input id="employee_name" name="employee_name" type="text" value="{{ employee.employee_name }}" class="validate">
+                                    <label for="employee_name">Employee Name</label>
+                                </div>
+                                <!-- email -->
+                                <div class="input-field col s12 l6 offset-l3">
+                                    <input id="employee_email" name="employee_email" type="email" value="{{ employee.employee_email }}" class="validate">
+                                    <label for="employee_email">Employee Email</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Submit -->
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <a href="{{ url_for('get_users') }}" class="waves-effect waves-green btn">Cancel Changes</a>
+                                    <button type="submit" class="waves-effect waves-green btn">Confirm Edit</button>
+                                    {% if employee.employee_name|lower == 'admin'|lower %}
+                                    {% else %}
+                                    <a href="{{ url_for('delete_user', employee_id=employee._id) }}" 
+                                                onclick="return confirm('Warning: Deletion of users can not be reversed. Are you sure you wish to continue?')"
+                                                class="waves-effect waves-green btn">Delete User</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
             </div>
-          </div>
-      </div>
-    </form>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
