@@ -16,6 +16,22 @@
         <div class="card">
             <div class="card-content">
                 <ul class="collection with-header">
+                    <li class="collection-header"><h5>Priority</h5></li>
+                    <li class="collection-item">
+                        <div class="col s12 l6">
+                            {% if job.is_urgent == "on" %}
+                                <p><i class="fas fa-exclamation-circle red-text tooltipped"
+                                data-position="right" data-tooltip="URGENT!"></i> Urgent</p>
+                            {% else %}
+                                <p>Non-urgent</p>
+                            {% endif %}
+                        </div>
+                        <div class="col s12 l6 right-align">
+                            <p>Due Date: {{ job.due_date }}</p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="collection with-header">
                     <li class="collection-header"><h5>Customer Details</h5></li>
                     <li class="collection-item">
                         <div class="col s12 l6 left-align">
@@ -24,80 +40,120 @@
                                     {{ job.postcode }} <br> Property Tenure: {{ job.tenure }}</p> <br>
                             <p>Phone: {{ job.phone }} <br> Email: {{ job.email }}</p> <br>
                         </div>
-                        <div class="col s12 l6 right-align">
-                            Record created by user: {{ job.created_by }} <br>
-                            Record last amended by user: {{ job.amended_by }}
-                        </div>
                     </li>
                 </ul>
                 <ul class="collection with-header">
                     <li class="collection-header"><h5>Type of Adaptation</h5></li>
                     <li class="collection-item">
                         <div class="col s12 l6">
-                            <p>Key safe: {{ job.keysafe }}</p> <br>
+                            {% if job.keysafe =="on" %}
+                                Keysafe | 
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Location: {{ job.keysafe_text }}</p> <br>
+                            {% if job.keysafe_text %}
+                                <p>Location: {{ job.keysafe_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Internal Grab Rail: {{ job.int_grab }}</p> <br>
+                            {% if job.int_grab =="on" %}
+                                Internal Grab Rail
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.int_grab_text }}</p> <br>
+                            {% if job.int_grab_text %}
+                                <p>Information: {{ job.int_grab_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>External Grab Rail: {{ job.ext_grab }}</p> <br>
+                            {% if job.ext_grab =="on" %}
+                                External Grab Rail
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.ext_grab_text }}</p> <br>
-                        </div> <br>
-                        <div class="col s12 l6">
-                            <p>Drop Arm Rail: {{ job.drop_rail }}</p> <br>
+                            {% if job.ext_grab_text %}
+                                <p>Information: {{ job.ext_grab_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.drop_rail_text }}</p> <br>
-                        </div> <br>
-                        <div class="col s12 l6">
-                            <p>Newel Rail: {{ job.newel }}</p> <br>
+                            {% if job.drop_rail =="on" %}
+                                Drop Arm Rail
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.newel_text }}</p> <br>
+                            {% if job.drop_rail_text %}
+                                <p>Information: {{ job.drop_rail_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Second Stair Rail: {{ job.stair_rail }}</p> <br>
+                            {% if job.newel =="on" %}
+                                Newel Rail
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.stair_rail_text }}</p> <br>
+                            {% if job.newel_text %}
+                                <p>Information: {{ job.newel_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>External Handrail: {{ job.handrail }}</p> <br>
+                            {% if job.stair_rail =="on" %}
+                                Second Stair Rail
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information:{{ job.handrail_text }}</p> <br>
+                            {% if job.stair_rail_text %}
+                                <p>Information: {{ job.stair_rail_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Half Step: {{ job.step }}</p> <br>
+                            {% if job.handrail =="on" %}
+                                External Handrail
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.step_text }}</p> <br>
+                            {% if job.handrail_text %}
+                                <p>Information: {{ job.handrail_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Access Ramp:{{ job.ramp }}</p> <br>
+                            {% if job.step =="on" %}
+                                Half Step
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.ramp_text }}</p> <br>
+                            {% if job.step_text %}
+                                <p>Information: {{ job.step_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Over Bath Shower: {{ job.shower }}</p> <br>
+                            {% if job.ramp =="on" %}
+                                Access Ramp
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.shower_text }}</p> <br>
+                            {% if job.ramp_text %}
+                                <p>Information: {{ job.ramp_text }}</p>
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Other Adapatation (not listed above): {{ job.other }}</p> <br>
+                            {% if job.shower =="on" %}
+                                Over Bath Shower
+                            {% endif %}
                         </div>
                         <div class="col s12 l6">
-                            <p>Information: {{ job.other_text }}</p> <br>
+                            {% if job.shower_text %}
+                                <p>Information: {{ job.shower_text }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="col s12 l6">
+                            {% if job.other =="on" %}
+                                Other Adaptation
+                            {% endif %}
+                        </div>
+                        <div class="col s12 l6">
+                            {% if job.other_text %}
+                                <p>Information: {{ job.other_text }}</p>
+                            {% endif %}
                         </div>
                     </li>
                 </ul>
@@ -115,12 +171,17 @@
                     </li>
                 </ul>
                 <ul class="collection">
+                    <li class="collection-item right-align">
+                        <div class="col s12">
+                            <p>Record created by user: {{ job.created_by }} <br>
+                               Record last amended by user: {{ job.amended_by }}
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="collection">
                     <li class="collection-item center-align">
                         <button onclick="history.back()" class="waves-effect waves-green btn">Back</button>
-                        <a href="{{ url_for('edit_job', job_id=job._id) }}" class="waves-effect waves-green btn">Edit Order</a>
-                        <a href="{{ url_for('delete_job', job_id=job._id) }}" 
-                                onclick="return confirm('Warning: Deletion of orders can not be reversed. Are you sure you wish to continue?')"
-                                class="waves-effect waves-green btn red">Delete Order</a>
                     </li>
                 </ul>
             </div>

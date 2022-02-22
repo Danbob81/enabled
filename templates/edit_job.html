@@ -16,53 +16,54 @@
     <div class="col s12">
         <div class="card">
             <div class="card-content">
-                <h5 class="center-align">Edit Minor Works Order</h5>
-            </div>
-            <div class="card-content">
                 <form method="POST" action="{{ url_for('edit_job', job_id=job._id) }}">
-                    <!-- Customer -->
                     <ul class="collection with-header">
+                        <li class="collection-header center-align"><h4>Edit Minor Works Order</h4></li>
                         <li class="collection-header"><h5>Customer Details</h5></li>
                         <li class="collection-item">
-                            <!-- Name -->
-                            <div class="input-field col s12 l6">
-                                <input id="first_name" name="first_name" type="text" value="{{ job.first_name }}" class="validate center-align" required>
-                                <label for="first_name">First Name</label>
+                            <div class="row">
+                                <!-- Name -->
+                                <div class="input-field col s12 l6">
+                                    <input id="first_name" name="first_name" type="text" value="{{ job.first_name }}" class="validate center-align" required>
+                                    <label for="first_name">First Name</label>
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <input id="last_name" name="last_name" type="text" value="{{ job.last_name }}" class="validate center-align" required>
+                                    <label for="last_name">Last Name</label>
+                                </div>
                             </div>
-                            <div class="input-field col s12 l6">
-                                <input id="last_name" name="last_name" type="text" value="{{ job.last_name }}" class="validate center-align" required>
-                                <label for="last_name">Last Name</label>
-                            </div>
-                            <!-- Address -->
-                            <div class="input-field col s12 l6">
-                                <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" value="{{ job.address_street }}" class="validate center-align" required>
-                                <label for="address_street">Address</label>
-                                <input placeholder="Town/City" id="address_city" name="address_city" type="text" value="{{ job.address_city }}" class="validate center-align" required>
-                                <label for="address_city"></label>
-                                <input placeholder="County" id="address_county" name="address_county" type="text" value="{{ job.address_county }}" class="validate center-align" required>
-                                <label for="address_county"></label>
-                                <input placeholder="Postcode" id="postcode" name="postcode" type="text" value="{{ job.postcode }}" class="validate center-align" required>
-                                <label for="postcode"></label>
-                            </div>
-                            <div class="input-field col s12 l6">
-                                <select id="tenure" name="tenure" class="validate" required>
-                                <!-- <option  value="" selected></option> -->
-                                <option value="" disabled selected>Select</option>
-                                <option value="Owner Occupied">Owner Occupied</option>
-                                <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
-                                <option value="Council">Council</option>
-                                </select>
-                                <label for="tenure">Property Tenure</label>
-                            </div>
-                            <!-- Phone -->
-                            <div class="input-field col s12 l6">
-                                <input id="phone" name="phone" type="text" value="{{ job.phone }}" class="validate center-align" required>
-                                <label for="phone">Phone</label>
-                            </div>
-                            <!-- Email -->
-                            <div class="input-field col s12 l6">
-                                <input id="email" name="email" type="text" value="{{ job.email }}" class="validate center-align" required>
-                                <label for="email">Email</label>
+                            <div class="row">
+                                <!-- Address -->
+                                <div class="input-field col s12 l6">
+                                    <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" value="{{ job.address_street }}" class="validate center-align" required>
+                                    <label for="address_street">Address</label>
+                                    <input placeholder="Town/City" id="address_city" name="address_city" type="text" value="{{ job.address_city }}" class="validate center-align" required>
+                                    <label for="address_city"></label>
+                                    <input placeholder="County" id="address_county" name="address_county" type="text" value="{{ job.address_county }}" class="validate center-align" required>
+                                    <label for="address_county"></label>
+                                    <input placeholder="Postcode" id="postcode" name="postcode" type="text" value="{{ job.postcode }}" class="validate center-align" required>
+                                    <label for="postcode"></label>
+                                </div>
+                                <div class="input-field col s12 l6">
+                                    <select id="tenure" name="tenure" class="validate" required>
+                                    <!-- <option  value="" selected></option> -->
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Owner Occupied">Owner Occupied</option>
+                                    <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+                                    <option value="Council">Council</option>
+                                    </select>
+                                    <label for="tenure">Property Tenure</label>
+                                </div>
+                                <!-- Phone -->
+                                <div class="input-field col s12 l6">
+                                    <input id="phone" name="phone" type="text" value="{{ job.phone }}" class="validate center-align" required>
+                                    <label for="phone">Phone</label>
+                                </div>
+                                <!-- Email -->
+                                <div class="input-field col s12 l6">
+                                    <input id="email" name="email" type="text" value="{{ job.email }}" class="validate center-align" required>
+                                    <label for="email">Email</label>
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -304,13 +305,40 @@
                             </div>
                         </li>
                     </ul>
+                    <!-- Priority -->
+                    <ul class="collection">
+                        <li class="collection-item">
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <div class="switch">
+                                        <p></p><i class="fas fa-exclamation-circle prefix teal-text text-darken-3"></i> Indicate if order is urgent:</p>
+                                        <label for="is_urgent">
+                                          <input type="checkbox" id="is_urgent" name="is_urgent">
+                                          <span class="lever"></span>
+                                          URGENT
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12" method="POST" action="">
+                                    <i class="fas fa-calendar-alt prefix teal-text text-darken-3"></i>
+                                    <input id="due_date" name="due_date" type="text" class="datepicker validate" required>
+                                    <label for="due_date">Due Date</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                     <!-- Submit -->
                     <ul class="collection">
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s12 center-align">
-                                    <button onclick="history.back()" class="waves-effect waves-green btn red accent-4">Cancel</button>
-                                    <button type="submit" class="waves-effect waves-green btn green accent-4">Submit</button>
+                                    <button onclick="history.back()" class="waves-effect waves-green btn">Cancel Edit</button>
+                                    <button type="submit" class="waves-effect waves-green btn">Submit</button>
+                                    <a href="{{ url_for('delete_job', job_id=job._id) }}" 
+                                        onclick="return confirm('Warning: Deletion of orders can not be reversed. Are you sure you wish to continue?')"
+                                        class="waves-effect waves-green btn red">Delete Order</a>
                                 </div>
                             </div>
                         </li>

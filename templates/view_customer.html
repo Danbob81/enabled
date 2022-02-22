@@ -2,10 +2,6 @@
 
 {% block content %}
 
-<!-- {% if session.user %}
-  <p class="right-align">You are logged in as: {{session['user']}}</p>
-{% endif %} -->
-
 <div class="card">
     <div class="card-content">
         <h3 class="center-align">Home Adaptations</h3>
@@ -19,8 +15,7 @@
     <li class="active">
         <div class="collapsible-header"><h5>Customer Details</h5></div>
         <div class="collapsible-body">
-            <ul class="collection with-header">
-                <!-- <li class="collection-header"><h5>Customer Details</h5></li> -->
+            <ul class="collection">
                 <li class="collection-item">
                     <div class="col s12 l6 left-align">
                         Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
@@ -30,10 +25,6 @@
                                 {{ customer.postcode }} <br> Property Tenure: {{ customer.tenure }} <br>
                         Phone: {{ customer.phone }} <br> Email: {{ customer.email }} <br> 
                         <br>
-                    </div>
-                    <div class="col s12 l6 left-align">
-                        <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" 
-                                class="waves-effect waves-green">Edit Customer</a>
                     </div>
                 </li>
                 <li class="collection-item">
@@ -48,66 +39,19 @@
     </li>
 </ul>
 
-<!-- <ul class="collapsible">
-    <li class="active">
-        <div class="collapsible-header"><h5>Orders</h5></div>
-        <div class="collapsible-body">
-            <ul class="collection"> -->
-                <!-- <li class="collection-header"></li> -->
-                <!-- <li class="collection-item">
-                    <div class="col s12 l6">
-                        <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
-                            <div class="row valign-wrapper center-align">
-                                <div class="col s12 m4"> -->
-                                    <!-- <a href="{{ url_for('account') }}" class="btn text-shadow">Reset</a> -->
-                                    <!-- <button type="submit" class="">View Minor Works Orders for {{ customer.first_name }} 
-                                            {{ customer.last_name }}</button> -->
-                                <!-- </div> -->
-                                <!-- <div class="input-field col s12 m8"> -->
-                                    <!-- <input type="text" name="query" id="query" value="{{ customer.first_name }} {{ customer.last_name }} {{ customer.address_street }}" class="validate" required>
-                                    <label for="query"></label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    {% if jobs|length >0 %}
-                        <div class="collapsible-body">
-                            {% for job in jobs %}
-                            <ul class="collection">
-                                <li class="collection-item">
-                                <div class="col s12 left-align">
-                                    Name:   {{ job.first_name }} {{ job.last_name }} <br>
-                                    Address: {{ job.address_street }}, {{ job.address_city }}, {{ job.address_county }}, 
-                                            {{ job.postcode }} <br> Property Tenure: {{ job.tenure }} <br>
-                                    Phone: {{ job.phone }} <br> Email: {{ job.email }} <br>
-
-                                    <br>
-                                    Record created by user: {{ job.created_by }} <br>
-                                    Record last amended by user: {{ job.amended_by }}
-                                </div>
-                                <div class="col s12 left-align">
-                                    <a href="{{ url_for('view_jobs', job_id=job._id) }}" class="waves-effect waves-green btn green accent-4">View Order</a>
-                                </div>
-                                </li>
-                            </ul>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </li>
-            </ul>
-        </div>
-    </li>
-</ul> -->
-
         <ul class="collection">
             <li class="collection-item center-align">
-                <button onclick="history.back()" class="waves-effect waves-green">Return</button>
-                <!-- <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" 
-                    class="waves-effect waves-green btn green accent-4">Edit Customer</a> -->
-                <!-- <a href="{{ url_for('add_job', customer_id=customer._id) }}" class="waves-effect waves-green btn green accent-4">
-                    Minor Works Request</a> -->
+                <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
+                    <a href="{{ url_for('account') }}" class="waves-effect waves-green btn">Exit Record <i class="fa-solid fa-xmark"></i></a>
+                    <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" class="waves-effect waves-green btn">Edit Customer <i class="fa-solid fa-pen-to-square"></i></a>
+                    <button type="submit" class="waves-effect waves-green btn">View Minor Works Orders <i class="fa-light fa-list"></i></button>
+                      <input type="text" name="query" id="query" value="{{ customer.first_name }}" class="validate" hidden required>
+                      <input type="text" name="query" id="query" value="{{ customer.last_name }}" class="validate" hidden required>
+                      <input type="text" name="query" id="query" value="{{ customer.address_street }}" class="validate" hidden required>
+                      <input type="text" name="query" id="query" value="{{ customer.postcode }}" class="validate" hidden required>
+                      <label for="query"></label>
+                    <a href="{{ url_for('add_job', customer_id=customer._id) }}" class="waves-effect waves-green btn">Create Minor Works Order <i class="fa-light fa-circle-plus"></i></a>
+                  </form>
             </li>
         </ul>
 

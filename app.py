@@ -54,6 +54,80 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/password_change")
+def password_change():
+    """render login page"""
+    return render_template("change_password.html")
+
+
+@app.route("/change_password/<user_id>", methods=["GET", "POST"])
+def change_password(user_id):
+    """edit user details"""
+    if request.method == "POST":
+        submit = {
+            "password": request.form.get("new_password"),
+        }
+        mongo.db.users.update_one(
+            {"_id": ObjectId(user_id)}, {"$set": submit})
+
+        flash("Password changed!")
+        return render_template("login.html")
+
+    employees = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    return render_template("change_password.html", employees=employees)
+
+
+# @app.route("/change_password/<employee_id>", methods=["GET", "POST"])
+# def change_password(employee_id):
+#     """gives user option to change their password"""
+#     if request.method == "POST":
+#         # check username is in db
+#         existing_user = mongo.db.users.find_one(
+#             {"username": request.form.get("username").lower()})
+
+#         if existing_user:
+#             # check hashed password matches user input
+#             if check_password_hash(
+#                     existing_user["password"], request.form.get("password")):
+#                 session["user"] = request.form.get("username").lower()
+#                 return redirect(url_for(
+#                         "change_password", username=session["user"]))
+#             else:
+#                 # password doesn't match
+#                 flash("Incorrect Password")
+#                 return redirect(url_for('change_password'))
+
+#             # check if new passwords match
+#             new_password = request.form.get("new_password")
+#             confirm_password = request.form.get("confirm_password")
+
+#             if new_password != confirm_password:
+#                 flash("Your passwords don't match, try again")
+#                 return redirect(url_for("change_password"))
+
+#             register_password = {
+#                 "password": generate_password_hash(
+#                             request.form.get("new_password"))
+#             }
+#             mongo.db.users.update_one(
+#                 {"_id": ObjectId(employee_id)}, {"$set": register_password})
+
+#             flash("Password changed!")
+#             employees = list(mongo.db.users.find())
+#             return render_template("login.html", employees=employees)
+
+#     employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
+#     return render_template("change_password.html", employee=employee)
+
+
+@app.route("/logout")
+def logout():
+    """log user out of account"""
+    flash("You have logged out!")
+    session.pop("user")
+    return redirect(url_for('login'))
+
+
 @app.route("/get_users")
 def get_users():
     """retrieve user information from db"""
@@ -122,14 +196,6 @@ def delete_user(employee_id):
     mongo.db.users.delete_one({"_id": ObjectId(employee_id)})
     flash("User deleted!")
     return redirect(url_for("get_users"))
-
-
-@app.route("/logout")
-def logout():
-    """log user out of account"""
-    flash("You have logged out!")
-    session.pop("user")
-    return redirect(url_for('login'))
 
 
 @app.route("/account")
@@ -217,7 +283,7 @@ def edit_customer(customer_id):
 
         flash("Customer Details Successfully Updated!")
         customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
-        return render_template("view_customer.html", customer=customer)
+        return render_template("edit_customer.html", customer=customer)
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("edit_customer.html", customer=customer)
@@ -228,7 +294,7 @@ def search_jobs():
     """query db for job details"""
     query = request.form.get("query")
     jobs = list(mongo.db.jobs.find({"$text": {"$search": query}}))
-    return render_template("account.html", jobs=jobs)
+    return render_template("view_mwos.html", jobs=jobs)
 
 
 @app.route("/view_jobs/<job_id>")
@@ -236,6 +302,62 @@ def view_jobs(job_id):
     """retrieve job information from db"""
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     return render_template("view_job.html", job=job)
+
+
+@app.route("/edit_job/<job_id>", methods=["GET", "POST"])
+def edit_job(job_id):
+    """edit order details"""
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        submit = {
+            "first_name": request.form.get("first_name"),
+            "last_name": request.form.get("last_name"),
+            "address_street": request.form.get("address_street"),
+            "address_city": request.form.get("address_city"),
+            "address_county": request.form.get("address_county"),
+            "postcode": request.form.get("postcode"),
+            "tenure": request.form.get("tenure"),
+            "phone": request.form.get("phone"),
+            "email": request.form.get("email"),
+            "keysafe": request.form.get("keysafe"),
+            "keysafe_text": request.form.get("keysafe_text"),
+            "int_grab": request.form.get("int_grab"),
+            "int_grab_text": request.form.get("int_grab_text"),
+            "ext_grab": request.form.get("ext_grab"),
+            "ext_grab_text": request.form.get("ext_grab_text"),
+            "drop_rail": request.form.get("drop_rail"),
+            "drop_rail_text": request.form.get("drop_rail_text"),
+            "newel": request.form.get("newel"),
+            "newel_text": request.form.get("newel_text"),
+            "stair_rail": request.form.get("stair_rail"),
+            "stair_rail_text": request.form.get("stair_rail_text"),
+            "handrail": request.form.get("handrail"),
+            "handrail_text": request.form.get("handrail_text"),
+            "step": request.form.get("step"),
+            "step_text": request.form.get("step_text"),
+            "ramp": request.form.get("ramp"),
+            "ramp_text": request.form.get("ramp_text"),
+            "shower": request.form.get("shower"),
+            "shower_text": request.form.get("shower_text"),
+            "other": request.form.get("other"),
+            "other_text": request.form.get("other_text"),
+            "ref_name": request.form.get("ref_name"),
+            "team": request.form.get("team"),
+            "ref_email": request.form.get("ref_email"),
+            "ref_phone": request.form.get("ref_phone"),
+            "is_urgent": is_urgent,
+            "due_date": request.form.get("due_date"),
+            "amended_by": session["user"]
+        }
+        mongo.db.jobs.update_one(
+            {"_id": ObjectId(job_id)}, {"$set": submit})
+
+        flash("Minor Works Order Successfully Updated!")
+        job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+        return render_template("account.html", job=job)
+
+    job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
+    return render_template("edit_job.html", job=job)
 
 
 @app.route("/add_job/<customer_id>", methods=["GET", "POST"])
@@ -287,63 +409,10 @@ def add_job(customer_id):
         mongo.db.jobs.insert_one(job)
         flash("Minor Works Order Created")
         customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
-        return render_template("account.html", customer=customer)
+        return render_template("view_customer.html", customer=customer)
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("create_job.html", customer=customer)
-
-
-@app.route("/edit_job/<job_id>", methods=["GET", "POST"])
-def edit_job(job_id):
-    """edit order details"""
-    if request.method == "POST":
-        submit = {
-            "first_name": request.form.get("first_name"),
-            "last_name": request.form.get("last_name"),
-            "address_street": request.form.get("address_street"),
-            "address_city": request.form.get("address_city"),
-            "address_county": request.form.get("address_county"),
-            "postcode": request.form.get("postcode"),
-            "tenure": request.form.get("tenure"),
-            "phone": request.form.get("phone"),
-            "email": request.form.get("email"),
-            "keysafe": request.form.get("keysafe"),
-            "keysafe_text": request.form.get("keysafe_text"),
-            "int_grab": request.form.get("int_grab"),
-            "int_grab_text": request.form.get("int_grab_text"),
-            "ext_grab": request.form.get("ext_grab"),
-            "ext_grab_text": request.form.get("ext_grab_text"),
-            "drop_rail": request.form.get("drop_rail"),
-            "drop_rail_text": request.form.get("drop_rail_text"),
-            "newel": request.form.get("newel"),
-            "newel_text": request.form.get("newel_text"),
-            "stair_rail": request.form.get("stair_rail"),
-            "stair_rail_text": request.form.get("stair_rail_text"),
-            "handrail": request.form.get("handrail"),
-            "handrail_text": request.form.get("handrail_text"),
-            "step": request.form.get("step"),
-            "step_text": request.form.get("step_text"),
-            "ramp": request.form.get("ramp"),
-            "ramp_text": request.form.get("ramp_text"),
-            "shower": request.form.get("shower"),
-            "shower_text": request.form.get("shower_text"),
-            "other": request.form.get("other"),
-            "other_text": request.form.get("other_text"),
-            "ref_name": request.form.get("ref_name"),
-            "team": request.form.get("team"),
-            "ref_email": request.form.get("ref_email"),
-            "ref_phone": request.form.get("ref_phone"),
-            "amended_by": session["user"]
-        }
-        mongo.db.jobs.update_one(
-            {"_id": ObjectId(job_id)}, {"$set": submit})
-
-        flash("Minor Works Order Successfully Updated!")
-        job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
-        return render_template("account.html", job=job)
-
-    job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
-    return render_template("edit_job.html", job=job)
 
 
 # @app.route("/delete_job_confirm/<job_id>")
