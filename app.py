@@ -330,11 +330,11 @@ def edit_job(job_id):
         mongo.db.jobs.update_one(
             {"_id": ObjectId(job_id)}, {"$set": submit})
 
-        flash("Minor Works Order Successfully Updated!")
+        flash("Minor Works Order Successfully Updated!", "success")
         job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
         return render_template("edit_job.html", job=job)
 
-    job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     return render_template("edit_job.html", job=job)
 
 

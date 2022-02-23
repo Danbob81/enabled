@@ -25,7 +25,7 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if session.user %}
-                        <li><a href="{{ url_for('account') }}" class="text-shadow">Account</a></li>
+                        <li><a href="{{ url_for('account') }}" class="text-shadow">Adaptations</a></li>
                         <li><a class="dropdown-trigger text-shadow" href="#!" data-target="dropdown1">Options <i class="fa-solid fa-caret-down"></i></a></li>
                     {% endif %}
                 </ul>
@@ -36,7 +36,7 @@
         <!-- Sidenav -->
         {% if session.user %}
             <ul id="slide-out" class="sidenav blue lighten-2">
-                <li><a href="{{ url_for('account') }}" class="white-text text-shadow">Account</a></li>
+                <li><a href="{{ url_for('account') }}" class="white-text text-shadow">Adaptations</a></li>
                 <li><a class="dropdown-trigger white-text text-shadow" href="#!" data-target="dropdown_side">Options <i class="fa-solid fa-caret-down"></i></a></li>
             </ul>
         {% endif %}

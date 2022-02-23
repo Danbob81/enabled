@@ -42,13 +42,22 @@
                                     <input placeholder="Postcode" id="postcode" name="postcode" type="text" value="{{ job.postcode }}" class="validate center-align" required>
                                     <label for="postcode"></label>
                                 </div>
+                                <!-- Tenure -->
                                 <div class="input-field col s12 l6">
                                     <select id="tenure" name="tenure" class="validate" required>
-                                    <!-- <option  value="" selected></option> -->
-                                    <option value="" disabled selected>Select</option>
-                                    <option value="Owner Occupied">Owner Occupied</option>
-                                    <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
-                                    <option value="Council">Council</option>
+                                    {% if job.tenure == 'Owner Occupied'%}
+                                        <option value="Owner Occupied" selected>Owner Occupied</option>
+                                        <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+                                        <option value="Council">Council</option>
+                                    {% elif job.tenure == 'Private Rent/Housing Association' %}
+                                        <option value="Owner Occupied">Owner Occupied</option>
+                                        <option value="Private Rent/Housing Association" selected>Private Rent/Housing Association</option>
+                                        <option value="Council">Council</option>
+                                    {% elif job.tenure == 'Council' %}
+                                        <option value="Owner Occupied">Owner Occupied</option>
+                                        <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+                                        <option value="Council" selected>Council</option>
+                                    {% endif %}
                                     </select>
                                     <label for="tenure">Property Tenure</label>
                                 </div>
@@ -73,15 +82,20 @@
                                 <div class="col s12">
                                     <h6>Key safe</h6>
                                     <label for="keysafe">
+                                    {% if job.keysafe == "on" %}
+                                        <input type="checkbox" id="keysafe" name="keysafe" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="keysafe" name="keysafe" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
                                 <p class="">Location:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="keysafe_text" name="keysafe_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="keysafe_text" name="keysafe_text" class="validate" value="{{ job.keysafe_text }}"></input>
                                     <label for="keysafe_text">Enter information here</label>
                                 </div>
                             </div>
@@ -91,8 +105,13 @@
                                 <div class="col s12">
                                     <h6>Internal Grab Rail</h6>
                                     <label for="int_grab">
+                                    {% if job.int_grab == "on" %}
+                                        <input type="checkbox" id="int_grab" name="int_grab" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="int_grab" name="int_grab" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
@@ -100,7 +119,7 @@
                                             Direction (vertical, horizontal, diagonal):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="int_grab_text" name="int_grab_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="int_grab_text" name="int_grab_text" class="validate" value="{{ job.int_grab_text }}"></input>
                                     <label for="int_grab_text">Enter information here</label>
                                 </div>
                             </div>
@@ -110,8 +129,13 @@
                                 <div class="col s12">
                                     <h6>External Grab Rail</h6>
                                     <label for="ext_grab">
+                                    {% if job.ext_grab == "on" %}
+                                        <input type="checkbox" id="ext_grab" name="ext_grab" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="ext_grab" name="ext_grab" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
@@ -119,7 +143,7 @@
                                              Direction (vertical, horizontal, diagonal):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="ext_grab_text" name="ext_grab_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="ext_grab_text" name="ext_grab_text" class="validate" value="{{ job.ext_grab_text }}"></input>
                                     <label for="ext_grab_text">Enter information here</label>
                                 </div>
                             </div>
@@ -129,8 +153,13 @@
                                 <div class="col s12">
                                     <h6>Drop Arm Rail</h6>
                                     <label for="drop_rail">
+                                    {% if job.drop_rail == "on" %}
+                                        <input type="checkbox" id="drop_rail" name="drop_rail" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="drop_rail" name="drop_rail" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
@@ -138,7 +167,7 @@
                                             Precise Location (inc. measurements) | Wall or floor mounted:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="drop_rail_text" name="drop_rail_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="drop_rail_text" name="drop_rail_text" class="validate" value="{{ job.drop_rail_text }}"></input>
                                     <label for="drop_rail_text">Enter information here</label>
                                 </div>
                             </div>
@@ -148,8 +177,13 @@
                                 <div class="col s12">
                                     <h6>Newel Rail</h6>
                                     <label for="newel">
+                                    {% if job.newel == "on" %}
+                                        <input type="checkbox" id="newel" name="newel" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="newel" name="newel" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
@@ -157,7 +191,7 @@
                                             Direction (left side ascending/right side ascending):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="newel_text" name="newel_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="newel_text" name="newel_text" class="validate" value="{{ job.newel_text }}"></input>
                                     <label for="newel_text">Enter information here</label>
                                 </div>
                             </div>
@@ -167,8 +201,13 @@
                                 <div class="col s12">
                                     <h6>Second Stair Rail</h6>
                                     <label for="stair_rail">
+                                    {% if job.stair_rail == "on" %}
+                                        <input type="checkbox" id="stair_rail" name="stair_rail" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="stair_rail" name="stair_rail" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
@@ -176,7 +215,7 @@
                                             Description (straight, left/right turn, no. of sections):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="stair_rail_text" name="stair_rail_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="stair_rail_text" name="stair_rail_text" class="validate" value="{{ job.stair_rail_text }}"></input>
                                     <label for="stair_rail_text">Enter information here</label>
                                 </div>
                             </div>
@@ -186,15 +225,20 @@
                                 <div class="col s12">
                                     <h6>External Handrail</h6>
                                     <label for="handrail">
+                                    {% if job.handrail == "on" %}
+                                        <input type="checkbox" id="handrail" name="handrail" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="handrail" name="handrail" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
                                 <p class="">Quantity | Precise Location (inc. measurements, length of handrail etc.):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="handrail_text" name="handrail_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="handrail_text" name="handrail_text" class="validate" value="{{ job.handrail_text }}"></input>
                                     <label for="handrail_text">Enter information here</label>
                                 </div>
                             </div>
@@ -204,8 +248,13 @@
                                 <div class="col s12">
                                     <h6>Half Step</h6>
                                     <label for="step">
+                                    {% if job.step == "on" %}
+                                        <input type="checkbox" id="step" name="step" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="step" name="step" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
@@ -213,7 +262,7 @@
                                             Height of step (3", 4", 5", 6") | Tread length (12", 18", 24") | Step width:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="step_text" name="step_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="step_text" name="step_text" class="validate" value="{{ job.step_text }}"></input>
                                     <label for="step_text">Enter information here</label>
                                 </div>
                             </div>
@@ -223,15 +272,20 @@
                                 <div class="col s12">
                                     <h6>Access Ramp</h6>
                                     <label for="ramp">
+                                    {% if job.step == "on" %}
+                                        <input type="checkbox" id="ramp" name="ramp" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="ramp" name="ramp" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
                                 <p class="">Location (front/side/rear) | Description of current access:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="ramp_text" name="ramp_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="ramp_text" name="ramp_text" class="validate" value="{{ job.ramp_text }}"></input>
                                     <label for="ramp_text">Enter information here</label>
                                 </div>
                             </div>
@@ -241,15 +295,20 @@
                                 <div class="col s12">
                                     <h6>Over Bath Shower</h6>
                                     <label for="shower">
+                                    {% if job.step == "on" %}
+                                        <input type="checkbox" id="shower" name="shower" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="shower" name="shower" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
                                 <p class="">Details of any specific requirements (e.g. tiling):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="shower_text" name="shower_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="shower_text" name="shower_text" class="validate" value="{{ job.shower_text }}"></input>
                                     <label for="shower_text">Enter information here</label>
                                 </div>
                             </div>
@@ -259,15 +318,20 @@
                                 <div class="col s12">
                                     <h6>Other Adapatation (not listed above)</h6>
                                     <label for="other">
+                                    {% if job.other == "on" %}
+                                        <input type="checkbox" id="other" name="other" checked="checked" />
+                                        <span>Select</span>
+                                    {% else %}
                                         <input type="checkbox" id="other" name="other" />
                                         <span>Select</span>
+                                    {% endif %}
                                     </label>
                                 </div>
                                 <br>
                                 <p class="">Provide information of any other adaptations, not listed above, here:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="other_text" name="other_text" class="materialize-textarea"></textarea>
+                                    <input type="text" id="other_text" name="other_text" class="validate" value="{{ job.other_text }}"></input>
                                     <label for="other_text">Enter information here</label>
                                 </div>
                             </div>
@@ -279,25 +343,25 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="ref_name" name="ref_name" type="text" class="validate" required>
+                                    <input id="ref_name" name="ref_name" type="text" class="validate" value="{{ job.ref_name }}" required>
                                     <label for="ref_name">Name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="team" name="team" type="text" class="validate" required>
+                                    <input id="team" name="team" type="text" class="validate" value="{{ job.team }}" required>
                                     <label for="team">Team/Job Title</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="ref_email" name="ref_email" type="email" class="validate" required>
+                                    <input id="ref_email" name="ref_email" type="email" class="validate" value="{{ job.ref_email }}" required>
                                     <label for="ref_email">Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="ref_phone" name="ref_phone" type="tel" class="validate" required>
+                                    <input id="ref_phone" name="ref_phone" type="tel" class="validate" value="{{ job.ref_phone }}" required>
                                     <label for="ref_phone">Phone number</label>
                                 </div>
                             </div>
@@ -311,7 +375,7 @@
                                     <div class="switch">
                                         <p></p><i class="fas fa-exclamation-circle prefix teal-text text-darken-3"></i> Indicate if order is urgent:</p>
                                         <label for="is_urgent">
-                                          <input type="checkbox" id="is_urgent" name="is_urgent">
+                                          <input type="checkbox" id="is_urgent" name="is_urgent" value="{{ job.is_urgent }}">
                                           <span class="lever"></span>
                                           URGENT
                                         </label>
@@ -321,7 +385,7 @@
                             <div class="row">
                                 <div class="input-field col s12" method="POST" action="">
                                     <i class="fas fa-calendar-alt prefix teal-text text-darken-3"></i>
-                                    <input id="due_date" name="due_date" type="text" class="datepicker validate" required>
+                                    <input id="due_date" name="due_date" type="text" class="datepicker validate" value="{{ job.due_date }}" required>
                                     <label for="due_date">Due Date</label>
                                 </div>
                             </div>
@@ -336,7 +400,7 @@
                                 </div>
                                 <div class="col s12 center-align">
                                     <br>
-                                    <a onclick="history.back()" class="waves-effect waves-green ">Exit Edit</a>
+                                    <a href="" class="waves-effect waves-green ">Exit Edit</a>
                                      | 
                                     <a href="#delete-job" class="waves-effect waves-green modal-trigger">Delete Order</a>
                                 </div>
