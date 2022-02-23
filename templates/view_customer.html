@@ -41,17 +41,24 @@
 
         <ul class="collection">
             <li class="collection-item center-align">
-                <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
-                    <a href="{{ url_for('account') }}" class="waves-effect waves-green btn">Exit Record <i class="fa-solid fa-xmark"></i></a>
-                    <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" class="waves-effect waves-green btn">Edit Customer <i class="fa-solid fa-pen-to-square"></i></a>
-                    <button type="submit" class="waves-effect waves-green btn">View Minor Works Orders <i class="fa-light fa-list"></i></button>
-                      <input type="text" name="query" id="query" value="{{ customer.first_name }}" class="validate" hidden required>
-                      <input type="text" name="query" id="query" value="{{ customer.last_name }}" class="validate" hidden required>
-                      <input type="text" name="query" id="query" value="{{ customer.address_street }}" class="validate" hidden required>
-                      <input type="text" name="query" id="query" value="{{ customer.postcode }}" class="validate" hidden required>
-                      <label for="query"></label>
-                    <a href="{{ url_for('add_job', customer_id=customer._id) }}" class="waves-effect waves-green btn">Create Minor Works Order <i class="fa-light fa-circle-plus"></i></a>
-                  </form>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
+                            <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" class="btn">Edit Customer <i class="fa-solid fa-pen-to-square"></i></a>
+                            <button type="submit" class="btn">View Minor Works Orders <i class="fa-solid fa-list"></i></button>
+                            <input type="text" name="query" id="query" value="{{ customer.first_name }}" class="validate" hidden required>
+                            <input type="text" name="query" id="query" value="{{ customer.last_name }}" class="validate" hidden required>
+                            <input type="text" name="query" id="query" value="{{ customer.address_street }}" class="validate" hidden required>
+                            <input type="text" name="query" id="query" value="{{ customer.postcode }}" class="validate" hidden required>
+                            <label for="query"></label>
+                            <a href="{{ url_for('add_job', customer_id=customer._id) }}" class="btn">Create Minor Works Order <i class="fa-solid fa-circle-plus"></i></a>
+                        </form>
+                    </div>
+                    <div class="col s12 center-align">
+                        <br>
+                        <a href="{{ url_for('account') }}" class="">Exit Record <i class="fa-solid fa-circle-xmark"></i></a>
+                    </div>
+                </div>
             </li>
         </ul>
 

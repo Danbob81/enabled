@@ -15,55 +15,106 @@
   <li>
     <div class="collapsible-header">Search Customer</div>
       <div class="collapsible-body">
-        <div class="col s12">
-          <form action="{{ url_for('search_customer') }}" method="POST" class="col s12">
-            <div class="row valign-wrapper center-align">
-              <div class="input-field col s12 m8">
-                  <!-- <i class="fas fa-search prefix black-text"></i> -->
-                  <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                  <label for="query"></label>
-                  <small>Enter: Name, First Line of Address or Postcode</small>
-              </div>
-              <div class="col s12 m4">
-                  <a href="{{ url_for('account') }}" class="btn text-shadow">Reset</a>
-                  <button type="submit" class="btn text-shadow">
+        <div class="row">
+          <div class="col s12">
+            <form action="{{ url_for('search_customer') }}" method="POST" class="col s12">
+                <div class="input-field col s12 m8">
+                    <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                    <label for="query"></label>
+                    <small>Enter: Name, First Line of Address or Postcode</small>
+                </div>
+                <div class="col s12 m4 center-align">
+                  <button type="submit" class="btn-rounded">
                       <i class="fas fa-search left"></i> Search
                   </button>
-              </div>
-            </div>
-          </form>
+                </div>
+                <div class="col s12 m4 center-align">
+                  <br>
+                  <a href="{{ url_for('account') }}" class="">Reset</a>
+                </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </li>
-  <!-- <li>
-    <div class="collapsible-header">Search Jobs</div>
-      <div class="collapsible-body">
-        <div class="col s12">
-          <form action="{{ url_for('search_jobs', customer_id=customer_id) }}" method="POST" class="col s12">
-            <div class="row valign-wrapper center-align">
-              <div class="input-field col s12 m8">
-                  <i class="fas fa-search prefix black-text"></i>
-                  <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                  <label for="query">Enter: Name, Address (first line) or Postcode</label>
-              </div>
-              <div class="col s12 m4">
-                  <a href="{{ url_for('account') }}" class="btn text-shadow">Reset</a>
-                  <button type="submit" class="btn text-shadow">
-                      <i class="fas fa-search left"></i> Search
-                  </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-  </li> -->
+
   <li>
-    <div class="collapsible-header">Create</div>
+    <div class="collapsible-header">Create New Customer</div>
     <div class="collapsible-body">
-      <div class="collection">
-        <a href="#add_customer" class="collection-item modal-trigger">New Customer Record</a>
-      </div>
+      <form method="POST" action="{{ url_for('add_customer') }}">
+        <div class="row">
+          <!-- Name -->
+          <div class="input-field col s12 l6">
+              <input id="first_name" name="first_name" type="text" class="validate center-align" required>
+              <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <input id="last_name" name="last_name" type="text" class="validate center-align" required>
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <!-- DOB -->
+          <div class="input-field col s12 l6">
+              <input id="dob" name="dob" type="text" class="datepicker validate center-align" required>
+              <label for="dob">Date of Birth</label>
+          </div>
+          <!-- Gender -->
+          <div class="input-field col s12 l6">
+            <select id="gender" name="gender" class="validate" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+            <label for="gender">Gender</label>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Address -->
+          <div class="input-field col s12 l6">
+              <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" class="validate center-align" required>
+              <label for="address_street">Address</label>
+              <input placeholder="Town/City" id="address_city" name="address_city" type="text" class="validate center-align" required>
+              <label for="address_city"></label>
+              <input placeholder="County" id="address_county" name="address_county" type="text" class="validate center-align" required>
+              <label for="address_county"></label>
+              <input placeholder="Postcode" id="postcode" name="postcode" type="text" class="validate center-align" required>
+            <label for="postcode"></label>
+          </div>
+          <div class="input-field col s12 l6">
+            <select id="tenure" name="tenure" class="validate" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Owner Occupied">Owner Occupied</option>
+              <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+              <option value="Council">Council</option>
+            </select>
+            <label for="tenure">Property Tenure</label>
+          </div>
+          <!-- Phone -->
+          <div class="input-field col s12 l6">
+            <input id="phone" name="phone" type="text" class="validate center-align" required>
+              <label for="phone">Phone</label>
+          </div>
+          <!-- Email -->
+          <div class="input-field col s12 l6">
+            <input id="email" name="email" type="text" class="validate center-align" required>
+              <label for="email">Email</label>
+          </div>
+        </div>
+        <!-- Submit -->
+        <div class="row">
+          <div class="col s12 center-align">
+            <button type="submit" class="btn-rounded col s12 m6 offset-m3 center-align">Submit</button>
+          </div>
+          <div class="col s12 center-align">
+            <br>
+            <a href="{{ url_for('account') }}" class="">Cancel</a>
+          </div>
+        </div>
+      </form>
     </div>
   </li>
 </ul>
@@ -80,18 +131,13 @@
             <li class="collection-item">
               <div class="col s12 l6 left-align">
                   Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
-                  <!-- DOB: {{ customer.dob }} <br> -->
-                  <!-- Gender: {{ customer.gender }}<br> -->
                   Address: {{ customer.address_street }}, {{ customer.address_city }}, {{ customer.address_county }}, 
                           {{ customer.postcode }} <br> 
-                          <!-- Property Tenure: {{ customer.tenure }} <br> -->
-                  <!-- Phone: {{ customer.phone }} <br> Email: {{ customer.email }} <br>  -->
                   <br>
-                  <!-- Record created by user: {{ customer.created_by }} <br> -->
-                  <!-- Record last amended by user: {{ customer.amended_by }} -->
               </div>
               <div class="col s12 l6 left-align">
-                <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="waves-effect waves-green btn-white">View Customer Details</a>
+                <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="waves-effect waves-green">
+                        View Customer Details <i class="fa-solid fa-binoculars"></i></a>
               </div>
             </li>
           </ul>
@@ -108,76 +154,7 @@
   <div class="modal-content">
     <h4 class="center-align">Create New Customer</h4>
   </div>
-  <form method="POST" action="{{ url_for('add_customer') }}">
-    <div class="row">
-      <!-- Name -->
-      <div class="input-field col s12 l6">
-          <input id="first_name" name="first_name" type="text" class="validate center-align" required>
-          <label for="first_name">First Name</label>
-      </div>
-      <div class="input-field col s12 l6">
-        <input id="last_name" name="last_name" type="text" class="validate center-align" required>
-        <label for="last_name">Last Name</label>
-      </div>
-    </div>
-    <div class="row">
-      <!-- DOB -->
-      <div class="input-field col s12 l6">
-          <input id="dob" name="dob" type="text" class="datepicker validate center-align" required>
-          <label for="dob">Date of Birth</label>
-      </div>
-      <!-- Gender -->
-      <div class="input-field col s12 l6">
-        <select id="gender" name="gender" class="validate" required>
-          <option value="" disabled selected>Select</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-          <option value="Prefer not to say">Prefer not to say</option>
-        </select>
-        <label for="gender">Gender</label>
-      </div>
-    </div>
-    <div class="row">
-      <!-- Address -->
-      <div class="input-field col s12 l6">
-          <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" class="validate center-align" required>
-          <label for="address_street">Address</label>
-          <input placeholder="Town/City" id="address_city" name="address_city" type="text" class="validate center-align" required>
-          <label for="address_city"></label>
-          <input placeholder="County" id="address_county" name="address_county" type="text" class="validate center-align" required>
-          <label for="address_county"></label>
-          <input placeholder="Postcode" id="postcode" name="postcode" type="text" class="validate center-align" required>
-        <label for="postcode"></label>
-      </div>
-      <div class="input-field col s12 l6">
-        <select id="tenure" name="tenure" class="validate" required>
-          <option value="" disabled selected>Select</option>
-          <option value="Owner Occupied">Owner Occupied</option>
-          <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
-          <option value="Council">Council</option>
-        </select>
-        <label for="tenure">Property Tenure</label>
-      </div>
-      <!-- Phone -->
-      <div class="input-field col s12 l6">
-        <input id="phone" name="phone" type="text" class="validate center-align" required>
-          <label for="phone">Phone</label>
-      </div>
-      <!-- Email -->
-      <div class="input-field col s12 l6">
-        <input id="email" name="email" type="text" class="validate center-align" required>
-          <label for="email">Email</label>
-      </div>
-    </div>
-    <!-- Submit -->
-    <div class="row">
-      <div class="col s12 center-align">
-        <a href="#!" class="modal-close btn-white">Cancel</a>
-        <button type="submit" class="btn-white">Submit</button>
-      </div>
-    </div>
-  </form>
+  
 </div>
 
 {% endblock %}

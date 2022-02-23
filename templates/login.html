@@ -5,7 +5,7 @@
   <!-- Welcome Banner -->
   <div class="row">
     <div class="col s12 l8 offset-l2">
-      <div class="card">
+      <div class="card card-login">
         {% if session.user %}
           <div class="">
             <div class="card-panel blue lighten-2 center-align">
@@ -30,7 +30,7 @@
           <div class="">
             <a href="#modal_login" class="modal-trigger">
               <div class="card-panel light-blue darken-3 center-align">
-                <h4 class="white-text">Log In</h4>
+                <h4 class="white-text text-shadow">Log In</h4>
               </div>
             </a>
           </div>
@@ -56,7 +56,7 @@
                     maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                 <label for="password">Password</label>
             </div>
-            <button type="submit" class="btn-white col s12 l6 offset-l3 center-align">Login</button>
+            <button type="submit" class="btn-rounded col s12 m6 offset-m3 center-align">Login</button>
         </div>
       </form>
     </div>
