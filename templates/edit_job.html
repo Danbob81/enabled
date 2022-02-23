@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if session.user %}
-  <p class="right-align">You are logged in as: {{session['user']}}</p>
-{% endif %}
-
-
 <div class="card">
     <div class="card-content">
         <h3 class="center-align">Home Adaptations</h3>
+        {% if session.user %}
+          <p class="right-align">You are logged in as: {{session['user']}}</p>
+        {% endif %}
     </div>
- </div>
+</div>
 
 <div class="row">
     <div class="col s12">
@@ -334,11 +332,13 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s12 center-align">
-                                    <button onclick="history.back()" class="waves-effect waves-green btn">Cancel Edit</button>
-                                    <button type="submit" class="waves-effect waves-green btn">Submit</button>
-                                    <a href="{{ url_for('delete_job', job_id=job._id) }}" 
-                                        onclick="return confirm('Warning: Deletion of orders can not be reversed. Are you sure you wish to continue?')"
-                                        class="waves-effect waves-green btn red">Delete Order</a>
+                                    <button type="submit" class="waves-effect waves-green btn-rounded col s12 l6 offset-l3 center-align">Confirm Edit</button>
+                                </div>
+                                <div class="col s12 center-align">
+                                    <br>
+                                    <a onclick="history.back()" class="waves-effect waves-green ">Exit Edit</a>
+                                     | 
+                                    <a href="#delete-job" class="waves-effect waves-green modal-trigger">Delete Order</a>
                                 </div>
                             </div>
                         </li>
@@ -349,5 +349,21 @@
     </div>
 </div>
 
+<!--Delete User Modal-->
+<div id="delete-job" class="modal">
+    <div class="modal-content center-align">
+        <h4 class=""><i class="fa-solid fa-triangle-exclamation red-text"></i> Delete Minor Works Order? <i class="fa-solid fa-triangle-exclamation red-text"></i></h4>
+        <p>Warning: Deletion of orders can not be reversed. Are you sure you wish to continue?</p>
+    </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            <a href="{{ url_for('delete_job', job_id=job._id) }}" class="col s12 m6 offset-m3 center-align">Delete</a>
+        </div>
+        <div class="col s12 center-align">
+            <br>
+            <a href="#!" class="modal-close">Cancel</a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

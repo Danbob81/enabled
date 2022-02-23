@@ -54,70 +54,47 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/password_change")
-def password_change():
-    """render login page"""
-    return render_template("change_password.html")
-
-
-@app.route("/change_password/<user_id>", methods=["GET", "POST"])
-def change_password(user_id):
-    """edit user details"""
+@app.route("/change_password/<employee_id>", methods=["GET", "POST"])
+def change_password(employee_id):
+    """gives user option to change their password"""
     if request.method == "POST":
-        submit = {
-            "password": request.form.get("new_password"),
-        }
-        mongo.db.users.update_one(
-            {"_id": ObjectId(user_id)}, {"$set": submit})
+        # check username is in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
-        flash("Password changed!")
-        return render_template("login.html")
+        if existing_user:
+            # check hashed password matches user input
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for(
+                        "change_password", username=session["user"]))
+            else:
+                # password doesn't match
+                flash("Incorrect Password")
+                return redirect(url_for('change_password'))
 
-    employees = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-    return render_template("change_password.html", employees=employees)
+            # check if new passwords match
+            new_password = request.form.get("new_password")
+            confirm_password = request.form.get("confirm_password")
 
+            if new_password != confirm_password:
+                flash("Your passwords don't match, try again")
+                return redirect(url_for("change_password"))
 
-# @app.route("/change_password/<employee_id>", methods=["GET", "POST"])
-# def change_password(employee_id):
-#     """gives user option to change their password"""
-#     if request.method == "POST":
-#         # check username is in db
-#         existing_user = mongo.db.users.find_one(
-#             {"username": request.form.get("username").lower()})
+            register_password = {
+                "password": generate_password_hash(
+                            request.form.get("new_password"))
+            }
+            mongo.db.users.update_one(
+                {"_id": ObjectId(employee_id)}, {"$set": register_password})
 
-#         if existing_user:
-#             # check hashed password matches user input
-#             if check_password_hash(
-#                     existing_user["password"], request.form.get("password")):
-#                 session["user"] = request.form.get("username").lower()
-#                 return redirect(url_for(
-#                         "change_password", username=session["user"]))
-#             else:
-#                 # password doesn't match
-#                 flash("Incorrect Password")
-#                 return redirect(url_for('change_password'))
+            flash("Password changed!")
+            employees = list(mongo.db.users.find())
+            return render_template("login.html", employees=employees)
 
-#             # check if new passwords match
-#             new_password = request.form.get("new_password")
-#             confirm_password = request.form.get("confirm_password")
-
-#             if new_password != confirm_password:
-#                 flash("Your passwords don't match, try again")
-#                 return redirect(url_for("change_password"))
-
-#             register_password = {
-#                 "password": generate_password_hash(
-#                             request.form.get("new_password"))
-#             }
-#             mongo.db.users.update_one(
-#                 {"_id": ObjectId(employee_id)}, {"$set": register_password})
-
-#             flash("Password changed!")
-#             employees = list(mongo.db.users.find())
-#             return render_template("login.html", employees=employees)
-
-#     employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
-#     return render_template("change_password.html", employee=employee)
+    employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
+    return render_template("change_password.html", employee=employee)
 
 
 @app.route("/logout")
@@ -204,13 +181,6 @@ def account():
     return render_template("account.html")
 
 
-# @app.route("/get_customers")
-# def get_customers():
-#     """retrieve customer record from db"""
-#     customers = list(mongo.db.customers.find())
-#     return render_template("account.html", customers=customers)
-
-
 @app.route("/search_customer", methods=["GET", "POST"])
 def search_customer():
     """query db for customer details"""
@@ -289,6 +259,14 @@ def edit_customer(customer_id):
     return render_template("edit_customer.html", customer=customer)
 
 
+@app.route("/delete_customer/<customer_id>")
+def delete_customer(customer_id):
+    """remove job from db"""
+    mongo.db.customers.delete_one({"_id": ObjectId(customer_id)})
+    flash("Customer Account Deleted!")
+    return redirect(url_for("account"))
+
+
 @app.route("/search_jobs", methods=["GET", "POST"])
 def search_jobs():
     """query db for job details"""
@@ -354,7 +332,7 @@ def edit_job(job_id):
 
         flash("Minor Works Order Successfully Updated!")
         job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
-        return render_template("account.html", job=job)
+        return render_template("edit_job.html", job=job)
 
     job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
     return render_template("edit_job.html", job=job)
@@ -409,17 +387,10 @@ def add_job(customer_id):
         mongo.db.jobs.insert_one(job)
         flash("Minor Works Order Created")
         customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
-        return render_template("view_customer.html", customer=customer)
+        return render_template("create_job.html", customer=customer)
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("create_job.html", customer=customer)
-
-
-# @app.route("/delete_job_confirm/<job_id>")
-# def delete_job_confirm(job_id):
-#     """confirm deletion"""
-#     job = mongo.db.job.find_one({"_id": ObjectId(job_id)})
-#     return render_template("delete_job.html", job=job)
 
 
 @app.route("/delete_job/<job_id>")
@@ -427,7 +398,7 @@ def delete_job(job_id):
     """remove job from db"""
     mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
     flash("Minor Works Order Deleted!")
-    return redirect(url_for("account"))
+    return redirect(url_for("edit_job.html"))
 
 
 if __name__ == "__main__":
