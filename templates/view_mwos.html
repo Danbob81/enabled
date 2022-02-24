@@ -66,9 +66,9 @@
                             </div>
                             <div class="col s12 right-align">
                                 {% if job.is_comp == "on" %}
-                                    Completed: {{ job.comp_date }}
+                                <i class="fa-solid fa-circle-check"></i> Completed: {{ job.comp_date }}
                                 {% else %}
-                                    Due Date: {{ job.due_date }}
+                                <i class="fa-solid fa-calendar-day"></i> Due Date: {{ job.due_date }}
                                 {% endif %}
                                 {% if job.is_urgent == "on" %}
                                     <i class="fas fa-exclamation-circle red-text tooltipped"

@@ -19,6 +19,7 @@
           <div class="col s12">
             <form action="{{ url_for('search_customer') }}" method="POST" class="col s12">
                 <div class="input-field col s12 m8">
+                  <i class="fa-solid fa-user"></i>
                     <input type="text" name="query" id="query" minlength="3" class="validate" required>
                     <label for="query"></label>
                     <small>Enter: Name, First Line of Address or Postcode</small>
@@ -47,18 +48,18 @@
           <!-- Name -->
           <div class="input-field col s12 l6">
               <input id="first_name" name="first_name" type="text" class="validate center-align" required>
-              <label for="first_name">First Name</label>
+              <label for="first_name"><i class="fa-solid fa-user"></i> First Name</label>
           </div>
           <div class="input-field col s12 l6">
             <input id="last_name" name="last_name" type="text" class="validate center-align" required>
-            <label for="last_name">Last Name</label>
+            <label for="last_name"><i class="fa-solid fa-user"></i> Last Name</label>
           </div>
         </div>
         <div class="row">
           <!-- DOB -->
           <div class="input-field col s12 l6">
               <input id="dob" name="dob" type="text" class="datepicker validate center-align" required>
-              <label for="dob">Date of Birth</label>
+              <label for="dob"><i class="fa-solid fa-calendar-days"></i> Date of Birth</label>
           </div>
           <!-- Gender -->
           <div class="input-field col s12 l6">
@@ -69,14 +70,14 @@
               <option value="Other">Other</option>
               <option value="Prefer not to say">Prefer not to say</option>
             </select>
-            <label for="gender">Gender</label>
+            <label for="gender"><i class="fa-solid fa-person"></i><i class="fa-solid fa-person-dress"></i> Gender</label>
           </div>
         </div>
         <div class="row">
           <!-- Address -->
           <div class="input-field col s12 l6">
               <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" class="validate center-align" required>
-              <label for="address_street">Address</label>
+              <label for="address_street"><i class="fa-solid fa-house"></i> Address</label>
               <input placeholder="Town/City" id="address_city" name="address_city" type="text" class="validate center-align" required>
               <label for="address_city"></label>
               <input placeholder="County" id="address_county" name="address_county" type="text" class="validate center-align" required>
@@ -91,17 +92,17 @@
               <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
               <option value="Council">Council</option>
             </select>
-            <label for="tenure">Property Tenure</label>
+            <label for="tenure"><i class="fa-solid fa-house"></i>  Property Tenure</label>
           </div>
           <!-- Phone -->
           <div class="input-field col s12 l6">
             <input id="phone" name="phone" type="text" class="validate center-align" required>
-              <label for="phone">Phone</label>
+              <label for="phone"><i class="fa-solid fa-phone"></i> Phone</label>
           </div>
           <!-- Email -->
           <div class="input-field col s12 l6">
             <input id="email" name="email" type="text" class="validate center-align" required>
-              <label for="email">Email</label>
+              <label for="email"><i class="fa-solid fa-at"></i> Email</label>
           </div>
         </div>
         <!-- Submit -->
