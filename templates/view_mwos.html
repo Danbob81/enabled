@@ -23,6 +23,7 @@
                     <ul class="collection">
                         <li class="collection-item">
                             <div class="col s12 left-align">
+                                | 
                                 {% if job.keysafe =="on" %}
                                     Keysafe | 
                                 {% endif %}
@@ -59,7 +60,11 @@
                                 <br>
                             </div>
                             <div class="col s12 right-align">
-                                Due Date: {{ job.due_date }}
+                                {% if job.is_comp == "on" %}
+                                    Completed: {{ job.comp_date }}
+                                {% else %}
+                                    Due Date: {{ job.due_date }}
+                                {% endif %}
                                 {% if job.is_urgent == "on" %}
                                     <i class="fas fa-exclamation-circle red-text tooltipped"
                                     data-position="right" data-tooltip="URGENT!"></i>
@@ -67,8 +72,11 @@
                             </div>
                                 <div class="col s12 left-align">
                                 <a href="{{ url_for('view_jobs', job_id=job._id) }}" class="waves-effect waves-green">View Order</a>
-                                 | 
-                                <a href="{{ url_for('edit_job', job_id=job._id) }}" class="waves-effect waves-green">Edit Order</a>
+                                {% if job.is_comp == "on" %}
+                                {% else %}
+                                | 
+                                    <a href="{{ url_for('edit_job', job_id=job._id) }}" class="waves-effect waves-green">Edit Order</a>
+                                {% endif %}
                                 <hr>
                             </div>
                         </li>
@@ -79,11 +87,13 @@
     </li>
 </ul>
 
-        <ul class="collection">
-            <li class="collection-item center-align">
-                <button onclick="history.back()" class="waves-effect waves-green btn">Return to Customer Details</button>
-            </li>
-        </ul>
+<ul class="collection">
+    <li class="collection-item center-align">
+        <button onclick="history.back()" class="waves-effect waves-green btn">Return to Customer Details</button>
+    </li>
+</ul>
+
+
 
 
 

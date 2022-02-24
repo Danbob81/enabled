@@ -25,6 +25,19 @@ $(document).ready(function(){
         done: "Select"
       }
     });
+    $('#comp_date').datepicker({
+      format: "dd mmmm yyyy",
+      yearRange: 1,
+      // defaultDate: new Date(),
+      setDefaultDate: true,
+      // minDate: new Date(),
+      maxDate: new Date(),
+      disableWeekends: true,
+      showClearBtn: false,
+      i18n: {
+        done: "Select",
+      }
+    });
     $('select').formSelect();
     $('.collapsible').collapsible();
     $('.tabs').tabs();

@@ -287,6 +287,7 @@ def edit_job(job_id):
     """edit order details"""
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
+        is_comp = "on" if request.form.get("is_comp") else "off"
         submit = {
             "first_name": request.form.get("first_name"),
             "last_name": request.form.get("last_name"),
@@ -325,6 +326,8 @@ def edit_job(job_id):
             "ref_phone": request.form.get("ref_phone"),
             "is_urgent": is_urgent,
             "due_date": request.form.get("due_date"),
+            "is_comp": is_comp,
+            "comp_date": request.form.get("comp_date"),
             "amended_by": session["user"]
         }
         mongo.db.jobs.update_one(

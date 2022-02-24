@@ -15,6 +15,21 @@
     <div class="col s12">
         <div class="card">
             <div class="card-content">
+                <!-- Complete -->
+                {% if job.is_comp == "on" %}
+                    <ul class="collection with-header">
+                        <li class="collection-item">
+                            <div class="col s12 l6 left-align">
+                                <h5>Order Complete</h5>
+                            </div>
+                            <div class="col s12 l6 right-align">
+                                <br>
+                                <p class="right-align">Completion Date: {{ job.comp_date }}</p>
+                            </div>
+                        </li>
+                    </ul>
+                {% endif %}
+                <!-- Priority -->
                 <ul class="collection with-header">
                     <li class="collection-header"><h5>Priority</h5></li>
                     <li class="collection-item">
@@ -31,6 +46,7 @@
                         </div>
                     </li>
                 </ul>
+                <!-- Customer Details -->
                 <ul class="collection with-header">
                     <li class="collection-header"><h5>Customer Details</h5></li>
                     <li class="collection-item">
@@ -42,6 +58,7 @@
                         </div>
                     </li>
                 </ul>
+                <!-- Adaptation -->
                 <ul class="collection with-header">
                     <li class="collection-header"><h5>Type of Adaptation</h5></li>
                     <li class="collection-item">
@@ -157,6 +174,7 @@
                         </div>
                     </li>
                 </ul>
+                <!-- Referrer -->
                 <ul class="collection with-header">
                     <li class="collection-header"><h5>Referrer Details</h5></li>
                     <li class="collection-item">
@@ -170,6 +188,16 @@
                         </div>
                     </li>
                 </ul>
+                <!-- Notes -->
+                <ul class="collection with-header">
+                    <li class="collection-header"><h5>Notes</h5></li>
+                    <li class="collection-item">
+                        <div class="col s12 l6">
+                            <p>{{ job.notes }}</p> <br>
+                        </div>
+                    </li>
+                </ul>
+                <!-- User info -->
                 <ul class="collection">
                     <li class="collection-item right-align">
                         <div class="col s12">
