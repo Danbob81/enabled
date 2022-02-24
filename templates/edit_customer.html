@@ -38,12 +38,27 @@
                                 <!-- Gender -->
                                 <div class="input-field col s12 l6">
                                     <select id="gender" name="gender" class="validate" required>
-                                    <!-- <option  value="" selected></option> -->
-                                    <option  value="" disabled selected>Select</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
-                                    <option value="Prefer not to say">Prefer not to say</option>
+                                    {% if customer.gender == 'Male'%}
+                                        <option value="Male" selected>Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    {% elif customer.gender == 'Female' %}
+                                        <option value="Male">Male</option>
+                                        <option value="Female" selected>Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    {% elif customer.gender == 'Other' %}
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other" selected>Other</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    {% elif customer.gender == 'Prefer not to say' %}
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Prefer not to say" selected>Prefer not to say</option>
+                                    {% endif %}
                                     </select>
                                     <label for="gender">Gender</label>
                                 </div>
@@ -62,11 +77,19 @@
                                 </div>
                                 <div class="input-field col s12 l6">
                                     <select id="tenure" name="tenure" class="validate" required>
-                                    <!-- <option  value="" selected></option> -->
-                                    <option value="" disabled selected>Select</option>
-                                    <option value="Owner Occupied">Owner Occupied</option>
-                                    <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
-                                    <option value="Council">Council</option>
+                                        {% if customer.tenure == 'Owner Occupied'%}
+                                            <option value="Owner Occupied" selected>Owner Occupied</option>
+                                            <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+                                            <option value="Council">Council</option>
+                                        {% elif customer.tenure == 'Private Rent/Housing Association' %}
+                                            <option value="Owner Occupied">Owner Occupied</option>
+                                            <option value="Private Rent/Housing Association" selected>Private Rent/Housing Association</option>
+                                            <option value="Council">Council</option>
+                                        {% elif customer.tenure == 'Council' %}
+                                            <option value="Owner Occupied">Owner Occupied</option>
+                                            <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+                                            <option value="Council" selected>Council</option>
+                                        {% endif %}
                                     </select>
                                     <label for="tenure">Property Tenure</label>
                                 </div>
@@ -88,12 +111,13 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s12 center-align">
-                                    <button type="submit" class="waves-effect waves-green btn-rounded col s12 l6 offset-l3 center-align">Confirm Edit</button>
+                                    <button type="submit" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
+                                    <a href="#delete-customer" class="btn modal-trigger">Delete Customer <i class="fa-solid fa-user-xmark"></i></a>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col s12 center-align">
-                                    <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="waves-effect waves-green">Exit Edit</a>
-                                     | 
-                                     <a href="#delete-customer" class="waves-effect waves-green modal-trigger">Delete Customer</a>
+                                    <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="btn">Return <i class="fa-solid fa-arrow-left"></i></a>
                                 </div>
                             </div>
                         </li>
@@ -107,12 +131,12 @@
 <!--Delete User Modal-->
 <div id="delete-customer" class="modal">
     <div class="modal-content center-align">
-        <h4 class=""><i class="fa-solid fa-triangle-exclamation red-text"></i> Delete Customer Record? <i class="fa-solid fa-triangle-exclamation red-text"></i></h4>
-        <p>Warning: Deletion of Customer Record can not be reversed. Are you sure you wish to continue?</p>
+        <h4 class=""><i class="fa-solid fa-triangle-exclamation red-text"></i> <br>Delete Customer Record?</h4>
+        <p>Warning: Deletion of Customer Record can not be reversed. <br> Are you sure you wish to continue?</p>
     </div>
     <div class="row">
         <div class="col s12 center-align">
-            <a href="{{ url_for('delete_customer', customer_id=customer._id) }}" class="col s12 m6 offset-m3 center-align">Delete</a>
+            <a href="{{ url_for('delete_customer', customer_id=customer._id) }}" class="btn center-align">Delete <i class="fa-solid fa-circle-xmark"></i></a>
         </div>
         <div class="col s12 center-align">
             <br>

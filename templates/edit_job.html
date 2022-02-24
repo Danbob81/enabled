@@ -48,18 +48,18 @@
                                 <!-- Name -->
                                 <div class="input-field col s12 l6">
                                     <input id="first_name" name="first_name" type="text" value="{{ job.first_name }}" class="validate center-align" required>
-                                    <label for="first_name">First Name</label>
+                                    <label for="first_name"><i class="fa-solid fa-user"></i> First Name</label>
                                 </div>
                                 <div class="input-field col s12 l6">
                                     <input id="last_name" name="last_name" type="text" value="{{ job.last_name }}" class="validate center-align" required>
-                                    <label for="last_name">Last Name</label>
+                                    <label for="last_name"><i class="fa-solid fa-user"></i> Last Name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <!-- Address -->
                                 <div class="input-field col s12 l6">
                                     <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" value="{{ job.address_street }}" class="validate center-align" required>
-                                    <label for="address_street">Address</label>
+                                    <label for="address_street"><i class="fa-solid fa-house"></i> Address</label>
                                     <input placeholder="Town/City" id="address_city" name="address_city" type="text" value="{{ job.address_city }}" class="validate center-align" required>
                                     <label for="address_city"></label>
                                     <input placeholder="County" id="address_county" name="address_county" type="text" value="{{ job.address_county }}" class="validate center-align" required>
@@ -84,17 +84,17 @@
                                         <option value="Council" selected>Council</option>
                                     {% endif %}
                                     </select>
-                                    <label for="tenure">Property Tenure</label>
+                                    <label for="tenure"><i class="fa-solid fa-house"></i> Property Tenure</label>
                                 </div>
                                 <!-- Phone -->
                                 <div class="input-field col s12 l6">
                                     <input id="phone" name="phone" type="text" value="{{ job.phone }}" class="validate center-align" required>
-                                    <label for="phone">Phone</label>
+                                    <label for="phone"><i class="fa-solid fa-phone"></i> Phone</label>
                                 </div>
                                 <!-- Email -->
                                 <div class="input-field col s12 l6">
                                     <input id="email" name="email" type="text" value="{{ job.email }}" class="validate center-align" required>
-                                    <label for="email">Email</label>
+                                    <label for="email"><i class="fa-solid fa-at"></i> Email</label>
                                 </div>
                             </div>
                         </li>
@@ -369,25 +369,25 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="ref_name" name="ref_name" type="text" class="validate" value="{{ job.ref_name }}" required>
-                                    <label for="ref_name">Name</label>
+                                    <label for="ref_name"><i class="fa-solid fa-user"></i> Name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="team" name="team" type="text" class="validate" value="{{ job.team }}" required>
-                                    <label for="team">Team/Job Title</label>
+                                    <label for="team"><i class="fa-solid fa-building"></i> Team/Job Title</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="ref_email" name="ref_email" type="email" class="validate" value="{{ job.ref_email }}" required>
-                                    <label for="ref_email">Email</label>
+                                    <label for="ref_email"><i class="fa-solid fa-at"></i> Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="ref_phone" name="ref_phone" type="tel" class="validate" value="{{ job.ref_phone }}" required>
-                                    <label for="ref_phone">Phone number</label>
+                                    <label for="ref_phone"><i class="fa-solid fa-phone"></i> Phone number</label>
                                 </div>
                             </div>
                         </li>
@@ -398,8 +398,8 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="input-field col s12 center-align">
-                                    <p class="left-align">Enter notes here:</p>
-                                    <input id="notes" name="notes" type="text" class="validate" value="" >
+                                    <p class="left-align"><i class="fa-solid fa-comments"></i> Enter notes here:</p>
+                                    <input id="notes" name="notes" type="text" class="validate" value="{{ job.notes }}" >
                                     <label for="notes"></label>
                                 </div>
                             </div>
@@ -435,13 +435,12 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s12 center-align">
-                                    <button type="submit" data-rel="back" class="waves-effect waves-green btn-rounded col s12 l6 offset-l3 center-align">Confirm Edit</button>
+                                    <button type="submit" data-rel="back" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
                                 </div>
                                 <div class="col s12 center-align">
                                     <br>
-                                    <a href="" class="waves-effect waves-green ">Cancel Edit</a>
-                                     | 
-                                    <a href="#delete-job" class="waves-effect waves-green modal-trigger">Delete Order</a>
+                                    <a href="" class="btn">Cancel Edit <i class="fa-solid fa-arrow-left"></i></a>
+                                    <!-- <a href="#delete-job" class="btn modal-trigger">Delete Order <i class="fa-solid fa-trash-can"></i></a> -->
                                 </div>
                             </div>
                         </li>
@@ -453,20 +452,20 @@
 </div>
 
 <!--Delete User Modal-->
-<div id="delete-job" class="modal">
+<!-- <div id="delete-job" class="modal">
     <div class="modal-content center-align">
-        <h4 class=""><i class="fa-solid fa-triangle-exclamation red-text"></i> Delete Minor Works Order? <i class="fa-solid fa-triangle-exclamation red-text"></i></h4>
-        <p>Warning: Deletion of orders can not be reversed. Are you sure you wish to continue?</p>
+        <h4 class=""><i class="fa-solid fa-triangle-exclamation red-text"></i><br>Delete Minor Works Order?</h4>
+        <p>Warning: Deletion of orders can not be reversed.<br>Are you sure you wish to continue?</p>
     </div>
     <div class="row">
         <div class="col s12 center-align">
-            <a href="{{ url_for('delete_job', job_id=job._id) }}" class="col s12 m6 offset-m3 center-align">Delete</a>
+            <a href="" class="btn center-align">Delete <i class="fa-solid fa-circle-xmark"></i></a>
         </div>
         <div class="col s12 center-align">
             <br>
             <a href="#!" class="modal-close">Cancel</a>
         </div>
     </div>
-</div>
+</div> -->
 
 {% endblock %}

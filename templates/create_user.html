@@ -23,7 +23,7 @@
                   <small>Enter: Employee name</small>
               </div>
               <div class="col s12 m4 center-align">
-                  <button type="submit" class="btn-rounded">
+                  <button type="submit" class="btn">
                       <i class="fas fa-search left"></i> Search
                   </button>
               </div>
@@ -64,7 +64,7 @@
                   <label for="employee_email">Employee Email</label>
               </div>
               <div class="col s12 center-align">
-                <button type="submit" class="waves-effect waves-green btn-rounded col s12 l6 offset-l3 center-align">Create User</button>
+                <button type="submit" class="btn center-align">Create User <i class="fa-solid fa-circle-check"></i></button>
               </div>
               <div class="col s12 center-align">
                 <br>
@@ -75,6 +75,7 @@
     </div>
   </li>
 </ul>
+
 <ul class="collapsible">
     <li class="active">
         <div class="collapsible-header">Results</div>
@@ -89,7 +90,7 @@
                 </div>
                 <div class="col s12 l6 left-align">
                   <a href="{{ url_for('edit_user', employee_id=employee._id) }}" 
-                            class="waves-effect waves-green">Edit User <i class="fa-solid fa-pen-to-square"></i></a>
+                            class="btn">Edit User <i class="fa-solid fa-pen-to-square"></i></a>
                 </div>
               </li>
             {% endfor %}

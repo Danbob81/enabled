@@ -328,6 +328,7 @@ def edit_job(job_id):
             "due_date": request.form.get("due_date"),
             "is_comp": is_comp,
             "comp_date": request.form.get("comp_date"),
+            "notes": request.form.get("notes"),
             "amended_by": session["user"]
         }
         mongo.db.jobs.update_one(
@@ -401,7 +402,8 @@ def delete_job(job_id):
     """remove job from db"""
     mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
     flash("Minor Works Order Deleted!")
-    return redirect(url_for("edit_job.html"))
+    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
+    return redirect(url_for("edit_job", job=job))
 
 
 if __name__ == "__main__":

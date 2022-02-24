@@ -14,15 +14,15 @@ body {
 .btn-rounded {
     border-radius: 50px;
     background: #e0e0e0;
-    box-shadow:  20px 20px 60px #bebebe,
+    box-shadow:  10px 10px 60px #bebebe,
                  -20px -20px 60px #ffffff;
 }
 
-.btn-red {
-    border-radius: 50px;
-    background: #830101;
-    box-shadow:  20px 20px 60px #bebebe,
-                 -20px -20px 60px #ffffff;
+.btn {
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #0b5b53;
+    background: #fff;
 }
 
 main {
