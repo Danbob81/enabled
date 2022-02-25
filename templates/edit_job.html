@@ -436,10 +436,14 @@
                             <div class="row">
                                 <div class="col s12 center-align">
                                     <button type="submit" data-rel="back" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
+                                    <input type="text" name="query" id="query" value="{{ job.first_name }}" class="validate" hidden required>
+                                    <input type="text" name="query" id="query" value="{{ job.last_name }}" class="validate" hidden required>
+                                    <input type="text" name="query" id="query" value="{{ job.address_street }}" class="validate" hidden required>
+                                    <input type="text" name="query" id="query" value="{{ job.postcode }}" class="validate" hidden required>
+                                    <label for="query"></label>
                                 </div>
                                 <div class="col s12 center-align">
                                     <br>
-                                    <!-- <button onclick="history.back()" class="btn center-align">Return <i class="fa-solid fa-arrow-left"></i></button> -->
                                     <a onclick="history.back()" class="btn">Return <i class="fa-solid fa-arrow-left"></i></a>
                                     <!-- <a href="#delete-job" class="btn modal-trigger">Delete Order <i class="fa-solid fa-trash-can"></i></a> -->
                                 </div>

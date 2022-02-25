@@ -253,7 +253,7 @@ def edit_customer(customer_id):
 
         flash("Customer Details Successfully Updated!")
         customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
-        return render_template("edit_customer.html", customer=customer)
+        return render_template("view_customer.html", customer=customer)
 
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
     return render_template("edit_customer.html", customer=customer)
@@ -335,8 +335,9 @@ def edit_job(job_id):
             {"_id": ObjectId(job_id)}, {"$set": submit})
 
         flash("Minor Works Order Successfully Updated!", "success")
-        job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
-        return render_template("edit_job.html", job=job)
+        query = request.form.get("query")
+        jobs = list(mongo.db.jobs.find({"$text": {"$search": query}}))
+        return render_template("view_mwos.html", jobs=jobs)
 
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
     return render_template("edit_job.html", job=job)
