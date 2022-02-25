@@ -11,6 +11,7 @@
   </div>
 </div>
 
+<!-- Search -->
 <ul class="collapsible ">
   <li>
     <div class="collapsible-header">Search Customer</div>
@@ -40,6 +41,7 @@
     </div>
   </li>
 
+  <!-- Create Customer -->
   <li>
     <div class="collapsible-header">Create New Customer</div>
     <div class="collapsible-body">
@@ -120,6 +122,7 @@
   </li>
 </ul>
 
+<!-- Results -->
 <ul class="collapsible ">
   <li class="active">
     <div class="collapsible-header">Results</div>
@@ -128,7 +131,6 @@
       <div class="collapsible-body">
         {% for customer in customers %}
           <ul class="collection">
-
             <li class="collection-item">
               <div class="col s12 l6 left-align">
                   Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
@@ -145,17 +147,14 @@
         {% endfor %}
       </div>
     {% endif %}
-    
   </li>
 </ul>
-
 
 <!-- Create customer modal -->
 <div id="add_customer" class="modal">
   <div class="modal-content">
     <h4 class="center-align">Create New Customer</h4>
   </div>
-  
 </div>
 
 {% endblock %}

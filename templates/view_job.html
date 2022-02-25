@@ -11,10 +11,10 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="card">
-            <div class="card-content">
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12">
                 <!-- Complete -->
                 {% if job.is_comp == "on" %}
                     <ul class="collection with-header">
@@ -62,116 +62,127 @@
                 <ul class="collection with-header">
                     <li class="collection-header"><h5>Type of Adaptation</h5></li>
                     <li class="collection-item">
-                        <div class="col s12 l6">
-                            {% if job.keysafe =="on" %}
-                                Keysafe
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.keysafe_text %}
-                                <p>Location: {{ job.keysafe_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.int_grab =="on" %}
-                                Internal Grab Rail
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.int_grab_text %}
-                                <p>Information: {{ job.int_grab_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.ext_grab =="on" %}
-                                External Grab Rail
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.ext_grab_text %}
-                                <p>Information: {{ job.ext_grab_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.drop_rail =="on" %}
-                                Drop Arm Rail
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.drop_rail_text %}
-                                <p>Information: {{ job.drop_rail_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.newel =="on" %}
-                                Newel Rail
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.newel_text %}
-                                <p>Information: {{ job.newel_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.stair_rail =="on" %}
-                                Second Stair Rail
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.stair_rail_text %}
-                                <p>Information: {{ job.stair_rail_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.handrail =="on" %}
-                                External Handrail
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.handrail_text %}
-                                <p>Information: {{ job.handrail_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.step =="on" %}
-                                Half Step
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.step_text %}
-                                <p>Information: {{ job.step_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.ramp =="on" %}
-                                Access Ramp
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.ramp_text %}
-                                <p>Information: {{ job.ramp_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.shower =="on" %}
-                                Over Bath Shower
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.shower_text %}
-                                <p>Information: {{ job.shower_text }}</p>
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.other =="on" %}
-                                Other Adaptation
-                            {% endif %}
-                        </div>
-                        <div class="col s12 l6">
-                            {% if job.other_text %}
-                                <p>Information: {{ job.other_text }}</p>
-                            {% endif %}
-                        </div>
+                        {% if job.keysafe =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Keysafe <br>
+                                    Location: 
+                                    {% if job.keysafe_text %}
+                                        {{ job.keysafe_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.int_grab =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Internal Grab Rail <br>
+                                    Information: 
+                                    {% if job.int_grab_text %}
+                                        {{ job.int_grab_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.ext_grab =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    External Grab Rail <br>
+                                    Information: 
+                                    {% if job.ext_grab_text %}
+                                        {{ job.ext_grab_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.drop_rail =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Drop Arm Rail <br>
+                                    Information: 
+                                    {% if job.drop_rail_text %}
+                                        {{ job.drop_rail_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.newel =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Newel Rail <br>
+                                    Information: 
+                                    {% if job.newel_text %}
+                                        {{ job.newel_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.stair_rail =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Second Stair Rail <br>
+                                    Information: 
+                                    {% if job.stair_rail_text %}
+                                        {{ job.stair_rail_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.handrail =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    External Handrail <br>
+                                    Information: 
+                                    {% if job.handrail_text %}
+                                        {{ job.handrail_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.step =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Half Step <br>
+                                    Information: 
+                                    {% if job.step_text %}
+                                        {{ job.step_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.ramp =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Access Ramp <br>
+                                    Information: 
+                                    {% if job.ramp_text %}
+                                        {{ job.ramp_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.shower =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Over Bath Shower <br>
+                                    Information: 
+                                    {% if job.shower_text %}
+                                        {{ job.shower_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
+                        {% if job.other =="on" %}
+                            <div class="col s12 l6">
+                                <p>
+                                    Other Adaptation <br>
+                                    Information: 
+                                    {% if job.other_text %}
+                                        {{ job.other_text }}
+                                    {% endif %}
+                                </p><br>
+                            </div>
+                        {% endif %}
                     </li>
                 </ul>
                 <!-- Referrer -->
@@ -207,15 +218,26 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="collection">
-                    <li class="collection-item center-align">
-                        <button onclick="history.back()" class="btn center-align">Return <i class="fa-solid fa-arrow-left"></i></button>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
 </div>
-
+<!-- Return -->
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12 center-align">
+                <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
+                    <button type="submit" class="btn">Return <i class="fa-solid fa-arrow-left"></i></button>
+                    <input type="text" name="query" id="query" value="{{ job.first_name }}" class="validate" hidden required>
+                    <input type="text" name="query" id="query" value="{{ job.last_name }}" class="validate" hidden required>
+                    <input type="text" name="query" id="query" value="{{ job.address_street }}" class="validate" hidden required>
+                    <input type="text" name="query" id="query" value="{{ job.postcode }}" class="validate" hidden required>
+                    <label for="query"></label>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

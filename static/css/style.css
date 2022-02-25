@@ -7,6 +7,10 @@ body {
     background-color: #e2e2e2;
   }
 
+.welcome {
+    font-size: 2rem;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 }
@@ -106,5 +110,14 @@ h4 {
     .modal {
         width: 95%;
         height: auto;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .btn {
+        border-radius: 25px;
+        font-size: 0rem;
+        color: #0b5b53;
+        background: #fff;
     }
 }
