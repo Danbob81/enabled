@@ -267,12 +267,13 @@ def delete_customer(customer_id):
     return redirect(url_for("account"))
 
 
-@app.route("/search_jobs", methods=["GET", "POST"])
-def search_jobs():
+@app.route("/search_jobs/<customer_id>", methods=["GET", "POST"])
+def search_jobs(customer_id):
     """query db for job details"""
     query = request.form.get("query")
     jobs = list(mongo.db.jobs.find({"$text": {"$search": query}}))
-    return render_template("view_mwos.html", jobs=jobs)
+    customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+    return render_template("view_mwos.html", jobs=jobs, customer=customer)
 
 
 @app.route("/view_jobs/<job_id>")

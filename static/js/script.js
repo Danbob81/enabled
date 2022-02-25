@@ -44,3 +44,7 @@ $(document).ready(function(){
     $('.tooltipped').tooltip();
     $("#copyright").text(new Date().getFullYear());
   });
+
+function viewCustomer() {
+  location.replace("templates/view_customer.html")
+}

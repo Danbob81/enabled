@@ -43,7 +43,7 @@
     <div class="card-content">
         <div class="row">
             <div class="col s12 center-align">
-                <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
+                <form action="{{ url_for('search_jobs', customer_id=customer._id) }}" method="POST" class="col s12">
                     <a href="{{ url_for('edit_customer', customer_id=customer._id) }}" class="btn">Edit Customer <i class="fa-solid fa-pen-to-square"></i></a>
                     <button type="submit" class="btn">View Orders <i class="fa-solid fa-list"></i></button>
                     <input type="text" name="query" id="query" value="{{ customer.first_name }}" class="validate" hidden required>

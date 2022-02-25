@@ -435,17 +435,19 @@
                         <li class="collection-item">
                             <div class="row">
                                 <div class="col s12 center-align">
-                                    <button type="submit" data-rel="back" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
+                                    <button type="submit"class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
                                     <input type="text" name="query" id="query" value="{{ job.first_name }}" class="validate" hidden required>
                                     <input type="text" name="query" id="query" value="{{ job.last_name }}" class="validate" hidden required>
                                     <input type="text" name="query" id="query" value="{{ job.address_street }}" class="validate" hidden required>
                                     <input type="text" name="query" id="query" value="{{ job.postcode }}" class="validate" hidden required>
                                     <label for="query"></label>
+                                    {% if session.user|lower == job.created_by|lower %}
+                                        <a href="#delete-job" class="btn modal-trigger">Delete Order <i class="fa-solid fa-trash-can"></i></a>
+                                    {% endif %}
                                 </div>
                                 <div class="col s12 center-align">
                                     <br>
                                     <a onclick="history.back()" class="btn">Return <i class="fa-solid fa-arrow-left"></i></a>
-                                    <!-- <a href="#delete-job" class="btn modal-trigger">Delete Order <i class="fa-solid fa-trash-can"></i></a> -->
                                 </div>
                             </div>
                         </li>
@@ -457,20 +459,27 @@
 </div>
 
 <!--Delete User Modal-->
-<!-- <div id="delete-job" class="modal">
+<div id="delete-job" class="modal">
     <div class="modal-content center-align">
         <h4 class=""><i class="fa-solid fa-triangle-exclamation red-text"></i><br>Delete Minor Works Order?</h4>
         <p>Warning: Deletion of orders can not be reversed.<br>Are you sure you wish to continue?</p>
     </div>
     <div class="row">
         <div class="col s12 center-align">
-            <a href="" class="btn center-align">Delete <i class="fa-solid fa-circle-xmark"></i></a>
+            <form action="{{ url_for('delete_job', job_id=job._id) }}">
+                <button type="submit" class="btn center-align">Delete <i class="fa-solid fa-circle-xmark"></i></button>
+                <input type="text" name="query" id="query" value="{{ job.first_name }}" class="validate" hidden required>
+                <input type="text" name="query" id="query" value="{{ job.last_name }}" class="validate" hidden required>
+                <input type="text" name="query" id="query" value="{{ job.address_street }}" class="validate" hidden required>
+                <input type="text" name="query" id="query" value="{{ job.postcode }}" class="validate" hidden required>
+                <label for="query"></label>
+            </form>
         </div>
         <div class="col s12 center-align">
             <br>
             <a href="#!" class="modal-close">Cancel</a>
         </div>
     </div>
-</div> -->
+</div>
 
 {% endblock %}

@@ -227,14 +227,14 @@
     <div class="card-content">
         <div class="row">
             <div class="col s12 center-align">
-                <form action="{{ url_for('search_jobs') }}" method="POST" class="col s12">
-                    <button type="submit" class="btn">Return <i class="fa-solid fa-arrow-left"></i></button>
+                <form action="" method="POST" class="col s12">
                     <input type="text" name="query" id="query" value="{{ job.first_name }}" class="validate" hidden required>
                     <input type="text" name="query" id="query" value="{{ job.last_name }}" class="validate" hidden required>
                     <input type="text" name="query" id="query" value="{{ job.address_street }}" class="validate" hidden required>
                     <input type="text" name="query" id="query" value="{{ job.postcode }}" class="validate" hidden required>
                     <label for="query"></label>
                 </form>
+                <button onclick="history.back()" class="btn">Return <i class="fa-solid fa-arrow-left"></i></button>
             </div>
         </div>
     </div>
