@@ -84,13 +84,13 @@
                                 </p>
                             </div>
                             <div class="col s12 right-align">
-                                <a href="{{ url_for('view_jobs', job_id=job._id) }}" class="btn">View <i class="fa-solid fa-list"></i></a>  
+                                <a href="{{ url_for('view_jobs', job_id=job._id, customer_id=customer._id) }}" class="btn">View <i class="fa-solid fa-list"></i></a>  
                                 {% if job.is_comp == "on" %}
                                 {% elif session.user|lower == job.created_by|lower %}
-                                <a href="{{ url_for('edit_job', job_id=job._id) }}" class="btn">Edit <i class="fa-solid fa-pen-to-square"></i></a>  
+                                <a href="{{ url_for('edit_job', job_id=job._id, customer_id=customer._id) }}" class="btn">Edit <i class="fa-solid fa-pen-to-square"></i></a>  
                                 <!-- <a href="#delete-job" class="btn modal-trigger">Delete <i class="fa-solid fa-trash-can"></i></a>   -->
                                 {% else %}
-                                <a href="{{ url_for('edit_job', job_id=job._id) }}" class="btn">Edit <i class="fa-solid fa-pen-to-square"></i></a>  
+                                <a href="{{ url_for('edit_job', job_id=job._id, customer_id=customer._id) }}" class="btn">Edit <i class="fa-solid fa-pen-to-square"></i></a>  
                                 {% endif %}
                                 <hr>
                             </div>

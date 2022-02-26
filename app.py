@@ -276,15 +276,16 @@ def search_jobs(customer_id):
     return render_template("view_mwos.html", jobs=jobs, customer=customer)
 
 
-@app.route("/view_jobs/<job_id>")
-def view_jobs(job_id):
+@app.route("/view_jobs/<job_id>/<customer_id>")
+def view_jobs(job_id, customer_id):
     """retrieve job information from db"""
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
-    return render_template("view_job.html", job=job)
+    customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+    return render_template("view_job.html", job=job, customer=customer)
 
 
-@app.route("/edit_job/<job_id>", methods=["GET", "POST"])
-def edit_job(job_id):
+@app.route("/edit_job/<job_id>/<customer_id>", methods=["GET", "POST"])
+def edit_job(job_id, customer_id):
     """edit order details"""
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
@@ -335,13 +336,15 @@ def edit_job(job_id):
         mongo.db.jobs.update_one(
             {"_id": ObjectId(job_id)}, {"$set": submit})
 
-        flash("Minor Works Order Successfully Updated!", "success")
+        flash("Minor Works Order Successfully Updated!")
         query = request.form.get("query")
         jobs = list(mongo.db.jobs.find({"$text": {"$search": query}}))
-        return render_template("view_mwos.html", jobs=jobs)
+        customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+        return render_template("view_mwos.html", jobs=jobs, customer=customer)
 
     job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
-    return render_template("edit_job.html", job=job)
+    customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+    return render_template("edit_job.html", job=job, customer=customer)
 
 
 @app.route("/add_job/<customer_id>", methods=["GET", "POST"])
