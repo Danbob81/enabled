@@ -402,13 +402,13 @@ def add_job(customer_id):
     return render_template("create_job.html", customer=customer)
 
 
-@app.route("/delete_job/<job_id>")
-def delete_job(job_id):
+@app.route("/delete_job/<job_id>/<customer_id>")
+def delete_job(job_id, customer_id):
     """remove job from db"""
     mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
     flash("Minor Works Order Deleted!")
-    job = mongo.db.jobs.find_one({"_id": ObjectId(job_id)})
-    return redirect(url_for("edit_job", job=job))
+    customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
+    return render_template("view_customer.html", customer=customer)
 
 
 if __name__ == "__main__":
