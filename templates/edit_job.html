@@ -14,7 +14,7 @@
     <div class="col s12">
         <div class="card">
             <div class="card-content">
-                <form method="POST" action="{{ url_for('edit_job', job_id=job._id) }}">
+                <form method="POST" action="{{ url_for('edit_job', job_id=job._id, customer_id=customer._id) }}">
                     <ul class="collection with-header">
                     <li class="collection-header center-align"><h4>Edit Minor Works Order</h4></li>
                     <!-- Priority -->
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12" method="POST" action="">
+                                <div class="input-field col s12">
                                     <i class="fas fa-calendar-alt prefix teal-text text-darken-3"></i>
                                     <input id="due_date" name="due_date" type="text" class="datepicker validate" value="{{ job.due_date }}" required>
                                     <label for="due_date">Due Date</label>
