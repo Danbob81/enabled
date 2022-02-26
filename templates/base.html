@@ -25,7 +25,7 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if session.user %}
-                        <li><a href="{{ url_for('account') }}" class="text-shadow">Adaptations</a></li>
+                        <li><a href="{{ url_for('adapt') }}" class="text-shadow">Adaptations</a></li>
                         <li><a class="dropdown-trigger text-shadow" href="#!" data-target="dropdown1">Options <i class="fa-solid fa-caret-down"></i></a></li>
                     {% endif %}
                 </ul>
@@ -36,7 +36,7 @@
         <!-- Sidenav -->
         {% if session.user %}
             <ul id="slide-out" class="sidenav blue lighten-2">
-                <li><a href="{{ url_for('account') }}" class="white-text text-shadow">Adaptations</a></li>
+                <li><a href="{{ url_for('adapt') }}" class="white-text text-shadow">Adaptations</a></li>
                 <li><a class="dropdown-trigger white-text text-shadow" href="#!" data-target="dropdown_side">Options <i class="fa-solid fa-caret-down"></i></a></li>
             </ul>
         {% endif %}
@@ -47,7 +47,7 @@
                 <li><a href="{{ url_for('get_users') }}" class="white-text text-shadow">Manage Users</a></li>
                 <li class="divider black"></li>
             {% endif %}
-                <li><a href="" class=" white-text text-shadow">Change Password</a></li>
+                <li><a href="{{ url_for('account') }}" class=" white-text text-shadow">My Account</a></li>
                 <li class="divider black"></li>
                 <li><a href="{{ url_for('logout') }}" class="white-text text-shadow">Log Out</a></li>
         </ul>
@@ -56,7 +56,7 @@
                 <li><a href="{{ url_for('get_users') }}" class="white-text text-shadow">Manage Users</a></li>
                 <li class="divider black"></li>
             {% endif %}
-                <li><a href="" class="white-text text-shadow">Change Password</a></li>
+                <li><a href="" class="white-text text-shadow">My Account</a></li>
                 <li class="divider black"></li>
                 <li><a href="{{ url_for('logout') }}" class="white-text text-shadow">Log Out</a></li>
         </ul>
@@ -93,7 +93,35 @@
     <!-- Password Change Modal -->
   <div id="modal_password" class="modal">
     <div class="modal-content">
-        
+        <form action="" method="POST">
+            <div class="row">
+                <!-- username -->
+                <div class="input-field col s12 l6 offset-l3">
+                    <input id="username" name="username" type="text" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" value="{{session['user']}}" class="validate" hidden required>
+                    <label for="username"></label>
+                </div>
+                <!-- initial password -->
+                <div class="input-field col s12 l6 offset-l3">
+                    <input id="password" name="password" type="password" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="password">Current Password</label>
+                </div>
+                <!-- new password -->
+                <div class="input-field col s12 l6 offset-l3">
+                    <input id="new_password" name="new_password" type="password" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="new_password">New Password</label>
+                </div>
+                <!-- confirm new password -->
+                <div class="input-field col s12 l6 offset-l3">
+                    <input id="confirm_password" name="confirm_password" type="password" minlength="5"
+                        maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                    <label for="confirm_password">Confirm New Password</label>
+                </div>
+                <button type="submit" class="waves-effect waves-green btn-flat col s12 l6 offset-l3 center-align">Change Password</button>
+            </div>
+        </form>
     </div>
   </div>
 

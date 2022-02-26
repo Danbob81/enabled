@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-content">
+      <h3 class="center-align">Home Adaptations</h3>
+      {% if session.user %}
+        <p class="right-align">You are logged in as: {{session['user']}}</p>
+      {% endif %}
+  </div>
+</div>
+
+<!-- Search -->
+<ul class="collapsible ">
+  <li>
+    <div class="collapsible-header">Search Customer</div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="col s12">
+            <form action="{{ url_for('search_customer') }}" method="POST" class="col s12">
+                <div class="input-field col s12 m8">
+                  <i class="fa-solid fa-user"></i>
+                    <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                    <label for="query"></label>
+                    <small>Enter: Name, First Line of Address or Postcode</small>
+                </div>
+                <div class="col s12 m4 center-align">
+                  <button type="submit" class="btn">
+                      Search <i class="fas fa-search left"></i>
+                  </button>
+                </div>
+                <div class="col s12 m4 center-align">
+                  <br>
+                  <a href="{{ url_for('adapt') }}" class="">Reset</a>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- Create Customer -->
+  <li>
+    <div class="collapsible-header">Create New Customer</div>
+    <div class="collapsible-body">
+      <form method="POST" action="{{ url_for('add_customer') }}">
+        <div class="row">
+          <!-- Name -->
+          <div class="input-field col s12 l6">
+              <input id="first_name" name="first_name" type="text" class="validate center-align" required>
+              <label for="first_name"><i class="fa-solid fa-user"></i> First Name</label>
+          </div>
+          <div class="input-field col s12 l6">
+            <input id="last_name" name="last_name" type="text" class="validate center-align" required>
+            <label for="last_name"><i class="fa-solid fa-user"></i> Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <!-- DOB -->
+          <div class="input-field col s12 l6">
+              <input id="dob" name="dob" type="text" class="datepicker validate center-align" required>
+              <label for="dob"><i class="fa-solid fa-calendar-days"></i> Date of Birth</label>
+          </div>
+          <!-- Gender -->
+          <div class="input-field col s12 l6">
+            <select id="gender" name="gender" class="validate" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+            <label for="gender"><i class="fa-solid fa-person"></i><i class="fa-solid fa-person-dress"></i> Gender</label>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Address -->
+          <div class="input-field col s12 l6">
+              <input placeholder="House no. and Street" id="address_street" name="address_street" type="text" class="validate center-align" required>
+              <label for="address_street"><i class="fa-solid fa-house"></i> Address</label>
+              <input placeholder="Town/City" id="address_city" name="address_city" type="text" class="validate center-align" required>
+              <label for="address_city"></label>
+              <input placeholder="County" id="address_county" name="address_county" type="text" class="validate center-align" required>
+              <label for="address_county"></label>
+              <input placeholder="Postcode" id="postcode" name="postcode" type="text" class="validate center-align" required>
+            <label for="postcode"></label>
+          </div>
+          <div class="input-field col s12 l6">
+            <select id="tenure" name="tenure" class="validate" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Owner Occupied">Owner Occupied</option>
+              <option value="Private Rent/Housing Association">Private Rent/Housing Association</option>
+              <option value="Council">Council</option>
+            </select>
+            <label for="tenure"><i class="fa-solid fa-house"></i>  Property Tenure</label>
+          </div>
+          <!-- Phone -->
+          <div class="input-field col s12 l6">
+            <input id="phone" name="phone" type="text" class="validate center-align" required>
+              <label for="phone"><i class="fa-solid fa-phone"></i> Phone</label>
+          </div>
+          <!-- Email -->
+          <div class="input-field col s12 l6">
+            <input id="email" name="email" type="text" class="validate center-align" required>
+              <label for="email"><i class="fa-solid fa-at"></i> Email</label>
+          </div>
+        </div>
+        <!-- Submit -->
+        <div class="row">
+          <div class="col s12 center-align">
+            <button type="submit" class="btn center-align">Submit <i class="fa-solid fa-circle-check"></i></button>
+          </div>
+          <div class="col s12 center-align">
+            <br>
+            <a href="{{ url_for('adapt') }}" class="">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </li>
+</ul>
+
+<!-- Results -->
+<ul class="collapsible ">
+  <li class="active">
+    <div class="collapsible-header">Results</div>
+    <!-- Customer results -->
+    {% if customers|length >0 %}
+      <div class="collapsible-body">
+        {% for customer in customers %}
+          <ul class="collection">
+            <li class="collection-item">
+              <div class="col s12 l6 left-align">
+                  Name:   {{ customer.first_name }} {{ customer.last_name }} <br>
+                  Address: {{ customer.address_street }}, {{ customer.address_city }}, {{ customer.address_county }}, 
+                          {{ customer.postcode }} <br> 
+                  <br>
+              </div>
+              <div class="col s12 l6 left-align">
+                <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="btn">
+                        View Customer <i class="fa-solid fa-user"></i></a>
+              </div>
+            </li>
+          </ul>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </li>
+</ul>
+
+{% endblock %}

@@ -26,6 +26,7 @@ def home():
     return render_template("login.html")
 
 
+# User Login/Manage Account
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """log in to user account"""
@@ -54,44 +55,56 @@ def login():
     return render_template("login.html")
 
 
+# @app.route("/password")
+# def password():
+#     """direct user password change form"""
+#     return render_template("change_password.html")
+
+
+@app.route("/account")
+def account():
+    """return account page"""
+    return render_template("account.html")
+
+
 @app.route("/change_password/<employee_id>", methods=["GET", "POST"])
 def change_password(employee_id):
     """gives user option to change their password"""
-    if request.method == "POST":
+    # if request.method == "POST":
         # check username is in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+        # existing_user = mongo.db.users.find_one(
+        #     {"username": request.form.get("username").lower()})
 
-        if existing_user:
+        # if existing_user:
             # check hashed password matches user input
-            if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("username").lower()
-                return redirect(url_for(
-                        "change_password", username=session["user"]))
-            else:
+            # if check_password_hash(
+            #         existing_user["password"], request.form.get("password")):
+            #     session["user"] = request.form.get("username").lower()
+            #     return redirect(url_for(
+            #             "change_password", username=session["user"]))
+            # else:
                 # password doesn't match
-                flash("Incorrect Password")
-                return redirect(url_for('change_password'))
+                # flash("Incorrect Password")
+                # return redirect(url_for('change_password'))
 
             # check if new passwords match
-            new_password = request.form.get("new_password")
-            confirm_password = request.form.get("confirm_password")
+            # new_password = request.form.get("new_password")
+            # confirm_password = request.form.get("confirm_password")
 
-            if new_password != confirm_password:
-                flash("Your passwords don't match, try again")
-                return redirect(url_for("change_password"))
+            # if new_password != confirm_password:
+            #     flash("Your passwords don't match, try again")
+            #     return redirect(url_for("change_password"))
 
-            register_password = {
-                "password": generate_password_hash(
-                            request.form.get("new_password"))
-            }
-            mongo.db.users.update_one(
-                {"_id": ObjectId(employee_id)}, {"$set": register_password})
+            # register_password = {
+            #     "password": generate_password_hash(
+            #                 request.form.get("new_password"))
+            # }
+            # mongo.db.users.update_one(
+            #     {"_id": ObjectId(employee_id)}, {"$set": register_password})
 
-            flash("Password changed!")
-            employees = list(mongo.db.users.find())
-            return render_template("login.html", employees=employees)
+            # flash("Password changed!")
+            # employees = list(mongo.db.users.find())
+            # return render_template("login.html", employees=employees)
 
     employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
     return render_template("change_password.html", employee=employee)
@@ -105,6 +118,7 @@ def logout():
     return redirect(url_for('login'))
 
 
+# Manage Users (by admin only)
 @app.route("/get_users")
 def get_users():
     """retrieve user information from db"""
@@ -175,10 +189,11 @@ def delete_user(employee_id):
     return redirect(url_for("get_users"))
 
 
-@app.route("/account")
-def account():
+# Adaptations
+@app.route("/adapt")
+def adapt():
     """return account page"""
-    return render_template("account.html")
+    return render_template("adapt.html")
 
 
 @app.route("/search_customer", methods=["GET", "POST"])
@@ -186,7 +201,7 @@ def search_customer():
     """query db for customer details"""
     query = request.form.get("query")
     customers = list(mongo.db.customers.find({"$text": {"$search": query}}))
-    return render_template("account.html", customers=customers)
+    return render_template("adapt.html", customers=customers)
 
 
 @app.route("/add_customer", methods=["GET", "POST"])
@@ -210,9 +225,9 @@ def add_customer():
         }
         mongo.db.customers.insert_one(customer)
         flash("Customer Record Successfully Created")
-        return redirect(url_for("account"))
+        return redirect(url_for("adapt"))
 
-    return render_template("account.html")
+    return render_template("adapt.html")
 
 
 @app.route("/customer_record")
@@ -264,7 +279,7 @@ def delete_customer(customer_id):
     """remove job from db"""
     mongo.db.customers.delete_one({"_id": ObjectId(customer_id)})
     flash("Customer Account Deleted!")
-    return redirect(url_for("account"))
+    return redirect(url_for("adapt"))
 
 
 @app.route("/search_jobs/<customer_id>", methods=["GET", "POST"])
@@ -408,7 +423,7 @@ def delete_job(job_id, customer_id):
     mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
     flash("Minor Works Order Deleted!")
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
-    return render_template("view_customer.html", customer=customer)
+    return redirect(url_for("view_customer", customer=customer))
 
 
 if __name__ == "__main__":

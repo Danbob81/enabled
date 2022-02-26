@@ -79,7 +79,8 @@
                                 {% endif %}
                             </div>
                             <div class="col s12 left-align">
-                                <p><small>Record created by user: {{ job.created_by }} <br>
+                                <p>
+                                    <small>Record created by user: {{ job.created_by }} <br>
                                     Record last amended by user: {{ job.amended_by }}</small>
                                 </p>
                             </div>
@@ -88,7 +89,6 @@
                                 {% if job.is_comp == "on" %}
                                 {% elif session.user|lower == job.created_by|lower %}
                                 <a href="{{ url_for('edit_job', job_id=job._id, customer_id=customer._id) }}" class="btn">Edit <i class="fa-solid fa-pen-to-square"></i></a>  
-                                <!-- <a href="#delete-job" class="btn modal-trigger">Delete <i class="fa-solid fa-trash-can"></i></a>   -->
                                 {% else %}
                                 <a href="{{ url_for('edit_job', job_id=job._id, customer_id=customer._id) }}" class="btn">Edit <i class="fa-solid fa-pen-to-square"></i></a>  
                                 {% endif %}
@@ -113,29 +113,5 @@
         </div>
     </div>
 </div>
-
-<!--Delete Job Modal-->
-<!-- <div id="delete-job" class="modal">
-    <div class="modal-content center-align">
-        <h4 class=""><i class="fa-solid fa-triangle-exclamation red-text"></i><br>Delete Minor Works Order?</h4>
-        <p>Warning: Deletion of orders can not be reversed.<br>Are you sure you wish to continue?</p>
-    </div>
-    <div class="row">
-        <div class="col s12 center-align">
-            <a href="" class="btn center-align">Delete <i class="fa-solid fa-circle-xmark"></i></a>
-            <input type="text" name="query" id="query" value="" class="validate" hidden required>
-            <input type="text" name="query" id="query" value="" class="validate" hidden required>
-            <input type="text" name="query" id="query" value="" class="validate" hidden required>
-            <input type="text" name="query" id="query" value="" class="validate" hidden required>
-            <label for="query"></label>
-        </div>
-        <div class="col s12 center-align">
-            <br>
-            <a href="#!" class="modal-close">Cancel</a>
-        </div>
-    </div>
-</div> -->
-
-
 
 {% endblock %}
