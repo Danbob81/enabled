@@ -5,68 +5,93 @@ Live deployment [here.]()
 
 <h4 align="center"><img src="" alt="site image"></h4>
 
-## User Experience (UX) 
+# User Experience (UX) 
 
-### Brief
+## Brief
 
-The local authorities Aids & Adaptations service, which provides equipment and in-home adaptations to vulnerable disabled and elderly residents within the borough, are looking at streamlining their departments to improve accessibility to services. The current service is spread across multiple authority departments all using different software packages for their needs but which don’t communicate with each other. 
+The local authorities Aids & Adaptations service, which provides equipment and in-home adaptations to vulnerable disabled and elderly residents within the borough, are looking for a solution to improve information sharing between services. The current service is spread across multiple authority departments all using different software packages for their needs but which don’t communicate with each other. 
 
-The service provider is asking for one software solution that will enable better access to information and more effective communication between departments. They also wish to provide a customer portal which will give access to customers, enabling them to register with the service online and keep track of adaptations orders on their account. 
-- ### User Stories
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+The service provider is asking for a software solution that will enable better access to information and more effective communication between departments. They wish to start with the Minor Works ordering service and, later, on appraisal, expand the system to be used by other services.
 
-- ### Design
-    - ### Colour scheme:
-        - 
-    - ### Typography:
-        - Google Fonts - []()
+## User Stories
+### Regular Staff User Goals
+A regular staff user should be able to:
+  - log in securely
+  - easily and intuitively navigate the site
+  - search for and view customers details
+  - add and amend customers details easily
+  - create Minor Works orders easily and intuitively
+  - view and amend Minor Works orders
+  - add and update notes on Minor Works orders
+  - delete orders only if created by them
 
-- ### Wireframes
+### Admin User Goals
+In addition to regular staff users, an admin user should be able to:
+  - manage user accounts by being able to:
+    - create new users
+    - search and view user details
+    - amend user details
+    - delete user accounts
+  - delete customer accounts
 
-    - Wireframes for desktop, tablet and mobile views created using Balsamiq.
 
-        PDF links here:
-        - [Desktop]()
-        - [Tablet]()
-        - [Mobile]()
+## Design
+### Colour Scheme:
+  - Mainly shades of blue and grey as is common within corporate colour schemes
+
+### Typography:
+  - Google Fonts
+    - Main text - [Montserrat](https://bit.ly/3MgPTDs)
+    - Logo - [Caveat](https://bit.ly/35dPf90)
+
+### Imagery
+  - Font Awesome for icons used throughout - [link](https://bit.ly/3tfSjJN)
+  - Image on login/welcome page taken from []()
+
+### Wireframes
+
+Wireframes for desktop, tablet and mobile views created using Balsamiq.
+
+PDF links here:
+  - [Desktop]()
+  - [Tablet]()
+  - [Mobile]()
 
 ## Features
 
-- ### Implemented:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
+### Implemented:
+  -
+  -
 
-- ### Future features:
-    - 
-    - 
 
-## Technologies used
+### Future features:
+  -
+  -
 
-- ### Languages:
-    - HTML 5
-    - CSS 3
-    - Javascript
+## Technologies Used
 
-- ### Frameworks, libraries and programmes:
-    - Google Fonts - font used []()
-    - Bootstrap - used to create layout
-    - JQuery - for additional JS functions
-    - Git & Github - for version control
-    - VS Code - IDE for writing HTML/CSS/Javascript/JQuery and file management
-    - Balsamiq - for wireframes
-    - 
-    - 
-    
+### Languages:
+  - HTML 5
+  - CSS 3
+  - Javascript (JQuery)
+  - Python
+
+### Frameworks, libraries and programmes:
+  - Materialize - used to create layout
+  - JQuery - for JS functions
+  - Git & Github - for version control and code storing
+  - Balsamiq - for wireframes
+  - Heroku - to deploy live site
+  - Pip - to install required dependencies
+
+### Database Technologies
+  - Flask-PyMongo to connect Python/Flask app to MongoDb
+  - MongoDB - to store database contents
+
+### Workspace
+  - Gitpod - VSCode based virtual IDE
+
+
 ## Testing
 
 Description of testing process.
@@ -103,12 +128,9 @@ The deployed website was also tested using Chrome, Edge and Firefox as well as o
     - 
 
 ## Deployment
-### Github Pages
-- Site deployed to *** using the following process:
-    - 
-    - 
-    - 
-    - 
+### Heroku
+  - Site deployed to Heroku using the following process:
+
 
 
 ## Credits
