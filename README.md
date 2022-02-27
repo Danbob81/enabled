@@ -46,7 +46,7 @@ In addition to regular staff users, an admin user should be able to:
 
 ### Imagery
   - Font Awesome for icons used throughout - [link](https://bit.ly/3tfSjJN)
-  - Image on login/welcome page taken from []()
+  - Image on login/welcome page taken from [Clarion Housing](https://bit.ly/3tdXhXn) website (result of Google image search)
 
 ### Wireframes
 
@@ -137,15 +137,11 @@ The deployed website was also tested using Chrome, Edge and Firefox as well as o
 ## Credits
 
 ### Content:
--  
+- Minor Works Order form based on the actual form used by Sandwell Council Aids & Adaptations service - example form [here]()
  
 ### Media:
-- [woman on sofa](https://www.pexels.com/photo/woman-sitting-on-the-couch-near-green-plants-4057867/)
-- [Photo by Kampus Production from Pexels](https://www.pexels.com/photo/woman-assisting-elderly-man-7551667/) 
-- 
-- 
-
+- Welcome/Login page image taken from [Clarion Housing](https://bit.ly/3tdXhXn)
 
 ### Acknowledgements:
-
+- Sean and Oisin from Code Institute Tutor Support
 

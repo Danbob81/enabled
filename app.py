@@ -83,25 +83,23 @@ def change_password(staff_id):
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+
+                # change password in db
+                submit = {
+                    "password": generate_password_hash(
+                            request.form.get("new_password"))
+                }
+                mongo.db.users.update_one(
+                    {"_id": ObjectId(staff_id)}, {"$set": submit})
+
+                flash("Password changed!")
+                return render_template("account.html")
+
+            else:
+                # password doesn't match
+                flash("Incorrect Password")
                 staff = mongo.db.users.find_one({"_id": ObjectId(staff_id)})
-                return render_template("change_password.html", staff=staff,
-                                       username=session["user"])
-
-            # password doesn't match
-            flash("Incorrect Password")
-            staff = mongo.db.users.find_one({"_id": ObjectId(staff_id)})
-            return render_template("change_password.html", staff=staff)
-
-        # change password in db
-        submit = {
-            "password": generate_password_hash(
-                    request.form.get("new_password"))
-        }
-        mongo.db.users.update_one(
-            {"_id": ObjectId(staff_id)}, {"$set": submit})
-
-        flash("Password changed!")
-        return render_template("account.html")
+                return render_template("change_password.html", staff=staff)
 
     staff = mongo.db.users.find_one({"_id": ObjectId(staff_id)})
     return render_template("change_password.html", staff=staff)
