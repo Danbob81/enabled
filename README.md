@@ -1,7 +1,7 @@
 <h1 align="center">Enabled</h1>
 <h2 align="center"></h2>
 
-Live deployment [here.]()
+View live site [here.](https://bit.ly/3IvP6Mw)
 
 <h4 align="center"><img src="" alt="site image"></h4>
 
@@ -9,7 +9,7 @@ Live deployment [here.]()
 
 ## Brief
 
-The local authorities Aids & Adaptations service, which provides equipment and in-home adaptations to vulnerable disabled and elderly residents within the borough, are looking for a solution to improve information sharing between services. The current service is spread across multiple authority departments all using different software packages for their needs but which don’t communicate with each other. 
+The local authorities Aids & Adaptations service, which provides equipment and in-home adaptations to vulnerable disabled and elderly residents within the borough, are looking for a solution to improve information sharing between service departments. The current service is spread across multiple authority departments and agencies, all using different software packages for their needs but which don’t communicate with each other. Thus, being reliant on the use of email, chat services (such as MS Teams), and telephone to request and share information relating to orders being requested.
 
 The service provider is asking for a software solution that will enable better access to information and more effective communication between departments. They wish to start with the Minor Works ordering service and, later, on appraisal, expand the system to be used by other services.
 
@@ -79,18 +79,17 @@ PDF links here:
 ### Frameworks, libraries and programmes:
   - Materialize - used to create layout
   - JQuery - for JS functions
+  - Pip - to install required dependencies
   - Git & Github - for version control and code storing
   - Balsamiq - for wireframes
   - Heroku - to deploy live site
-  - Pip - to install required dependencies
 
 ### Database Technologies
-  - Flask-PyMongo to connect Python/Flask app to MongoDb
+  - Flask-PyMongo to connect Python/Flask app to MongoDB
   - MongoDB - to store database contents
 
 ### Workspace
   - Gitpod - VSCode based virtual IDE
-
 
 ## Testing
 
@@ -118,6 +117,8 @@ The deployed website was also tested using Chrome, Edge and Firefox as well as o
     - HTML - [W3C Validator]() - 
     - CSS - [(Jigsaw) validator]() - 
     - Javascript - [JSHint]() - 
+    - Python - [Pep8]() - 
+
 - ### Additional testing:
     Black box testing was also carried out on the final deployed website.
     

@@ -55,59 +55,56 @@ def login():
     return render_template("login.html")
 
 
-# @app.route("/password")
-# def password():
-#     """direct user password change form"""
-#     return render_template("change_password.html")
-
-
+# Staff Account - change password
 @app.route("/account")
 def account():
     """return account page"""
     return render_template("account.html")
 
 
-@app.route("/change_password/<employee_id>", methods=["GET", "POST"])
-def change_password(employee_id):
+@app.route("/search_staff", methods=["GET", "POST"])
+def search_staff():
+    """query db for customer details"""
+    query = request.form.get("query")
+    staff = list(mongo.db.users.find({"$text": {"$search": query}}))
+    return render_template("account.html", staff=staff)
+
+
+@app.route("/change_password/<staff_id>", methods=["GET", "POST"])
+def change_password(staff_id):
     """gives user option to change their password"""
-    # if request.method == "POST":
+    if request.method == "POST":
         # check username is in db
-        # existing_user = mongo.db.users.find_one(
-        #     {"username": request.form.get("username").lower()})
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
-        # if existing_user:
+        if existing_user:
             # check hashed password matches user input
-            # if check_password_hash(
-            #         existing_user["password"], request.form.get("password")):
-            #     session["user"] = request.form.get("username").lower()
-            #     return redirect(url_for(
-            #             "change_password", username=session["user"]))
-            # else:
-                # password doesn't match
-                # flash("Incorrect Password")
-                # return redirect(url_for('change_password'))
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                staff = mongo.db.users.find_one({"_id": ObjectId(staff_id)})
+                return render_template("change_password.html", staff=staff,
+                                       username=session["user"])
 
-            # check if new passwords match
-            # new_password = request.form.get("new_password")
-            # confirm_password = request.form.get("confirm_password")
+            # password doesn't match
+            flash("Incorrect Password")
+            staff = mongo.db.users.find_one({"_id": ObjectId(staff_id)})
+            return render_template("change_password.html", staff=staff)
 
-            # if new_password != confirm_password:
-            #     flash("Your passwords don't match, try again")
-            #     return redirect(url_for("change_password"))
+        # change password in db
+        submit = {
+            "password": generate_password_hash(
+                    request.form.get("new_password"))
+        }
+        mongo.db.users.update_one(
+            {"_id": ObjectId(staff_id)}, {"$set": submit})
 
-            # register_password = {
-            #     "password": generate_password_hash(
-            #                 request.form.get("new_password"))
-            # }
-            # mongo.db.users.update_one(
-            #     {"_id": ObjectId(employee_id)}, {"$set": register_password})
+        flash("Password changed!")
+        return render_template("account.html")
 
-            # flash("Password changed!")
-            # employees = list(mongo.db.users.find())
-            # return render_template("login.html", employees=employees)
-
-    employee = mongo.db.users.find_one({"_id": ObjectId(employee_id)})
-    return render_template("change_password.html", employee=employee)
+    staff = mongo.db.users.find_one({"_id": ObjectId(staff_id)})
+    return render_template("change_password.html", staff=staff)
 
 
 @app.route("/logout")
