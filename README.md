@@ -17,6 +17,7 @@ The service provider is asking for a software solution that will enable better a
 ### Regular Staff User Goals
 A regular staff user should be able to:
   - log in securely
+  - view their own details and change their password
   - easily and intuitively navigate the site
   - search for and view customers details
   - add and amend customers details easily
@@ -59,14 +60,53 @@ PDF links here:
 
 ## Features
 
-### Implemented:
-  -
-  -
+### Implemented
+Base features:
+  - Login/Welcome page which features an image and some text
+  - Navbar, and side nav in mobile/tablet view, consistent throughout the site
+  - Nav and side nav reveal 'Adaptations' link and 'Options' drop down menu only when user is logged in
+  - Drop down in navbar features 'My Account' and 'Logout' options, plus 'Manage Users' is displayed for Admin only
+  - Log out redirects user back to Log in page
+  - Footer, to display consistently throughout the site, featuring copyright and social media links
 
+Adaptations:
+  - Collapsible that reveals 'Search Customer' feature, 'Create New Customer' form and 'Results' to show the results of the customer search
+  - Button in 'Results', revealed with search result, directs user to 'Customer Details' showing more information about the customer
+  - Buttons within 'Customer Details' view direct user to 'Edit Customer', 'View Orders, 'Create Order, and 'Back to Search'
+  - Edit Customer displays a form to edit customers details with 'Confirm Edit' and 'Return' buttons. A 'Delete Customer' button is revealed only to the Admin user
+  - View Orders displays an overview of all the orders created for that customer as well as 'View' and 'Edit' buttons
+    - View directs the user to a more detailed view of the order
+    - Edit directs the user to a form whereby they can change any details of the order, including add notes. If the user created the order, they can also delete it from here.
+  - Create Order displays a form for the user to create a new order for the customer
 
-### Future features:
-  -
-  -
+My Account:
+  - Button to reveal session users details
+  - Button to direct user to 'Change Password'
+  - Change Password page displays form to let the user change their password
+
+Manage Users (Admin user only feature):
+  - Collapsible showing 'Search Users' search bar, 'Create New User' form and 'Results' displaying the search results and 'Edit User' button
+  - Edit User button directs the Admin user to a form where they can edit the users details or delete the user - delete user function is not available on the Admin account information preventing Admin from being deleted
+
+### Future features
+Adaptations:
+  - Ability to created multiple notes on work orders which are datetime stamped and show which user each one was created by
+  - Datetime stamp each order when it is created and amended
+  - Addition of Major Works orders
+  - Addition of Customer Assessments
+
+My Account:
+  - Additional check on password change to confirm new password match
+  - Stronger password criteria (capital letters, numbers, special characters etc.)
+
+Manage Users:
+  - Additional user information such as phone number, service area/department
+  - Users password reset function
+
+General:
+  - Notification alerts to let users know their orders have been updated with new notes, order completed etc.
+  - Customer portal to allow customers to keep track of orders on their account
+
 
 ## Technologies Used
 
@@ -137,7 +177,7 @@ The deployed website was also tested using Chrome, Edge and Firefox as well as o
 ## Credits
 
 ### Content:
-- Minor Works Order form based on the actual form used by Sandwell Council Aids & Adaptations service - example form [here]()
+- Minor Works Order form based on the actual form used by Sandwell Council Aids & Adaptations service - example form [here](docs/readme_items/minor_works_form.pdf)
  
 ### Media:
 - Welcome/Login page image taken from [Clarion Housing](https://bit.ly/3tdXhXn)

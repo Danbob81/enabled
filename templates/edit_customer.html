@@ -10,10 +10,10 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="card">
-            <div class="card-content">
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12">
                 <form method="POST" action="{{ url_for('edit_customer', customer_id=customer._id) }}">
                     <ul class="collection with-header">
                         <li class="collection-header center-align"><h4>Edit Customer</h4></li>
@@ -106,25 +106,26 @@
                             </div>
                         </li>
                     </ul>
-                    <!-- Submit -->
-                    <ul class="collection">
-                        <li class="collection-item">
-                            <div class="row">
-                                <div class="col s12 center-align">
-                                    <button type="submit" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
-                                    {% if session.user|lower == 'admin'|lower %}
-                                        <a href="#delete-customer" class="btn modal-trigger">Delete Customer <i class="fa-solid fa-user-xmark"></i></a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 center-align">
-                                    <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="btn">Return <i class="fa-solid fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Submit -->
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
+                {% if session.user|lower == 'admin'|lower %}
+                <a href="#delete-customer" class="btn modal-trigger">Delete Customer <i class="fa-solid fa-user-xmark"></i></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="btn">Return <i class="fa-solid fa-arrow-left"></i></a>
             </div>
         </div>
     </div>

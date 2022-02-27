@@ -10,10 +10,10 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="card">
-            <div class="card-content">
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12">
                 <form method="POST" action="{{ url_for('add_job', customer_id=customer._id) }}">
                     <ul class="collection with-header">
                         <li class="collection-header center-align"><h4>Create Minor Works Order</h4></li>
@@ -331,21 +331,23 @@
                             </div>
                         </li>
                     </ul>
-                    <!-- Submit -->
-                    <ul class="collection">
-                        <li class="collection-item">
-                            <div class="row">
-                                <div class="col s12 center-align">
-                                    <button type="submit" class="btn center-align">Create Order  <i class="fa-solid fa-circle-check"></i></button>
-                                </div>
-                                <div class="col s12 center-align">
-                                <br>
-                                <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="btn center-align">Back <i class="fa-solid fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Submit -->
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn center-align">Create Order  <i class="fa-solid fa-circle-check"></i></button>
+            </div>
+            <div class="col s12 center-align">
+                <br>
+                <a href="{{ url_for('view_customer', customer_id=customer._id) }}" class="btn center-align">Back <i class="fa-solid fa-arrow-left"></i></a>
             </div>
         </div>
     </div>
