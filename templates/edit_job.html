@@ -10,10 +10,10 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col s12">
-        <div class="card">
-            <div class="card-content">
+<div class="card">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12">
                 <form method="POST" action="{{ url_for('edit_job', job_id=job._id, customer_id=customer._id) }}">
                     <ul class="collection with-header">
                     <li class="collection-header center-align"><h4>Edit Minor Works Order</h4></li>
@@ -21,20 +21,20 @@
                         <li class="collection-header"><h5>Priority</h5></li>
                         <li class="collection-item">
                             <div class="row">
-                                <div class="col s12 m6 offset-m3 l4 offset-l4 left-align">
+                                <div class="switch col s12 m6 offset-m3 l4 offset-l4 left-align">
                                     <p><i class="fas fa-exclamation-circle prefix red-text red-darken-3"></i> Indicate if order is urgent:</p>
-                                    <select id="is_urgent" name="is_urgent" class="validate" required>
-                                        {% if job.is_urgent == 'on' %}
-                                            <option value="non-urgent">Non-Urgent</option>
-                                            <option value="urgent" selected>Urgent</option>
+                                    <label for="is_urgent">
+                                        {% if job.is_urgent == "on" %}
+                                            <input type="checkbox" id="is_urgent" name="is_urgent" checked>
                                         {% else %}
-                                            <option value="non-urgent" selected>Non-Urgent</option>
-                                            <option value="urgent">Urgent</option>
+                                            <input type="checkbox" id="is_urgent" name="is_urgent">
                                         {% endif %}
-                                    </select>
+                                        <span class="lever"></span>
+                                        URGENT
+                                    </label>
                                 </div>
-                            </div>
-                            <div class="row">
+                            <!-- </div> -->
+                            <!-- <div class="row"> -->
                                 <div class="input-field col s12 m6 offset-m3 l4 offset-l4 left-align">
                                     <p><i class="fa-solid fa-calendar-days"></i> Due Date</p>
                                     <input id="due_date" name="due_date" type="text" class="datepicker validate" value="{{ job.due_date }}" required>
@@ -299,7 +299,7 @@
                                 <div class="col s12">
                                     <h6>Access Ramp</h6>
                                     <label for="ramp">
-                                    {% if job.step == "on" %}
+                                    {% if job.ramp == "on" %}
                                         <input type="checkbox" id="ramp" name="ramp" checked="checked" />
                                         <span>Select</span>
                                     {% else %}
@@ -322,7 +322,7 @@
                                 <div class="col s12">
                                     <h6>Over Bath Shower</h6>
                                     <label for="shower">
-                                    {% if job.step == "on" %}
+                                    {% if job.shower == "on" %}
                                         <input type="checkbox" id="shower" name="shower" checked="checked" />
                                         <span>Select</span>
                                     {% else %}
@@ -403,6 +403,7 @@
                                     <p class="left-align"><i class="fa-solid fa-comments"></i> Enter notes here:</p>
                                     <input id="notes" name="notes" type="text" class="validate" value="{{ job.notes }}" >
                                     <label for="notes"></label>
+                                    <p class="left-align"><small>Add new notes separated by ';'</small></p>
                                 </div>
                             </div>
                         </li>

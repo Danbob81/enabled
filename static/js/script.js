@@ -15,10 +15,8 @@ $(document).ready(function(){
     $('#due_date').datepicker({
       format: "dd mmmm yyyy",
       yearRange: 0,
-      // defaultDate: new Date(),
       setDefaultDate: true,
       minDate: new Date(),
-      // maxDate: new Date(),
       disableWeekends: true,
       showClearBtn: false,
       i18n: {
@@ -28,9 +26,7 @@ $(document).ready(function(){
     $('#comp_date').datepicker({
       format: "dd mmmm yyyy",
       yearRange: 1,
-      // defaultDate: new Date(),
       setDefaultDate: true,
-      // minDate: new Date(),
       maxDate: new Date(),
       disableWeekends: true,
       showClearBtn: false,
@@ -40,11 +36,7 @@ $(document).ready(function(){
     });
     $('select').formSelect();
     $('.collapsible').collapsible();
-    $('.tabs').tabs();
+    // $('.tabs').tabs();
     $('.tooltipped').tooltip();
     $("#copyright").text(new Date().getFullYear());
   });
-
-function viewCustomer() {
-  location.replace("templates/view_customer.html")
-}

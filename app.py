@@ -418,7 +418,7 @@ def delete_job(job_id, customer_id):
     mongo.db.jobs.delete_one({"_id": ObjectId(job_id)})
     flash("Minor Works Order Deleted!")
     customer = mongo.db.customers.find_one({"_id": ObjectId(customer_id)})
-    return redirect(url_for("view_customer", customer=customer))
+    return render_template("view_customer.html", customer=customer)
 
 
 if __name__ == "__main__":

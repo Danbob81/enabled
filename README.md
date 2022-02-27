@@ -143,5 +143,5 @@ The deployed website was also tested using Chrome, Edge and Firefox as well as o
 - Welcome/Login page image taken from [Clarion Housing](https://bit.ly/3tdXhXn)
 
 ### Acknowledgements:
-- Sean and Oisin from Code Institute Tutor Support
+- Sean, Ger and Oisin from Code Institute Tutor Support
 
