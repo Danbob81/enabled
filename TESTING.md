@@ -1,9 +1,8 @@
 <h1 align="center">Enabled</h1>
-<h2 align="center"></h2>
 
 View live site [here.](https://bit.ly/3IvP6Mw)
 
-<h4 align="center"><img src="" alt="site image"></h4>
+<h4 align="center"><img src="docs/readme_items/enabled_main.png" alt="site image"></h4>
 
 Back to [README.md](README.md)
 
@@ -45,12 +44,18 @@ The site has been tested using Chrome, Firefox and Edge on desktop/laptop as wel
 ## Additional testing:
 Black box testing was also carried out on the final deployed website.
     
-All tests passed. Results can be viewed [here]()
+All tests passed. Results can be viewed [here](docs/readme_items/enabled_test_plan.pdf)
 
 ## Bugs
 Found and corrected
 
-  - 
-  - 
+  - a problem was discovered whereby the priority choice would always set to urgent, whether selected or not, upon order creation. 
+    - A solution was found by changing the input type from a selector to a toggle switch.
+  - when the user made an edit to an order, the edit order page would reload and cause a loop when the user clicked to return to previous page whereby the changes to the order would be resubmitted and take the user back to the edit page.
+    - A solution was found by changing the route in app.py to redirect the user back to the view orders page (a better UX solution also)
+  - a strange bug was found when the step option was selected when creating an order. The displayed order information in the view orders page would also display the handrail and shower items in the order.
+    - An error was found in the code whereby an if statement was incorrectly written with the key word 'step' and returning the 'handrail' and 'shower' options when step was selected. This was corrected and the bug fixed.
+  - Change password form was reloading on user clicking the submit button and not updating the password in the DB. 
+    - It was discovered, in the change_password function in app.py, that the return statement following the password validation check was causing the page to reload, resetting the form. The return statement was removed altogether and function code re-ordered to solve this issue. (Thank you to Ger in Tutor Support for helping me find and correct this error.)
 
 No known bugs left unfixed
