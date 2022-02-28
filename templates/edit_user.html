@@ -10,11 +10,11 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="card-content">
-        <div class="row">
-            <div class="col s12">
-                <form method="POST" action="{{ url_for('edit_user', employee_id=employee._id) }}">
+<form method="POST" action="{{ url_for('edit_user', employee_id=employee._id) }}">
+    <div class="card">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12">
                     <ul class="collection with-header">
                         <li class="collection-header center-align"><h4>Edit User</h4></li>
                         <li class="collection-item">
@@ -38,31 +38,31 @@
                             </div>
                         </li>
                     </ul>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Submit -->
-<div class="card">
-    <div class="card-content">
-        <div class="row">
-            <div class="col s12 center-align">
-                <button type="submit" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
-                {% if employee.employee_name|lower == 'admin'|lower %}
-                {% else %}
-                <a href="#delete-user" class="btn modal-trigger">Delete User <i class="fa-solid fa-user-xmark"></i></a>
-                {% endif %}
+    
+    <!-- Submit -->
+    <div class="card">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button type="submit" class="btn center-align">Confirm Edit <i class="fa-solid fa-circle-check"></i></button>
+                    {% if employee.employee_name|lower == 'admin'|lower %}
+                    {% else %}
+                    <a href="#delete-user" class="btn modal-trigger">Delete User <i class="fa-solid fa-user-xmark"></i></a>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col s12 center-align">
-                <a href="{{ url_for('get_users') }}" class="btn">Cancel Changes <i class="fa-solid fa-arrow-left"></i></a>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a href="{{ url_for('get_users') }}" class="btn">Cancel Changes <i class="fa-solid fa-arrow-left"></i></a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 
 <!--Delete User Modal-->
 <div id="delete-user" class="modal">
