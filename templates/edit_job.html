@@ -33,8 +33,6 @@
                                         URGENT
                                     </label>
                                 </div>
-                            <!-- </div> -->
-                            <!-- <div class="row"> -->
                                 <div class="input-field col s12 m6 offset-m3 l4 offset-l4 left-align">
                                     <p><i class="fa-solid fa-calendar-days"></i> Due Date</p>
                                     <input id="due_date" name="due_date" type="text" class="datepicker validate" value="{{ job.due_date }}" required>
@@ -43,6 +41,7 @@
                             </div>
                         </li>
                     </ul>
+                    <!-- Customer Details -->
                     <ul class="collection with-header">
                         <li class="collection-header"><h5>Customer Details</h5></li>
                         <li class="collection-item">
@@ -122,7 +121,7 @@
                                 <p class="">Location:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="keysafe_text" name="keysafe_text" class="validate" value="{{ job.keysafe_text }}"></input>
+                                    <input type="text" id="keysafe_text" name="keysafe_text" class="validate" value="{{ job.keysafe_text }}">
                                     <label for="keysafe_text">Enter information here</label>
                                 </div>
                             </div>
@@ -146,7 +145,7 @@
                                             Direction (vertical, horizontal, diagonal):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="int_grab_text" name="int_grab_text" class="validate" value="{{ job.int_grab_text }}"></input>
+                                    <input type="text" id="int_grab_text" name="int_grab_text" class="validate" value="{{ job.int_grab_text }}">
                                     <label for="int_grab_text">Enter information here</label>
                                 </div>
                             </div>
@@ -170,7 +169,7 @@
                                              Direction (vertical, horizontal, diagonal):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="ext_grab_text" name="ext_grab_text" class="validate" value="{{ job.ext_grab_text }}"></input>
+                                    <input type="text" id="ext_grab_text" name="ext_grab_text" class="validate" value="{{ job.ext_grab_text }}">
                                     <label for="ext_grab_text">Enter information here</label>
                                 </div>
                             </div>
@@ -194,7 +193,7 @@
                                             Precise Location (inc. measurements) | Wall or floor mounted:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="drop_rail_text" name="drop_rail_text" class="validate" value="{{ job.drop_rail_text }}"></input>
+                                    <input type="text" id="drop_rail_text" name="drop_rail_text" class="validate" value="{{ job.drop_rail_text }}">
                                     <label for="drop_rail_text">Enter information here</label>
                                 </div>
                             </div>
@@ -218,7 +217,7 @@
                                             Direction (left side ascending/right side ascending):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="newel_text" name="newel_text" class="validate" value="{{ job.newel_text }}"></input>
+                                    <input type="text" id="newel_text" name="newel_text" class="validate" value="{{ job.newel_text }}">
                                     <label for="newel_text">Enter information here</label>
                                 </div>
                             </div>
@@ -242,7 +241,7 @@
                                             Description (straight, left/right turn, no. of sections):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="stair_rail_text" name="stair_rail_text" class="validate" value="{{ job.stair_rail_text }}"></input>
+                                    <input type="text" id="stair_rail_text" name="stair_rail_text" class="validate" value="{{ job.stair_rail_text }}">
                                     <label for="stair_rail_text">Enter information here</label>
                                 </div>
                             </div>
@@ -265,7 +264,7 @@
                                 <p class="">Quantity | Precise Location (inc. measurements, length of handrail etc.):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="handrail_text" name="handrail_text" class="validate" value="{{ job.handrail_text }}"></input>
+                                    <input type="text" id="handrail_text" name="handrail_text" class="validate" value="{{ job.handrail_text }}">
                                     <label for="handrail_text">Enter information here</label>
                                 </div>
                             </div>
@@ -289,7 +288,7 @@
                                             Height of step (3", 4", 5", 6") | Tread length (12", 18", 24") | Step width:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="step_text" name="step_text" class="validate" value="{{ job.step_text }}"></input>
+                                    <input type="text" id="step_text" name="step_text" class="validate" value="{{ job.step_text }}">
                                     <label for="step_text">Enter information here</label>
                                 </div>
                             </div>
@@ -312,7 +311,7 @@
                                 <p class="">Location (front/side/rear) | Description of current access:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="ramp_text" name="ramp_text" class="validate" value="{{ job.ramp_text }}"></input>
+                                    <input type="text" id="ramp_text" name="ramp_text" class="validate" value="{{ job.ramp_text }}">
                                     <label for="ramp_text">Enter information here</label>
                                 </div>
                             </div>
@@ -335,7 +334,7 @@
                                 <p class="">Details of any specific requirements (e.g. tiling):</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="shower_text" name="shower_text" class="validate" value="{{ job.shower_text }}"></input>
+                                    <input type="text" id="shower_text" name="shower_text" class="validate" value="{{ job.shower_text }}">
                                     <label for="shower_text">Enter information here</label>
                                 </div>
                             </div>
@@ -358,7 +357,7 @@
                                 <p class="">Provide information of any other adaptations, not listed above, here:</p>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">mode_edit</i>
-                                    <input type="text" id="other_text" name="other_text" class="validate" value="{{ job.other_text }}"></input>
+                                    <input type="text" id="other_text" name="other_text" class="validate" value="{{ job.other_text }}">
                                     <label for="other_text">Enter information here</label>
                                 </div>
                             </div>
@@ -425,7 +424,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12 m6 offset-m3 l4 offset-l4 left-align" method="POST" action="">
+                                <div class="input-field col s12 m6 offset-m3 l4 offset-l4 left-align">
                                     <p><i class="fa-solid fa-calendar-days"></i> Completion Date</p>
                                     <input id="comp_date" name="comp_date" type="text" class="datepicker validate" >
                                     <label for="comp_date"></label>

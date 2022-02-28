@@ -36,7 +36,6 @@ $(document).ready(function(){
     });
     $('select').formSelect();
     $('.collapsible').collapsible();
-    // $('.tabs').tabs();
     $('.tooltipped').tooltip();
     $("#copyright").text(new Date().getFullYear());
   });

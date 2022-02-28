@@ -38,7 +38,7 @@ In addition to regular staff users, an admin user should be able to:
 
 ## Design
 ### Colour Scheme:
-  - Mainly shades of blue and grey as is common within corporate colour schemes
+  - Shades of blue and grey as is common within corporate colour schemes
 
 ### Typography:
   - Google Fonts
@@ -108,6 +108,80 @@ General:
   - Customer portal to allow customers to keep track of orders on their account
 
 
+## Database Design
+
+MongoDB is used to store the data set out in three collections:
+  - Customers
+    - _id
+    - first_name
+    - last_name
+    - dob
+    - gender
+    - address_street
+    - address_city
+    - address_county
+    - postcode
+    - tenure
+    - phone
+    - email
+    - created_by
+    - amended_by
+
+  - Jobs
+    - _id
+    - first_name
+    - last_name
+    - dob
+    - gender
+    - address_street
+    - address_city
+    - address_county
+    - postcode
+    - tenure
+    - phone
+    - email
+    - keysafe
+    - keysafe_text
+    - int_grab
+    - int_grab_text
+    - ext_grab
+    - ext_grab_text
+    - drop_rail
+    - drop_rail_text
+    - newel
+    - newel_text
+    - stair_rail
+    - stair_rail_text
+    - handrail
+    - handrail_text
+    - step
+    - step_text
+    - ramp
+    - ramp_text
+    - shower
+    - shower_text
+    - other
+    - other_text
+    - ref_name
+    - team
+    - ref_email
+    - ref_phone
+    - is_urgent
+    - due_date
+    - created_by
+    - amended_by
+    - comp_date
+    - is_comp
+    - notes
+
+  - Users
+    - _id
+    - username
+    - password
+    - employee_name
+    - employee_email
+
+
 ## Technologies Used
 
 ### Languages:
@@ -154,10 +228,10 @@ The deployed website was also tested using Chrome, Edge and Firefox as well as o
         - 
 
 - ### Validator testing:
-    - HTML - [W3C Validator]() - 
-    - CSS - [(Jigsaw) validator]() - 
-    - Javascript - [JSHint]() - 
-    - Python - [Pep8]() - 
+    - HTML - [W3C Validator](https://bit.ly/3vkSIx1) - valid
+    - CSS - [(Jigsaw) validator](https://bit.ly/3nMSs4G) - valid
+    - Javascript - [JSHint](https://bit.ly/3jRVMKH) - valid
+    - Python - [Pep8](https://bit.ly/33VMJDA) - valid
 
 - ### Additional testing:
     Black box testing was also carried out on the final deployed website.
