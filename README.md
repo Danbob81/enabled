@@ -22,6 +22,7 @@ A regular staff user should be able to:
   - search for and view customers details
   - add and amend customers details easily
   - create Minor Works orders easily and intuitively
+  - set orders as completed
   - view and amend Minor Works orders
   - add and update notes on Minor Works orders
   - delete orders only if created by them
@@ -207,40 +208,11 @@ MongoDB is used to store the data set out in three collections:
 
 ## Testing
 
-Description of testing process.
+Chrome Developer Tool was used to simulate the different viewport sizes for desktop and laptop views, tablet views and mobile views. I used this throughout the development process as well as for testing the website once it was deployed to Heroku.
 
 The deployed website was also tested using Chrome, Edge and Firefox as well as on mobile (using Chrome for Android)
 
-- ### User stories' testing:
-    - 
-        - 
-    - 
-        - 
-    - 
-        - 
-    - 
-        - 
-    - 
-        - 
-    - 
-        - 
-    - 
-        - 
-
-- ### Validator testing:
-    - HTML - [W3C Validator](https://bit.ly/3vkSIx1) - valid
-    - CSS - [(Jigsaw) validator](https://bit.ly/3nMSs4G) - valid
-    - Javascript - [JSHint](https://bit.ly/3jRVMKH) - valid
-    - Python - [Pep8](https://bit.ly/33VMJDA) - valid
-
-- ### Additional testing:
-    Black box testing was also carried out on the final deployed website.
-    
-    All tests passed. Results can be viewed [here]()
-
-- ### Bugs
-    - 
-    - 
+More detail information of the testing carried out can be viewed in [TESTING.md](TESTING.md)
 
 ## Deployment
 ### Heroku
