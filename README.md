@@ -54,9 +54,9 @@ In addition to regular staff users, an admin user should be able to:
 Wireframes for desktop, tablet and mobile views created using Balsamiq.
 
 PDF links here:
-  - [Desktop]()
-  - [Tablet]()
-  - [Mobile]()
+  - [Desktop](docs/readme_items/enabled_desktop.pdf)
+  - [Tablet](docs/readme_items/enabled_tablet.pdf)
+  - [Mobile](docs/readme_items/enabled_mobile.pdf)
 
 ## Features
 
