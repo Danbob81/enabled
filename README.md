@@ -110,89 +110,10 @@ General:
 
 ## Database Design
 
-MongoDB is used to store the data set out in three collections:
+MongoDB is used to store the data and has been set out in three collections - Users, Customers and Jobs - as shown in the following Entity Relationship Diagram:
 
-### Users Collection
+![Entity Relationship Diagram](docs/readme_items/erd3.png)
 
-| Users | Type | Relationship |
-| --- | --- | --- |
-| _id | ObjectId |    |
-| username | String |   |
-| password | String |   |
-| employee_name | String |    |
-| employee_email | String |   |
-
-### Customers Collection
-
-| Customers | Type | Relationship |
-|--- | --- | --- |
-| _id       | ObjectId |    |
-| first_name | String |   |
-| last_name | String |    |
-| dob | String |    |
-| gender | String |   |
-| address_street | String |   |
-| address_city | String |   |
-| address_county | String |   |
-| postcode | String |   |
-| tenure | String |   |
-| phone | String |    |
-| email | String |    |
-| created_by | String |   |
-| amended_by | String |   |
-
-### Jobs Collection
-
-| Jobs | Type | Relationship |
-| --- | --- | --- |
-| _id | ObjectId | |
-| first_name | String | |
-| last_name | String | |
-| dob | String | |
-| gender | String | |
-| address_street | String | |
-| address_city | String | |
-| address_county | String | |
-| postcode | String | |
-| tenure | String | |
-| phone | String | |
-| email | String | |
-| keysafe | | |
-| keysafe_text | | |
-| int_grab | | |
-| int_grab_text | | |
-| ext_grab | | |
-| ext_grab_text | | |
-| drop_rail | | |
-| drop_rail_text | | |
-| newel | | |
-| newel_text | | |
-| stair_rail | | |
-| stair_rail_text | | |
-| handrail | | |
-| handrail_text | | |
-| step | | |
-| step_text | | |
-| ramp | | |
-| ramp_text | | |
-| shower | | |
-| shower_text | | |
-| other | | |
-| other_text | | |
-| ref_name | | |
-| team | | |
-| ref_email | | |
-| ref_phone | | |
-| is_urgent | | |
-| due_date | | |
-| created_by | | |
-| amended_by | | |
-| comp_date | | |
-| is_comp | | |
-| notes | | |
-
-### ERD
-[link]()
 
 ## Technologies Used
 
