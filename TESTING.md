@@ -37,26 +37,52 @@ The site has been tested using Google Chrome, Mozilla Firefox and Microsoft Edge
 
 [Back to top](#testing)
 
+#
 ## **Validator testing:**
-- HTML - [W3C Validator](https://bit.ly/3vkSIx1) - *passed*
-  - Login Page: ![Login Page](docs/readme_items/html_validation/login.png)
-  -  ![]()
-  ![]()
-  ![]()
-- CSS - [(Jigsaw) validator](https://bit.ly/3F29Zg1) - *passed*
-  ![css validator](docs/readme_items/css_validation/css_validation.png)
-- Javascript - [JSHint](https://bit.ly/3jRVMKH) - *passed*
-  ![JSHint](docs/readme_items/jshint/jshint.png)
-- Python - [Pep8](https://bit.ly/3qXj7hD) - *passed*
-  ![PEP8](docs/readme_items/pep8/pep8.png)
+### **HTML - [W3C Validator](https://bit.ly/3vkSIx1)** - *passed*
+
+**Login Page:** 
+- ![Login Page](docs/readme_items/html_validation/login.png)
+
+**Adaptations page:** 
+- ![adaptations page](docs/readme_items/html_validation/adaptations.png)
+
+**View Jobs page:** 
+- ![view jobs](docs/readme_items/html_validation/view_jobs.png)
+  
+**Manage Users page:** 
+- ![manage users](docs/readme_items/html_validation/manage_users.png)
+
+**Edit User page:**
+- ![edit user](docs/readme_items/html_validation/edit_user.png)
+
+**My Account page:**
+- ![my account](docs/readme_items/html_validation/my_account.png)
+
+**Change Password page:**
+- ![change password](docs/readme_items/html_validation/change_password.png)
+
+#
+### **CSS - [(Jigsaw) validator](https://bit.ly/3F29Zg1)** - *passed*
+- ![css validator](docs/readme_items/css_validation/css_validation.png)
+
+#
+### **Javascript - [JSHint](https://bit.ly/3jRVMKH)** - *passed*
+- ![JSHint](docs/readme_items/jshint/jshint.png)
+
+#
+### **Python - [Pep8](https://bit.ly/3qXj7hD)** - *passed*
+- ![PEP8](docs/readme_items/pep8/pep8.png)
 
 [Back to top](#testing)
 
+#
 ## **Additional testing:**
 Black box testing was also carried out on the final deployed website.
     
 All tests passed. Results can be viewed [here](docs/readme_items/testing/enabled_test_plan.pdf)
 
+#
 ## **Bugs**
 
 **Found and corrected**
