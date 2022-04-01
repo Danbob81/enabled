@@ -1,18 +1,18 @@
-<h1 align="center">Enabled</h1>
-
-View live site [here.](https://bit.ly/3IvP6Mw)
-
-<h4 align="center"><img src="docs/readme_items/enabled_main.png" alt="site image"></h4>
+#  **Testing**
 
 Back to [README.md](README.md)
 
-# Testing
+View live site [here.](https://bit.ly/3IvP6Mw)
 
-The site has been tested using Chrome, Firefox and Edge on desktop/laptop as well as Chrome on Android mobile. Google developer tool has been used to check the sites responsiveness across various screen sizes (desktop, tablet, mobile).
+![Main Site Image](docs/readme_items/enabled_main.png)
 
-## User Story Testing
+# 
+The site has been tested using Google Chrome, Mozilla Firefox and Microsoft Edge on desktop/laptop as well as Chrome on Android mobile. The Google Developer tool has been used to check the sites responsiveness across various screen sizes (desktop, tablet, mobile).
+# 
 
-### Regular Staff User Goals
+## **User Story Testing**
+
+### **Regular Staff User Goals**
 
   - user can log in securely; warning does show if incorrect username or password have been entered
   - managing the user account can be done; all links work as expected. User can view their own details and change their password - warning is given if incorrect password entered
@@ -25,7 +25,7 @@ The site has been tested using Chrome, Firefox and Edge on desktop/laptop as wel
   - notes can be added and updated on all orders unless order is set to completed
   - if the user has created the order, they are able to delete it. No other user can delete that order
 
-### Admin User Goals
+### **Admin User Goals**
 
   - only the Admin user is able to access the Manage Users section of the site
   - Admin can 
@@ -35,19 +35,31 @@ The site has been tested using Chrome, Firefox and Edge on desktop/laptop as wel
     - delete user accounts except for the Admin account which can not be deleted using the site
   - as well as all the functions of a regular user, the Admin user can delete a customers account
 
-## Validator testing:
-- HTML - [W3C Validator](https://bit.ly/3vkSIx1) - valid
-- CSS - [(Jigsaw) validator](https://bit.ly/3nMSs4G) - valid
-- Javascript - [JSHint](https://bit.ly/3jRVMKH) - valid
-- Python - [Pep8](https://bit.ly/33VMJDA) - valid
+[Back to top](#testing)
 
-## Additional testing:
+## **Validator testing:**
+- HTML - [W3C Validator](https://bit.ly/3vkSIx1) - *passed*
+  - Login Page: ![Login Page](docs/readme_items/html_validation/login.png)
+  -  ![]()
+  ![]()
+  ![]()
+- CSS - [(Jigsaw) validator](https://bit.ly/3F29Zg1) - *passed*
+  ![css validator](docs/readme_items/css_validation/css_validation.png)
+- Javascript - [JSHint](https://bit.ly/3jRVMKH) - *passed*
+  ![JSHint](docs/readme_items/jshint/jshint.png)
+- Python - [Pep8](https://bit.ly/3qXj7hD) - *passed*
+  ![PEP8](docs/readme_items/pep8/pep8.png)
+
+[Back to top](#testing)
+
+## **Additional testing:**
 Black box testing was also carried out on the final deployed website.
     
-All tests passed. Results can be viewed [here](docs/readme_items/enabled_test_plan.pdf)
+All tests passed. Results can be viewed [here](docs/readme_items/testing/enabled_test_plan.pdf)
 
-## Bugs
-Found and corrected
+## **Bugs**
+
+**Found and corrected**
 
   - a problem was discovered whereby the priority choice would always set to urgent, whether selected or not, upon order creation. 
     - A solution was found by changing the input type from a selector to a toggle switch.
@@ -58,4 +70,6 @@ Found and corrected
   - Change password form was reloading on user clicking the submit button and not updating the password in the DB. 
     - It was discovered, in the change_password function in app.py, that the return statement following the password validation check was causing the page to reload, resetting the form. The return statement was removed altogether and function code re-ordered to solve this issue. (Thank you to Ger in Tutor Support for helping me find and correct this error.)
 
-No known bugs left unfixed
+**No known bugs left unfixed**
+
+[Back to top](#testing)

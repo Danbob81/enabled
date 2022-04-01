@@ -113,6 +113,7 @@ General:
 MongoDB is used to store the data and has been set out in three collections - Users, Customers and Jobs - as shown in the following Entity Relationship Diagram:
 
 ![Entity Relationship Diagram](docs/readme_items/erd3.png)
+(created using LucidChart - [link](https://bit.ly/3qHI00n))
 
 
 ## Technologies Used
@@ -129,6 +130,7 @@ MongoDB is used to store the data and has been set out in three collections - Us
   - Pip - to install required dependencies
   - Git & Github - for version control and code storing
   - Balsamiq - for wireframes
+  - LucidChart - for entity relationship diagram
   - Heroku - to deploy live site
 
 ### Database Technologies
