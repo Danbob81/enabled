@@ -15,24 +15,36 @@ The site has been tested using Google Chrome, Mozilla Firefox and Microsoft Edge
 ### **Regular Staff User Goals**
 
   - user can log in securely; warning does show if incorrect username or password have been entered
+  ![incorrect username/password](docs/readme_items/testing/incorrect_pword.png)
   - managing the user account can be done; all links work as expected. User can view their own details and change their password - warning is given if incorrect password entered
+  ![my account](docs/readme_items/testing/my_account.png)
   - the site is easy to navigate with buttons/links clearly defined
   - the user can easily search and view customer details
+  ![customer search](docs/readme_items/testing/search_customer.png)
   - customer records can be created and amended easily
+  ![edit customer](docs/readme_items/testing/edit_customer.png)
   - Minor Works orders can be created easily with information clearly visible
+  ![create order](docs/readme_items/testing/create_order.png)
   - orders can be set as completed making the order only able to be viewed afterwards
   - users are able to view orders and can amend them easily unless set to completed
+  ![view orders](docs/readme_items/testing/view_orders.png)
   - notes can be added and updated on all orders unless order is set to completed
-  - if the user has created the order, they are able to delete it. No other user can delete that order
+  ![edit order](docs/readme_items/testing/edit_order.png)
+  - if the user has created the order, they are able to delete it. No other user can delete that order. A warning is given asking the user to confirm deletion
+  ![delete order](docs/readme_items/testing/delete_order.png)
 
 ### **Admin User Goals**
 
   - only the Admin user is able to access the Manage Users section of the site
   - Admin can 
     - create new users easily
+    ![create new user](docs/readme_items/testing/create_user.png)
     - search for and view user information
+    ![search user](docs/readme_items/testing/search_user.png)
     - amend user details
-    - delete user accounts except for the Admin account which can not be deleted using the site
+    ![edit user](docs/readme_items/testing/edit_user.png)
+    - delete user accounts, except for the Admin account which can not be deleted using the site. Warning given with confirmation request to delete
+    ![delete user](docs/readme_items/testing/delete_user.png)
   - as well as all the functions of a regular user, the Admin user can delete a customers account
 
 [Back to top](#testing)
