@@ -121,6 +121,7 @@ PDF links here:
 MongoDB is used to store the data and has been set out in three collections - Users, Customers and Jobs - as shown in the following Entity Relationship Diagram:
 
 ![Entity Relationship Diagram](docs/readme_items/database/erd2.png)
+
 (created using LucidChart - [link](https://bit.ly/3qHI00n))
 
 [Back to top](#user-experience-ux)
