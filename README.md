@@ -1,6 +1,6 @@
 <h1 align="center"><strong>Enabled</strong></h1>
 
-View live site [here.](https://bit.ly/3IvP6Mw)
+View live site [here.](https://enabled-mongodb.onrender.com)
 
 ![Main Site Image](docs/readme_items/enabled_main.png)
 
